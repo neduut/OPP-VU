@@ -11,7 +11,6 @@ struct Student {
     double final;
 };
 
-// functions' prototypes
 // void input
 // double final mark calculation
 // void output
