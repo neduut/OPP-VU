@@ -3,6 +3,7 @@
         "limits": "cpp",
         "iomanip": "cpp",
         "ostream": "cpp",
-        "xstring": "cpp"
+        "xstring": "cpp",
+        "iostream": "cpp"
     }
 }

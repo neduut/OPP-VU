@@ -1,7 +1,6 @@
-#ifndef COMMON_H
-#define COMMON_H
+#ifndef MAIN_H
+#define MAIN_H
 
-// delete not necessary later!!
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -24,5 +23,13 @@ using std::left;
 using std::right;
 using std::fixed;
 using std::setprecision;
+
+struct Student {
+    string first_name;
+    string last_name;
+    vector<int> marks;
+    int exam_mark;
+    double final_mark;
+};
 
 #endif
