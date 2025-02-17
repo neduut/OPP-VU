@@ -1,5 +1,5 @@
-#ifndef MAIN_H
-#define MAIN_H
+#ifndef MYLIB_H
+#define MYLIB_H
 
 #include <iostream>
 #include <fstream>
@@ -27,15 +27,5 @@ using std::fixed;
 using std::setprecision;
 using std::numeric_limits;
 using std::streamsize;
-
-
-struct Student {
-    string firstName;
-    string lastName;
-    vector<int> marks;
-    int examMark;
-    double finalMarkAverage;
-    double finalMarkMedian;
-};
 
 #endif
