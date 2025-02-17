@@ -94,6 +94,15 @@ void calculateFinalMark(vector<Student>& students)
         }
         sum += student.examMark;
         student.finalMark = sum / (double(student.marks.size()+1));
-    cout << student.finalMark << endl;
     }
 };
+
+void output(vector<Student>& students)
+{
+    cout << left << setw(15) << "Pavarde" << setw(15) << "Vardas" << "Galutinis (Vid.)" << endl; 
+    cout << "----------------------------------------------" << endl;
+    for (Student student : students) {
+        cout << left << setw(15) << student.firstName << setw(15) << student.lastName << fixed << setprecision(2) << student.finalMark << endl;
+    }
+};
+

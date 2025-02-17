@@ -19,6 +19,6 @@ bool isMarkValid(string mark);
 //program functions
 void readInput(vector<Student>& students);
 void calculateFinalMark(vector<Student>& students);
-//void output(vector<Student>& students);
+void output(vector<Student>& students);
 
 #endif

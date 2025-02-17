@@ -6,7 +6,7 @@ int main() {
 
     readInput(students);
     calculateFinalMark(students);
-    //output(students);
+    output(students);
 
     return 0;
 }
