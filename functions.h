@@ -13,8 +13,8 @@ void INVALID_MARK_ERROR();
 void INVALID_EXAM_MARK_ERROR();
 
 //checks
-//bool isNameValid(string name)
-//bool isMarkValid(string mark)
+bool isNameValid(string name);
+bool isMarkValid(string mark);
 
 //program functions
 void readInput(vector<Student>& students);

@@ -12,6 +12,8 @@
 #include <algorithm>
 #include <numeric>
 #include <ctime>
+#include <limits>
+#include <ios>
 
 using std::cin;
 using std::cout;
@@ -23,6 +25,9 @@ using std::left;
 using std::right;
 using std::fixed;
 using std::setprecision;
+using std::numeric_limits;
+using std::streamsize;
+
 
 struct Student {
     string first_name;

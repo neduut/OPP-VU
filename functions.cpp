@@ -1,46 +1,57 @@
 #include "main.h"
+#include "functions.h"
 
-
-//user prompts
-
+// user prompts
 void ENTER_FIRST_NAME() { cout << "Iveskite varda (norint sustoti iveskite -1): "; }
-void ENTER_LAST_NAME() { cout <<  "Iveskite pavarde: "; }
-void ENTER_MARK() { cout <<  "Iveskite namu darbu pazymi (norint sustoti iveskite -1): "; }
+void ENTER_LAST_NAME() { cout << "Iveskite pavarde: "; }
+void ENTER_MARK() { cout << "Iveskite namu darbu pazymi (norint sustoti iveskite -1): "; }
 
+// errors
+void INVALID_FIRST_NAME_ERROR() { cout << "Klaida: ivestas netinkamas vardas! "; }
+void INVALID_LAST_NAME_ERROR() { cout << "Klaida: ivesta netinkama pavarde! "; }
+void INVALID_MARK_ERROR() { cout << "Klaida: pazymys turi buti sveikasis skaicius nuo 1 iki 10! "; }
+void INVALID_EXAM_MARK_ERROR() { cout << "Klaida: egzamino pazymys turi buti sveikasis skaicius nuo 1 iki 10! "; }
 
-//errors
+// checks
+bool isNameValid(string name) {
+    for (char c : name) {
+        if (!isalpha(c)) return false;
+    }
+    return true;
+}
 
-void INVALID_FIRST_NAME_ERROR() { cout <<  "Ivestas netinkamas vardas"; }
-void INVALID_LAST_NAME_ERROR() { cout <<  "Ivesta netinkama pavarde"; }
-void INVALID_MARK_ERROR() { cout <<  "Pazymys turi buti sveikasis skaicius nuo 1 iki 10"; }
-void INVALID_EXAM_MARK_ERROR() { cout <<  "Egzamino pazymys turi buti sveikasis skaicius nuo 1 iki 10"; }
+bool isMarkValid(string mark) {
+    for (char c : mark) {
+        if (!isdigit(c)) return false;
+    }
+    int markInt = stoi(mark);
+    if (markInt < 1 || markInt > 10) return false;
+    return true;
+}
 
-
-//checks
-//bool isNameValid(string name)
-//bool isMarkValid(string mark)
-
-
-//program functions
-
-void readInput(vector<Student>& students){
-    while(true){
+// program functions
+void readInput(vector<Student>& students) {
+    while (true) {
         ENTER_FIRST_NAME();
         string firstName;
         cin >> firstName;
-        if(firstName == "-1") break;
-        /*if (!isNameValid(firstName)){
+        if (firstName == "-1") break;
+        if (!isNameValid(firstName)) {
             INVALID_FIRST_NAME_ERROR();
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
             continue;
-        }*/
+        }
 
-        ENTER_LAST_NAME();
         string lastName;
-        cin >> lastName;
-        /*if(!isNameValid(lastName)){
+        while (true) {
+            ENTER_LAST_NAME();
+            cin >> lastName;
+            if (isNameValid(lastName)) break;
             INVALID_LAST_NAME_ERROR();
-            continue;
-        }*/
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
 
         vector<int> marks;
         string tempMark;
@@ -48,19 +59,16 @@ void readInput(vector<Student>& students){
             ENTER_MARK();
             cin >> tempMark;
             if (tempMark == "-1") break;
-            /*if(!isMarkValid(tempMark)){
+            if (!isMarkValid(tempMark)) {
                 INVALID_MARK_ERROR();
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 continue;
-            }*/
-        int mark = stoi(tempMark);
-        marks.push_back(mark);
+            }
+            marks.push_back(stoi(tempMark));
         }
 
-        students.push_back({firstName, lastName, marks});
+        // Add the student to the list
+        students.push_back(Student{firstName, lastName, marks});
     }
-
-};
-
-//calculateFinalMark(vector<Student>& students);
-//output(vector<Student>& students);
-
+}
