@@ -5,7 +5,8 @@ int main() {
     vector<Student> students;
 
     readInput(students);
-    calculateFinalMark(students);
+    averageFinalMark(students);
+    medianFinalMark(students);
     output(students);
 
     return 0;

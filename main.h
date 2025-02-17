@@ -34,7 +34,8 @@ struct Student {
     string lastName;
     vector<int> marks;
     int examMark;
-    double finalMark;
+    double finalMarkAverage;
+    double finalMarkMedian;
 };
 
 #endif
