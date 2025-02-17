@@ -95,7 +95,7 @@ void averageFinalMark(vector<Student>& students)
         sum += student.examMark;
         student.finalMarkAverage = sum / (double(student.marks.size()+1));
     }
-};
+}
 
 void medianFinalMark(vector<Student>& students)
 {
@@ -109,7 +109,7 @@ void medianFinalMark(vector<Student>& students)
             student.finalMarkMedian = marks[marks.size() / 2];
         }
     }
-};
+}
 
 void output(vector<Student>& students)
 {
@@ -118,5 +118,5 @@ void output(vector<Student>& students)
     for (Student student : students) {
         cout << left << setw(17) << student.firstName << setw(17) << student.lastName << setw(19) << fixed << setprecision(2) << student.finalMarkAverage << student.finalMarkMedian << endl;
     }
-};
+}
 
