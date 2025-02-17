@@ -68,19 +68,32 @@ void readInput(vector<Student>& students) {
             marks.push_back(stoi(tempMark));
         }
 
-        // Add the student to the list
-        students.push_back(Student{firstName, lastName, marks});
+        while (true) {
+            cout << "Iveskite egzamino pazymi: ";
+            cin >> tempMark;
+            if (!isMarkValid(tempMark)) {
+                INVALID_EXAM_MARK_ERROR();
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                continue;
+            }
+            break;
+        }
+        int examMark = stoi(tempMark);
+
+        students.push_back(Student{firstName, lastName, marks, examMark});
     }
 }
 
 void calculateFinalMark(vector<Student>& students)
 {
     for (Student& student : students) {
-        int sum = 0;
+        double sum = 0;
         for (int mark : student.marks) {
             sum += mark;
         }
         sum += student.examMark;
-        student.finalMark = sum / student.marks.size();
+        student.finalMark = sum / (double(student.marks.size()+1));
+    cout << student.finalMark << endl;
     }
 };
