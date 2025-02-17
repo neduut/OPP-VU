@@ -12,7 +12,7 @@ void INVALID_LAST_NAME_ERROR();
 void INVALID_MARK_ERROR();
 void INVALID_EXAM_MARK_ERROR();
 
-//checks
+//validations
 bool isNameValid(string name);
 bool isMarkValid(string mark);
 
