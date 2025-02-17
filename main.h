@@ -30,11 +30,11 @@ using std::streamsize;
 
 
 struct Student {
-    string first_name;
-    string last_name;
+    string firstName;
+    string lastName;
     vector<int> marks;
-    int exam_mark;
-    double final_mark;
+    int examMark;
+    double finalMark;
 };
 
 #endif

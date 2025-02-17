@@ -72,3 +72,15 @@ void readInput(vector<Student>& students) {
         students.push_back(Student{firstName, lastName, marks});
     }
 }
+
+void calculateFinalMark(vector<Student>& students)
+{
+    for (Student& student : students) {
+        int sum = 0;
+        for (int mark : student.marks) {
+            sum += mark;
+        }
+        sum += student.examMark;
+        student.finalMark = sum / student.marks.size();
+    }
+};
