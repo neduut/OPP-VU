@@ -12,7 +12,7 @@ void INVALID_LAST_NAME_ERROR() { cout << "Klaida: ivesta netinkama pavarde! "; }
 void INVALID_MARK_ERROR() { cout << "Klaida: pazymys turi buti sveikasis skaicius nuo 1 iki 10! "; }
 void INVALID_EXAM_MARK_ERROR() { cout << "Klaida: egzamino pazymys turi buti sveikasis skaicius nuo 1 iki 10! "; }
 
-// checks
+// validations
 bool isNameValid(string name) {
     for (char c : name) {
         if (!isalpha(c)) return false;
