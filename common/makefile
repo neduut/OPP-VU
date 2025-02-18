@@ -1,8 +1,18 @@
-main: functions.o 
-	g++ -o main main.cpp  functions.cpp
+main: main.o c_array.o vector.o validations.o
+	main.o c_array.o vector.o validations.o -o main
 
-functions:
-	g++ -c functions.cpp
+main.o: main.cpp main.h
+	main.cpp -o main.o
+
+c_array.o: c_array.cpp c_array.h
+	c_array.cpp -o c_array.o
+
+vector.o: vector.cpp vector.h
+	vector.cpp -o vector.o
+
+# common files
+validations.o: validations.cpp validations.h
+	validations.cpp -o validations.o
 
 clean:
-	cmd /C del *.o main
+	rm -f *.o main
