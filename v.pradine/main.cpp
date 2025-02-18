@@ -50,7 +50,7 @@ void readInput(vector<Student>& students) {
         }
 
         while (true) {
-            cout << "Iveskite egzamino pazymi: ";
+            cout << ENTER_EXAM_MARK;
             cin >> tempMark;
             if (!isMarkValid(tempMark)) {
                 cout << INVALID_EXAM_MARK_ERROR;

@@ -7,6 +7,7 @@
 const string ENTER_FIRST_NAME = "Iveskite varda (norint sustoti iveskite -1): ";
 const string ENTER_LAST_NAME = "Iveskite pavarde: "; 
 const string ENTER_MARK = "Iveskite namu darbu pazymi (norint sustoti iveskite -1): "; 
+const string ENTER_EXAM_MARK = "Iveskite egzamino pazymi: ";
 
 // errors
 const string INVALID_FIRST_NAME_ERROR = "Klaida: ivestas netinkamas vardas! "; 
