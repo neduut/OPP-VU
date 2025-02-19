@@ -3,7 +3,7 @@
 
 void readInput(vector<StudentMixed>& students) {
     while (true) {
-        // read first name
+        // name
         cout << ENTER_FIRST_NAME;
         string firstName;
         cin >> firstName;
@@ -15,7 +15,7 @@ void readInput(vector<StudentMixed>& students) {
             continue;
         }
 
-        // read last name
+        // last name
         string lastName;
         while (true) {
             cout << ENTER_LAST_NAME;
@@ -28,7 +28,7 @@ void readInput(vector<StudentMixed>& students) {
 
         StudentMixed student(firstName, lastName, 0);
 
-        // read homework marks
+        // homework marks
         while (true) {
             string tempMark;
             cout << ENTER_MARK;
@@ -37,27 +37,27 @@ void readInput(vector<StudentMixed>& students) {
             if (!isMarkValid(tempMark)) {
                 cout << INVALID_MARK_ERROR;
                 cin.clear();
-                cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 continue;
             }
-            int paz = stoi(tempMark);
-            student.addMark(paz);
+            student.addMark(stoi(tempMark));
         }
         
-        // read exam mark
-        string tempMark;
+        // exam mark
+        string tempExamMark;
         while (true) {
             cout << ENTER_EXAM_MARK;
-            cin >> tempMark;
-            if (!isMarkValid(tempMark)) {
+            cin >> tempExamMark;
+            if (!isMarkValid(tempExamMark)) {
                 cout << INVALID_EXAM_MARK_ERROR;
                 cin.clear();
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 continue;
             }
+            student.examMark = stoi(tempExamMark);
             break;
         }
-        int examMark = stoi(tempMark);
+        
         students.push_back(student);
     }
 }
