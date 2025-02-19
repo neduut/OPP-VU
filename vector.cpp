@@ -59,34 +59,27 @@ void readInput(vector<StudentVector>& students) {
     }
 }
 
-double averageFinalMark(vector<StudentVector>& students)
+double averageFinalMark(const StudentVector& student)
 {
-    double result = 0.0;
-    for (StudentVector& student : students) {
-        double sum = 0;
-        for (int mark : student.marks) {
-            sum += mark;
-        }
-        sum += student.examMark;
-        result = sum / (double(student.marks.size()+1));
+    double sum = 0;
+    for (int mark : student.marks) {
+        sum += mark;
     }
-    return result;
+    double average = sum / student.marks.size();
+    return 0.4 * average + 0.6 * student.examMark;
 }
 
-double medianFinalMark(vector<StudentVector>& students)
+double medianFinalMark(const StudentVector& student)
 {
-    double result = 0.0;
-    for (StudentVector& student : students) {
-        vector<int> marks = student.marks;
-        marks.push_back(student.examMark);
-        sort(marks.begin(), marks.end());
-        if (marks.size() % 2 == 0) {
-            result = (marks[marks.size() / 2 - 1] + marks[marks.size() / 2]) / 2.0;
-        } else {
-            result = marks[marks.size() / 2];
-        }
+    vector<int> marks = student.marks;
+    sort(marks.begin(), marks.end());
+    double median;
+    if (marks.size() % 2 == 0) {
+        median = (marks[marks.size() / 2 - 1] + marks[marks.size() / 2]) / 2.0;
+    } else {
+        median = marks[marks.size() / 2];
     }
-    return result;
+    return 0.4 * median + 0.6 * student.examMark;
 }
 
 void output(vector<StudentVector>& students)
@@ -97,18 +90,18 @@ void output(vector<StudentVector>& students)
         cin >> finalType;
     
         if(finalType == "v") {
-            double average = averageFinalMark(students);
             cout << left << setw(17) << "Pavarde" << setw(17) << "Vardas" << setw(17) << "Galutinis (Vid.)" << endl; 
-            cout << "---------------------------------------------------------------------" << endl;
+            cout << "--------------------------------------------------" << endl;
             for (StudentVector student : students) {
+                double average = averageFinalMark(student);
                 cout << left << setw(17) << student.firstName << setw(17) << student.lastName << setw(19) << fixed << setprecision(2) << average << endl;
             }
             break;
         } else if (finalType == "m") {
-            double median = medianFinalMark(students);
             cout << left << setw(17) << "Pavarde" << setw(17) << "Vardas" << setw(17) << "Galutinis (Med.)" << endl; 
-            cout << "---------------------------------------------------------------------" << endl;
+            cout << "--------------------------------------------------" << endl;
             for (StudentVector student : students) {
+                double median = medianFinalMark(student);
                 cout << left << setw(17) << student.firstName << setw(17) << student.lastName << setw(19) << fixed << setprecision(2) << median << endl;
             }
             break;

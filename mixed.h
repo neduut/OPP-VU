@@ -27,23 +27,23 @@ struct StudentMixed {
         if (marksCount == marksCapacity) {
             resize(marksCapacity * 2);
         }
-        marks[marksCount++] = paz;
+        marks[marksCount++] = paz; 
     }
-
+    
     void resize(int new_capacity) {
-        int* temp = new int[new_capacity];
+        int* temp = new int[new_capacity];  
         for (int i = 0; i < marksCount; i++) {
             temp[i] = marks[i];
         }
-        delete[] marks;
-        marks = temp;
-        marksCapacity = new_capacity;
+        delete[] marks;  
+        marks = temp;    
+        marksCapacity = new_capacity; 
     }
 };
 
 void readInput(vector<StudentMixed>& students);
 double averageFinalMark(vector<StudentMixed>& students);
-//double medianFinalMark(vector<StudentMixed>& students);
-//void output(vector<StudentMixed>& students);
+double medianFinalMark(vector<StudentMixed>& students);
+void output(vector<StudentMixed>& students);
 
 #endif 
