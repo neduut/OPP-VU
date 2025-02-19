@@ -1,17 +1,5 @@
-#include "vector.h"
-
-int main() {
-    vector<Student> students;
-
-    readInput(students);
-
-    //if students vector is not empty, calculate final marks and output them
-    if(!students.empty()){
-        output(students);
-    }
-
-    return 0;
-}
+// used vector for students and dynamic c array for marks
+#include "mixed.h"
 
 void readInput(vector<Student>& students) {
     while (true) {
@@ -38,23 +26,26 @@ void readInput(vector<Student>& students) {
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }
 
+        Student student(firstName, lastName, 0);
+
         // read homework marks
-        vector<int> marks;
-        string tempMark;
         while (true) {
+            string tempMark;
             cout << ENTER_MARK;
             cin >> tempMark;
             if (tempMark == "-1") break;
             if (!isMarkValid(tempMark)) {
                 cout << INVALID_MARK_ERROR;
                 cin.clear();
-                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                 continue;
             }
-            marks.push_back(stoi(tempMark));
+            int paz = stoi(tempMark);
+            student.addMark(paz);
         }
-
+        
         // read exam mark
+        string tempMark;
         while (true) {
             cout << ENTER_EXAM_MARK;
             cin >> tempMark;
@@ -67,61 +58,59 @@ void readInput(vector<Student>& students) {
             break;
         }
         int examMark = stoi(tempMark);
-
-        students.push_back(Student{firstName, lastName, marks, examMark});
+        students.push_back(student);
     }
 }
 
-double averageFinalMark(vector<Student>& students)
+/*void averageFinalMark(vector<Student>& students)
 {
-    double result = 0.0;
     for (Student& student : students) {
         double sum = 0;
         for (int mark : student.marks) {
             sum += mark;
         }
         sum += student.examMark;
-        result = sum / (double(student.marks.size()+1));
+        student.finalMarkAverage = sum / (double(student.marks.size()+1));
     }
-    return result;
-}
+}*/
 
-double medianFinalMark(vector<Student>& students)
+/*void medianFinalMark(vector<Student>& students)
 {
-    double result = 0.0;
     for (Student& student : students) {
         vector<int> marks = student.marks;
         marks.push_back(student.examMark);
         sort(marks.begin(), marks.end());
         if (marks.size() % 2 == 0) {
-            result = (marks[marks.size() / 2 - 1] + marks[marks.size() / 2]) / 2.0;
+            student.finalMarkMedian = (marks[marks.size() / 2 - 1] + marks[marks.size() / 2]) / 2.0;
         } else {
-            result = marks[marks.size() / 2];
+            student.finalMarkMedian = marks[marks.size() / 2];
         }
     }
-    return result;
-}
+}*/
 
-void output(vector<Student>& students)
+/*void output(vector<Student>& students)
 {
+
+    //perrasyt kaip paprasta statini masyva
+
     while(true){
         string finalType;
         cout << ENTER_FINAL_TYPE;
         cin >> finalType;
     
         if(finalType == "v") {
-            double average = averageFinalMark(students);
+            averageFinalMark(students);
             cout << left << setw(17) << "Pavarde" << setw(17) << "Vardas" << setw(17) << "Galutinis (Vid.)" << endl; 
             cout << "---------------------------------------------------------------------" << endl;
             for (Student student : students) {
-                cout << left << setw(17) << student.firstName << setw(17) << student.lastName << setw(19) << fixed << setprecision(2) << average << endl;
+                cout << left << setw(17) << student.firstName << setw(17) << student.lastName << setw(19) << fixed << setprecision(2) << student.finalMarkAverage << endl;
             }
         } else if (finalType == "m") {
-            double median = medianFinalMark(students);
+            medianFinalMark(students);
             cout << left << setw(17) << "Pavarde" << setw(17) << "Vardas" << setw(17) << "Galutinis (Med.)" << endl; 
             cout << "---------------------------------------------------------------------" << endl;
             for (Student student : students) {
-                cout << left << setw(17) << student.firstName << setw(17) << student.lastName << setw(19) << fixed << setprecision(2) << median << endl;
+                cout << left << setw(17) << student.firstName << setw(17) << student.lastName << setw(19) << fixed << setprecision(2) << student.finalMarkMedian << endl;
             }
         }
         else {
@@ -131,4 +120,6 @@ void output(vector<Student>& students)
             continue;
         }
     }
-}
+}*/
+
+
