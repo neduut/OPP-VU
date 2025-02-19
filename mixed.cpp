@@ -63,15 +63,16 @@ void readInput(vector<StudentMixed>& students) {
 }
 
 double averageFinalMark(vector<StudentMixed>& students){
-    double result = 0.0;
+    double average = 0.0;
     for (StudentMixed& student : students) {
         double sum = 0;
         for (int i = 0; i < student.marksCount; i++) {
             sum += student.marks[i];
         }
-        result = sum / (double(student.marksCount + 1));
+        average = sum / (double(student.marksCount + 1));
+        average = 0.4 * average + 0.6 * student.examMark;
     }
-    return result;
+    return average;
 }
 
 double medianFinalMark(vector<StudentMixed>& students){
