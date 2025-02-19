@@ -5,11 +5,6 @@
 #include "constants.h"
 #include "validations.h"
 
-void readInput(vector<Student>& students);
-void averageFinalMark(vector<Student>& students);
-void medianFinalMark(vector<Student>& students);
-void output(vector<Student>& students);
-
 struct Student {
     string firstName;
     string lastName;
@@ -18,5 +13,10 @@ struct Student {
     double finalMarkAverage;
     double finalMarkMedian;
 };
+
+void readInput(vector<Student>& students);
+void averageFinalMark(vector<Student>& students);
+void medianFinalMark(vector<Student>& students);
+void output(vector<Student>& students);
 
 #endif  
