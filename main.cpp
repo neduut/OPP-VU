@@ -1,7 +1,11 @@
 #include "main.h"
 
 int main() {
-    vector<Student> students;
+    //version for vector.cpp
+    vector<StudentVector> students;
+
+    //version for mixed.cpp
+    //vector<StudentMixed> students;
 
     readInput(students);
 

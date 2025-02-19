@@ -5,7 +5,7 @@
 #include "mylib.h"
 #include "validations.h"
 
-struct Student {
+struct StudentMixed {
     string firstName;
     string lastName;
     int* marks;
@@ -14,12 +14,12 @@ struct Student {
     int examMark;
 
     // constructor
-    Student(std::string fName, std::string lName, int exam)
+    StudentMixed(std::string fName, std::string lName, int exam)
         : firstName(fName), lastName(lName), marksCount(0), marksCapacity(2), examMark(exam) {
         marks = new int[marksCapacity]; // initial size
     }
 
-    ~Student() {
+    ~StudentMixed() {
         delete[] marks;
     }
 
@@ -41,9 +41,9 @@ struct Student {
     }
 };
 
-void readInput(vector<Student>& students);
-//void averageFinalMark(vector<Student>& students);
-//void medianFinalMark(vector<Student>& students);
-//void output(vector<Student>& students);
+void readInput(vector<StudentMixed>& students);
+//void averageFinalMark(vector<StudentMixed>& students);
+//void medianFinalMark(vector<StudentMixed>& students);
+//void output(vector<StudentMixed>& students);
 
 #endif 
