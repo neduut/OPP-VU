@@ -62,30 +62,34 @@ void readInput(vector<StudentMixed>& students) {
     }
 }
 
-/*void averageFinalMark(vector<StudentMixed>& students)
-{
+double averageFinalMark(vector<StudentMixed>& students){
+    double result = 0.0;
     for (StudentMixed& student : students) {
         double sum = 0;
-        for (int mark : student.marks) {
-            sum += mark;
+        for (int i = 0; i < student.marksCount; i++) {
+            sum += student.marks[i];
         }
-        sum += student.examMark;
-        student.finalMarkAverage = sum / (double(student.marks.size()+1));
+        sum += student.examMark; 
+        result = sum / (double(student.marksCount + 1));
     }
-}*/
+    return result;
+}
 
-/*void medianFinalMark(vector<StudentMixed>& students)
+
+/*double medianFinalMark(vector<StudentMixed>& students)
 {
+double result = 0.0;
     for (StudentMixed& student : students) {
         vector<int> marks = student.marks;
         marks.push_back(student.examMark);
         sort(marks.begin(), marks.end());
         if (marks.size() % 2 == 0) {
-            student.finalMarkMedian = (marks[marks.size() / 2 - 1] + marks[marks.size() / 2]) / 2.0;
+            result = (marks[marks.size() / 2 - 1] + marks[marks.size() / 2]) / 2.0;
         } else {
-            student.finalMarkMedian = marks[marks.size() / 2];
+            result = marks[marks.size() / 2];
         }
     }
+    return result;
 }*/
 
 /*void output(vector<StudentMixed>& students)

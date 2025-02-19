@@ -42,8 +42,8 @@ struct StudentMixed {
 };
 
 void readInput(vector<StudentMixed>& students);
-//void averageFinalMark(vector<StudentMixed>& students);
-//void medianFinalMark(vector<StudentMixed>& students);
+double averageFinalMark(vector<StudentMixed>& students);
+//double medianFinalMark(vector<StudentMixed>& students);
 //void output(vector<StudentMixed>& students);
 
 #endif 
