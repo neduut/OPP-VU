@@ -1,10 +1,10 @@
-main: main.o c_array.o vector.o validations.o
-	main.o c_array.o vector.o validations.o -o main
+main: main.o mixed.o vector.o validations.o
+	main.o mixed.o vector.o validations.o -o main
 
 main.o: main.cpp main.h
 	main.cpp -o main.o
 
-c_array.o: c_array.cpp c_array.h
+mixed.o: c_array.cpp c_array.h
 	c_array.cpp -o c_array.o
 
 vector.o: vector.cpp vector.h

@@ -6,8 +6,8 @@
 #include <validations.h>
 
 struct Student {
-    std::string firstName;
-    std::string lastName;
+    string firstName;
+    string lastName;
     int* marks;
     int marksCount;
     int marksCapacity;
