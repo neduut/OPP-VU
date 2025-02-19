@@ -75,22 +75,21 @@ double averageFinalMark(vector<StudentMixed>& students){
     return result;
 }
 
-
-/*double medianFinalMark(vector<StudentMixed>& students)
-{
-double result = 0.0;
+double medianFinalMark(vector<StudentMixed>& students){
+    double result = 0.0;
     for (StudentMixed& student : students) {
-        vector<int> marks = student.marks;
-        marks.push_back(student.examMark);
-        sort(marks.begin(), marks.end());
-        if (marks.size() % 2 == 0) {
-            result = (marks[marks.size() / 2 - 1] + marks[marks.size() / 2]) / 2.0;
+        vector<int> tempMarks(student.marks, student.marks + student.marksCount);
+        tempMarks.push_back(student.examMark);
+        sort(tempMarks.begin(), tempMarks.end());
+        if (tempMarks.size() % 2 == 0) {
+            result = (tempMarks[tempMarks.size() / 2 - 1] + tempMarks[tempMarks.size() / 2]) / 2.0;
         } else {
-            result = marks[marks.size() / 2];
+            result = tempMarks[tempMarks.size() / 2];
         }
     }
     return result;
-}*/
+}
+
 
 /*void output(vector<StudentMixed>& students)
 {
