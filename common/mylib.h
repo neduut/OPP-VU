@@ -27,5 +27,7 @@ using std::fixed;
 using std::setprecision;
 using std::numeric_limits;
 using std::streamsize;
+using std::sort;
+using std::stoi;
 
 #endif
