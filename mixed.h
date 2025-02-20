@@ -7,52 +7,35 @@
 struct StudentMixed {
     string firstName;   
     string lastName;    
-    int marks[MAX_MARKS] = {0};
+    int *marks = nullptr;
     int marksCount = 0;  
     int examMark = 0;      
 };
 
-/*struct StudentMixed {
+/*
+struct StudentMixed {
     string firstName;
     string lastName;
     int* marks;
-    int marksCount = 0;
-    int marksCapacity = INITIAL_ARRAY_SIZE;
+    int marksCount;
+    int marksCapacity;
     int examMark;
 
-    StudentMixed(const string& fName, const string& lName, int exam)
-        : firstName(fName), lastName(lName), examMark(exam) {
-        marks = new int[marksCapacity]; 
+    StudentMixed() {
+        marks = new int[1]();
+        marksCount = 0;
+        marksCapacity = 1;
+        examMark = 0;
     }
 
     ~StudentMixed() {
         delete[] marks;
     }
-
-    void expandArray() {
-        int oldSize = marksCapacity;
-        marksCapacity *= 2;
-        int* newArray = new int[marksCapacity];
-
-        for (int i = 0; i < oldSize; i++) {
-            newArray[i] = marks[i];
-        }
-
-        delete[] marks;
-        marks = newArray;
-    }
-
-    void addMark(int paz) {
-        if (marksCount == marksCapacity) {
-            expandArray(); 
-        }
-        marks[marksCount++] = paz;
-    }
 };*/
 
 void readInput(vector<StudentMixed>& students);
-double averageFinalMark(vector<StudentMixed>& students);
-double medianFinalMark(vector<StudentMixed>& students);
+double averageFinalMark(const StudentMixed& student);
+double medianFinalMark(const StudentMixed& student);
 void output(vector<StudentMixed>& students);
 
 #endif 

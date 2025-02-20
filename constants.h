@@ -18,7 +18,13 @@ const string INVALID_MARK_ERROR = "Klaida: pazymys turi buti sveikasis skaicius 
 const string INVALID_EXAM_MARK_ERROR = "Klaida: egzamino pazymys turi buti sveikasis skaicius nuo 1 iki 10! "; 
 const string INVALID_FINAL_TYPE_ERROR = "Klaida: ivestas netinkamas galutinio pazymio tipas! ";
 const string INVALID_MARKS_COUNT_ERROR = "Klaida: pazymiu skaicius turi buti sveikasis skaicius ir mazesnis nei 10! ";
+const string INVALID_MANU_CHOICE = "Klaida: netinkamas menu pasirinkimas ! ";
+const string INVALID_CHOICE = "Klaida: netinkamas pasirinkimas! ";
 
-const int MAX_MARKS = 10;
+// menu choice
+const string MENU_CHOICE_1 = "1 - Ivesti studentu duomenis";
+const string MENU_CHOICE_2 = "2 - Generuoti atsitiktinius pazymius";
+const string MENU_CHOICE_3 = "3 - Generuoti atsisitiktinius vardus ir pazymius";
+const string MENU_CHOICE_4 = "4 - Uzbaigti programa";
 
 #endif

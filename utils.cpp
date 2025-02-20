@@ -25,6 +25,20 @@ bool isCountValid(string count) {
     return true;
 }
 
+bool isMenuChoiceValid(string choice) {
+    for (char c : choice) {
+        if (!isdigit(c)) return false;
+    }
+    int choiceInt = stoi(choice);
+    if (choiceInt < 1 || choiceInt > 4) return false;
+    return true;
+}
+
+bool isChoiceValid(string choice) {
+    if (choice != "taip" && choice != "ne") return false;
+    return true;
+}
+
 string getRandomFirstName() {
     string names[] = {"Jonas", "Petras", "Mantas", "Dovydas", "Karolis", "Tomas", "Justinas", "Rokas", "Marius", "Aurimas"};
     return names[rand() % 10];

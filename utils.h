@@ -7,6 +7,8 @@
 bool isNameValid(string name);
 bool isMarkValid(string mark);
 bool isCountValid(string count);
+bool isMenuChoiceValid(string choice);
+bool isChoiceValid(string choice);
 
 string getRandomFirstName();
 string getRandomLastName();

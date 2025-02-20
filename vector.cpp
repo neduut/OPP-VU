@@ -1,59 +1,111 @@
 #include "vector.h"
 
-void readInput(vector<StudentVector>& students) {
+void readInput(vector<StudentVector>& students, string choice) {
     while (true) {
-        // read first name
-        cout << ENTER_FIRST_NAME;
+
+        if(choice == "3" && students.size() > 0){
+            cout << "Ar norite ivesti studenta? (taip/ne)" << endl;
+            string choice;
+            cin >> choice;
+            if(choice == "ne") break;
+            if (!isChoiceValid(choice)) {
+                cout << INVALID_CHOICE;
+                cin.clear();    
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                continue;
+            }
+            choice = "1";
+        }
+
+        // first name
         string firstName;
-        cin >> firstName;
-        if (firstName == "-1") break;
-        if (!isNameValid(firstName)) {
-            cout << INVALID_FIRST_NAME_ERROR;
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            continue;
-        }
-
-        // read last name
         string lastName;
-        while (true) {
-            cout << ENTER_LAST_NAME;
-            cin >> lastName;
-            if (isNameValid(lastName)) break;
-            cout << INVALID_LAST_NAME_ERROR;
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        }
-
-        // read homework marks
-        vector<int> marks;
-        string tempMark;
-        while (true) {
-            cout << ENTER_MARK;
-            cin >> tempMark;
-            if (tempMark == "-1") break;
-            if (!isMarkValid(tempMark)) {
-                cout << INVALID_MARK_ERROR;
+        if(choice == "1" || choice == "2"){
+            cout << ENTER_FIRST_NAME;
+            firstName;
+            cin >> firstName;
+            if (firstName == "-1") break;
+            if (!isNameValid(firstName)) {
+                cout << INVALID_FIRST_NAME_ERROR;
                 cin.clear();
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 continue;
             }
-            marks.push_back(stoi(tempMark));
+            while (true) {
+                cout << ENTER_LAST_NAME;
+                cin >> lastName;
+                if (isNameValid(lastName)) break;
+                cout << INVALID_LAST_NAME_ERROR;
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            }
+
+        }
+        else{
+            firstName = getRandomFirstName();
+            lastName = getRandomLastName();
+            cout << "Studentas: " << firstName << " " << lastName << endl;
+        }
+
+        // homework marks
+        vector<int> marks;
+        if(choice == "1"){
+            string tempMark;
+            while (true) {
+                cout << ENTER_MARK;
+                cin >> tempMark;
+                if (tempMark == "-1") break;
+                if (!isMarkValid(tempMark)) {
+                    cout << INVALID_MARK_ERROR;
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    continue;
+                }
+                marks.push_back(stoi(tempMark));
+            }
+        }
+        else{
+            int mark = getRandomMark();
+            marks.push_back(mark);
+            cout << "Pazymys: " << mark << endl;
+            while(true){
+                cout << "Ar norite ivesti dar viena pazymi? (taip/ne)" << endl;
+                string choice;
+                cin >> choice;
+                if(choice == "ne") break;
+                if (!isChoiceValid(choice)) {
+                    cout << INVALID_CHOICE;
+                    cin.clear();    
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    continue;
+                }
+                int mark = getRandomMark();
+                cout << "Pazymys: " << mark << endl;
+                marks.push_back(mark);
+            }
         }
 
         // read exam mark
-        while (true) {
-            cout << ENTER_EXAM_MARK;
-            cin >> tempMark;
-            if (!isMarkValid(tempMark)) {
-                cout << INVALID_EXAM_MARK_ERROR;
-                cin.clear();
-                cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                continue;
+        int examMark;
+        string tempMark;
+        if(choice == "1"){
+            while (true) {
+                cout << ENTER_EXAM_MARK;
+                cin >> tempMark;
+                if (!isMarkValid(tempMark)) {
+                    cout << INVALID_EXAM_MARK_ERROR;
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    continue;
+                }
+                examMark = stoi(tempMark);
+                break;
             }
-            break;
         }
-        int examMark = stoi(tempMark);
+        else{
+            examMark = getRandomMark();
+            cout << "Egzamino pazymys: " << examMark << endl;
+        }       
 
         students.push_back(StudentVector{firstName, lastName, marks, examMark});
     }

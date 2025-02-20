@@ -1,6 +1,6 @@
 CXX = g++
 
-COMMON_OBJ = main.o validations.o
+COMMON_OBJ = main.o utils.o
 
 # default 
 main: vector
@@ -20,8 +20,8 @@ mixed.o: mixed.cpp mixed.h
 vector.o: vector.cpp vector.h
 	$(CXX) -c vector.cpp -o vector.o
 
-validations.o: validations.cpp validations.h
-	$(CXX) -c validations.cpp -o validations.o
+utils.o: utils.cpp utils.h
+	$(CXX) -c utils.cpp -o utils.o
 
 clean:
 	rm -f $(COMMON_OBJ) mixed.o vector.o main

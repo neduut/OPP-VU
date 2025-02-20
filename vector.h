@@ -12,9 +12,9 @@ struct StudentVector {
     int examMark;
 };
 
-void readInput(vector<StudentVector>& students);
-double averageFinalMark(vector<StudentVector>& students);
-double medianFinalMark(vector<StudentVector>& students);
+void readInput(vector<StudentVector>& students, string choice);
+double averageFinalMark(const StudentVector& student);
+double medianFinalMark(const StudentVector& student);
 void output(vector<StudentVector>& students);
 
 #endif  

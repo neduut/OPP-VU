@@ -1,7 +1,21 @@
 #include "mixed.h"
 
-void readInput(vector<StudentMixed>& students) {
-    while (true) {
+/*void readInput(vector<StudentMixed>& students) {
+    int size = 0;
+    int capacity = 1;
+    StudentMixed* student = new StudentMixed[capacity];
+
+    while(true) {
+        if (size == capacity) {
+            capacity ++;
+            StudentMixed* temp = new StudentMixed[capacity];
+            for (int i = 0; i < size; i++) {
+                temp[i] = student[i];
+                }
+            delete[] student;
+            student = temp;
+        }
+
         // name input
         cout << ENTER_FIRST_NAME;
         string firstName;
@@ -25,61 +39,43 @@ void readInput(vector<StudentMixed>& students) {
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }
 
-        StudentMixed student;
-        student.firstName = firstName;
-        student.lastName = lastName;
+        student[size].firstName = firstName;
+        student[size].lastName = lastName;
 
         // homework marks
-        /*while (true) {
+        int index = 0;
+        while (true) {
             string tempMark;
             cout << ENTER_MARK;
             cin >> tempMark;
+
             if (tempMark == "-1") break;
             if (!isMarkValid(tempMark)) {
-                cout << INVALID_MARK_ERROR;
+                cout << INVALID_MARK_ERROR << endl;
                 cin.clear();
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 continue;
             }
-            student.addMark(stoi(tempMark));
-        }*/
-
-        // homework marks count
-        string numMarksStr;
-        int numMarks;
-        while (true) {
-            cout << ENTER_MARKS_COUNT;
-            cin >> numMarksStr;
-            if (!isCountValid(numMarksStr)) {
-                cout << INVALID_MARKS_COUNT_ERROR;
-                cin.clear();
-                cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                continue;
-            }
-            numMarks = stoi(numMarksStr);
-            break;
-        }
-
-        student.marksCount = numMarks;
-
-        // homework marks 
-        for (int i = 0; i < numMarks; i++) {
-            while (true) {
-                string tempMark;
-                cout << "Pazymys " << (i + 1) << ": ";
-                cin >> tempMark;
-
-                if (!isMarkValid(tempMark)) {
-                    cout << INVALID_MARK_ERROR;
-                    cin.clear();
-                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                    continue;
+            // if there is no space in the array, increase the size
+            if (index == student[size].marksCapacity) {
+                student[size].marksCapacity++;
+                int* newMarks = new int[student[size].marksCapacity];
+                // copy old array to new array
+                for (int i = 0; i < index; i++) {
+                    newMarks[i] = student[size].marks[i];
                 }
-
-                student.marks[i] = stoi(tempMark);
-                break;
+                // free old array and assign new array to the pointer
+                delete[] student[size].marks;
+                student[size].marks = newMarks;
             }
+            // add mark to the array
+            
+            student[size].marks[index] = stoi(tempMark);
+            index++;
+
         }
+
+        student[size].marksCount = index;
 
         // exam mark
         string tempExamMark;
@@ -92,76 +88,127 @@ void readInput(vector<StudentMixed>& students) {
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 continue;
             }
-            student.examMark = stoi(tempExamMark);
+            student[size].examMark = stoi(tempExamMark);
             break;
         }
-
-        students.push_back(student);
+        size++;
     }
+
+    for (int i = 0; i < size; i++) {
+        students.push_back(student[i]);
+    }
+
+    delete[] student;
+}*/
+
+void readInput(vector<StudentMixed>& students) {
+    string firstName;
+    string lastName;
+    while (true) {
+        // first name
+        cout << ENTER_FIRST_NAME;
+        
+        cin >> firstName;
+        if (firstName == "-1") break;
+        if (!isNameValid(firstName)) {
+            cout << INVALID_FIRST_NAME_ERROR;
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            continue;
+        }
+
+        // last name
+        while (true) {
+            cout << ENTER_LAST_NAME;
+            cin >> lastName;
+            if (isNameValid(lastName)) break;
+            cout << INVALID_LAST_NAME_ERROR;
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
+
+        // homework marks
+        int size;
+        cout << "Iveskite pazymiu kieki: " << endl;
+        cin >> size;
+        int* marks2 = new int[size];
+        string tempMark;
+        for (int i = 0; i < size; i++) {
+                cout << ENTER_MARK;
+                cin >> tempMark;
+                if (!isMarkValid(tempMark)) {
+                    cout << INVALID_MARK_ERROR;
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    continue;
+                }
+                marks2[i] = stoi(tempMark);
+        }
+    
+        // read exam mark
+        while (true) {
+            cout << ENTER_EXAM_MARK;
+            cin >> tempMark;
+            if (!isMarkValid(tempMark)) {
+                cout << INVALID_EXAM_MARK_ERROR;
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                continue;
+            }
+            break;
+        }
+        int examMark = stoi(tempMark);
+        
+        students.push_back({firstName, lastName, marks2, size, examMark});
+    }
+ }
+    
+double averageFinalMark(const StudentMixed& student) {
+    double sum = 0;
+    for (int i = 0; i < student.marksCount; i++) {
+        int mark = student.marks[i];
+        sum += mark;
+    }
+    double average = sum / student.marksCount;
+    return 0.4 * average + 0.6 * student.examMark;
 }
 
-double averageFinalMark(vector<StudentMixed>& students){
-    double average = 0.0;
-    for (StudentMixed& student : students) {
-        double sum = 0;
-        for (int i = 0; i < student.marksCount; i++) {
-            sum += student.marks[i];
-        }
-        average = sum / (double(student.marksCount + 1));
-        average = 0.4 * average + 0.6 * student.examMark;
+double medianFinalMark(const StudentMixed& student) {
+    vector<int> marks(student.marks, student.marks + student.marksCount);
+    sort(marks.begin(), marks.end());
+    double median;
+    if (marks.size() % 2 == 0) {
+        median = (marks[marks.size() / 2 - 1] + marks[marks.size() / 2]) / 2.0;
+    } else {
+        median = marks[marks.size() / 2];
     }
-    return average;
-}
-
-double medianFinalMark(vector<StudentMixed>& students){
-    double median = 0.0;
-    double finalMark = 0.0;
-    for (StudentMixed& student : students) {
-        vector<int> tempMarks;
-        for (int i = 0; i < student.marksCount; i++) {
-            tempMarks.push_back(student.marks[i]);  
-        }
-        sort(tempMarks.begin(), tempMarks.end());
-
-        size_t size = tempMarks.size();
-        if (size % 2 == 0) {
-            median = (tempMarks[size / 2 - 1] + tempMarks[size / 2]) / 2.0;
-        } else {
-            median = tempMarks[size / 2];
-        }
-        return 0.4 * median + 0.6 * student.examMark;
-    }
+    return 0.4 * median + 0.6 * student.examMark;
 }
 
 void output(vector<StudentMixed>& students)
 {
-    while(true) {
+    while(true){
         string finalType;
         cout << ENTER_FINAL_TYPE;
         cin >> finalType;
     
-        if (finalType == "v") { 
-            double average = averageFinalMark(students);
+        if(finalType == "v") {
             cout << left << setw(17) << "Pavarde" << setw(17) << "Vardas" << setw(17) << "Galutinis (Vid.)" << endl; 
             cout << "--------------------------------------------------" << endl;
-            for (StudentMixed& student : students) {
-                cout << left << setw(17) << student.lastName 
-                     << setw(17) << student.firstName 
-                     << setw(19) << fixed << setprecision(2) << average << endl;
+            for (StudentMixed student : students) {
+                double average = averageFinalMark(student);
+                cout << left << setw(17) << student.firstName << setw(17) << student.lastName << setw(19) << fixed << setprecision(2) << average << endl;
             }
             break;
-        } 
-        else if (finalType == "m") {
-            double median = medianFinalMark(students);  
+        } else if (finalType == "m") {
             cout << left << setw(17) << "Pavarde" << setw(17) << "Vardas" << setw(17) << "Galutinis (Med.)" << endl; 
             cout << "--------------------------------------------------" << endl;
-            for (StudentMixed& student : students) {
-                cout << left << setw(17) << student.lastName 
-                     << setw(17) << student.firstName 
-                     << setw(19) << fixed << setprecision(2) << median << endl;
+            for (StudentMixed student : students) {
+                double median = medianFinalMark(student);
+                cout << left << setw(17) << student.firstName << setw(17) << student.lastName << setw(19) << fixed << setprecision(2) << median << endl;
             }
             break;
-        } 
+        }
         else {
             cout << INVALID_FINAL_TYPE_ERROR;
             cin.clear();
@@ -170,6 +217,3 @@ void output(vector<StudentMixed>& students)
         }
     }
 }
-
-
-
