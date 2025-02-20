@@ -1,4 +1,4 @@
-#include "validations.h"
+#include "utils.h"
 
 bool isNameValid(string name) {
     for (char c : name) {
@@ -23,4 +23,18 @@ bool isCountValid(string count) {
     int countInt = stoi(count);
     if (countInt < 1) return false;
     return true;
+}
+
+string getRandomFirstName() {
+    string names[] = {"Jonas", "Petras", "Mantas", "Dovydas", "Karolis", "Tomas", "Justinas", "Rokas", "Marius", "Aurimas"};
+    return names[rand() % 10];
+}
+
+string getRandomLastName() {
+    string surnames[] = {"Jonaitis", "Petraitis", "Kazlauskas", "Dargis", "Jankauskas", "Zujus", "Adomaitis", "Bagdonas", "Vasiliauskas", "Butkus"};
+    return surnames[rand() % 10];
+}
+
+int getRandomMark() {
+    return rand() % 10 + 1;
 }

@@ -2,20 +2,14 @@
 #define MIXED_H
 #include "constants.h"
 #include "mylib.h"
-#include "validations.h"
+#include "utils.h"
 
 struct StudentMixed {
     string firstName;   
     string lastName;    
-    int marks[MAX_MARKS]; 
+    int marks[MAX_MARKS] = {0};
     int marksCount = 0;  
     int examMark = 0;      
-
-    StudentMixed() {
-        for (int i = 0; i < MAX_MARKS; i++) {
-            marks[i] = 0;
-        }
-    }
 };
 
 /*struct StudentMixed {

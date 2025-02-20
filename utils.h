@@ -1,5 +1,5 @@
-#ifndef VALIDATIONS_H
-#define VALIDATIONS_H
+#ifndef UTILS_H
+#define UTILS_H
 
 #include "mylib.h"
 #include "constants.h"
@@ -7,5 +7,9 @@
 bool isNameValid(string name);
 bool isMarkValid(string mark);
 bool isCountValid(string count);
+
+string getRandomFirstName();
+string getRandomLastName();
+int getRandomMark();
 
 #endif
