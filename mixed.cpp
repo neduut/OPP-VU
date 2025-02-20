@@ -1,9 +1,8 @@
-// used vector for students and dynamic c array for marks
 #include "mixed.h"
 
 void readInput(vector<StudentMixed>& students) {
     while (true) {
-        // name
+        // name input
         cout << ENTER_FIRST_NAME;
         string firstName;
         cin >> firstName;
@@ -15,7 +14,7 @@ void readInput(vector<StudentMixed>& students) {
             continue;
         }
 
-        // last name
+        // last name input
         string lastName;
         while (true) {
             cout << ENTER_LAST_NAME;
@@ -26,10 +25,12 @@ void readInput(vector<StudentMixed>& students) {
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }
 
-        StudentMixed student(firstName, lastName, 0);
+        StudentMixed student;
+        student.firstName = firstName;
+        student.lastName = lastName;
 
         // homework marks
-        while (true) {
+        /*while (true) {
             string tempMark;
             cout << ENTER_MARK;
             cin >> tempMark;
@@ -41,8 +42,45 @@ void readInput(vector<StudentMixed>& students) {
                 continue;
             }
             student.addMark(stoi(tempMark));
+        }*/
+
+        // homework marks count
+        string numMarksStr;
+        int numMarks;
+        while (true) {
+            cout << ENTER_MARKS_COUNT;
+            cin >> numMarksStr;
+            if (!isCountValid(numMarksStr)) {
+                cout << INVALID_MARKS_COUNT_ERROR;
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                continue;
+            }
+            numMarks = stoi(numMarksStr);
+            break;
         }
-        
+
+        student.marksCount = numMarks;
+
+        // homework marks 
+        for (int i = 0; i < numMarks; i++) {
+            while (true) {
+                string tempMark;
+                cout << "Pazymys " << (i + 1) << ": ";
+                cin >> tempMark;
+
+                if (!isMarkValid(tempMark)) {
+                    cout << INVALID_MARK_ERROR;
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    continue;
+                }
+
+                student.marks[i] = stoi(tempMark);
+                break;
+            }
+        }
+
         // exam mark
         string tempExamMark;
         while (true) {
@@ -57,7 +95,7 @@ void readInput(vector<StudentMixed>& students) {
             student.examMark = stoi(tempExamMark);
             break;
         }
-        
+
         students.push_back(student);
     }
 }

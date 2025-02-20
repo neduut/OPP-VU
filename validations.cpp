@@ -15,3 +15,12 @@ bool isMarkValid(string mark) {
     if (markInt < 1 || markInt > 10) return false;
     return true;
 }
+
+bool isCountValid(string count) {
+    for (char c : count) {
+        if (!isdigit(c)) return false;
+    }
+    int countInt = stoi(count);
+    if (countInt < 1) return false;
+    return true;
+}
