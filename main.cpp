@@ -3,12 +3,14 @@
 int main() {
     
     //version for vector.cpp
-    vector<StudentVector> students;
+    //vector<StudentVector> students;
 
     //version for mixed.cpp
-    //vector<StudentMixed> students;
+    vector<StudentMixed> students;
+    readInput(students);
+    output(students);
 
-    while (true) {
+    /*while (true) {
         cout << "\n1 - Ivesti viska rankiniu budu" << endl;
         cout << "2 - Generuoti atsitiktinius pazymius (vardus ivesti ranka)" << endl;
         cout << "3 - Generuoti atsitiktinius vardus ir pazymius" << endl;
@@ -32,7 +34,7 @@ int main() {
             break;
         }
         readInput(students, choice);
-    }
+    }*/
     return 0;
 }
 
