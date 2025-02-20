@@ -79,7 +79,7 @@ void readInput(vector<StudentVector>& students, string choice) {
                     cin.ignore(numeric_limits<streamsize>::max(), '\n');
                     continue;
                 }
-                int mark = getRandomMark();
+                mark = getRandomMark();
                 cout << "Pazymys: " << mark << endl;
                 marks.push_back(mark);
             }
