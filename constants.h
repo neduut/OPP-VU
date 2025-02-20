@@ -10,6 +10,7 @@ const string ENTER_MARK = "Iveskite namu darbu pazymi (norint sustoti iveskite -
 const string ENTER_EXAM_MARK = "Iveskite egzamino pazymi: ";
 const string ENTER_FINAL_TYPE = "Pasirinkite galutinio pazymio tipa (v-vidurkis / m-mediana): ";
 const string ENTER_MARKS_COUNT = "Iveskite namu darbu pazymiu skaiciu: ";
+const string ENTER_SIZE = "Iveskite pazymiu kieki: ";
 
 // errors
 const string INVALID_FIRST_NAME_ERROR = "Klaida: ivestas netinkamas vardas! "; 
@@ -20,6 +21,7 @@ const string INVALID_FINAL_TYPE_ERROR = "Klaida: ivestas netinkamas galutinio pa
 const string INVALID_MARKS_COUNT_ERROR = "Klaida: pazymiu skaicius turi buti sveikasis skaicius ir mazesnis nei 10! ";
 const string INVALID_MANU_CHOICE = "Klaida: netinkamas menu pasirinkimas ! ";
 const string INVALID_CHOICE = "Klaida: netinkamas pasirinkimas! ";
+const string INVALID_SIZE_ERROR = "Klaida: dydis turi buti sveikasis skaicius! ";
 
 // menu choice
 const string MENU_CHOICE_1 = "1 - Ivesti studentu duomenis";

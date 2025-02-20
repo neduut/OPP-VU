@@ -44,9 +44,16 @@ void readInput(vector<StudentMixed>& students, string choice) {
         }
 
         // homework marks
-        int size;
-        cout << "Iveskite pazymiu kieki: " << endl;
-        cin >> size;
+        string tempSize;
+        cout << ENTER_SIZE << endl;
+        cin >> tempSize;
+        if (!isSizeValid(tempSize)) {
+            cout << INVALID_SIZE_ERROR;
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            continue;
+        }
+        int size = stoi(tempSize);
         int* marks2 = new int[size];
         if (choice == "1") {
             string tempMark;
@@ -325,4 +332,81 @@ void output(vector<StudentMixed>& students) {
 
         students.push_back({firstName, lastName, marks2, marksCount, examMark});
     }
+}*/
+
+//third failed try
+/*void readInput(vector<StudentMixed>& students){
+    int size = 0;
+    int capacity = 1;
+    StudentMixed* studentTemp = new StudentMixed[capacity];
+
+    string choice;
+    do {
+        if (size == capacity) {
+            capacity++;
+            StudentMixed* temp = new StudentMixed[capacity];
+            for (int i = 0; i < size; i++) {
+                temp[i] = studentTemp[i];
+            }
+            delete[] studentTemp;
+            studentTemp = temp;
+        }
+
+        // First name input
+        cout << ENTER_FIRST_NAME;
+        string firstName;
+        cin >> firstName;
+        if (firstName == "-1") break;
+        if (!isNameValid(firstName)) {
+            cout << INVALID_FIRST_NAME_ERROR;
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            continue;
+        }
+
+        // Last name input
+        string lastName;
+        while (true) {
+            cout << ENTER_LAST_NAME;
+            cin >> lastName;
+            if (isNameValid(lastName)) break;
+            cout << INVALID_LAST_NAME_ERROR;
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
+
+        studentTemp[size].firstName = firstName;
+        studentTemp[size].lastName = lastName;
+
+        string PazymiuIrasymoPasirinkimas = "taip";
+        int indeksas = 0;
+
+        while (PazymiuIrasymoPasirinkimas == "taip") {
+            if (indeksas == studentTemp[size].marksCapacity) {
+                studentTemp[size].marksCapacity++;
+                int* naujiPazymiai = new int[studentTemp[size].marksCapacity];
+                for (int i = 0; i < indeksas; i++) {
+                    naujiPazymiai[i] = studentTemp[size].marks[i];
+                }
+                delete[] studentTemp[size].marks;
+                studentTemp[size].marks = naujiPazymiai;
+            }
+
+            cout << "Irasykite pazymi numeris: ";
+            cin >> studentTemp[size].marks[indeksas];
+            indeksas++;
+
+            cout << "Ar norite prideti dar viena pazymi siam studentui (parasykite taip/ne): "; 
+            cin >> PazymiuIrasymoPasirinkimas;
+        }
+
+        cout << "Iveskite studento egzamino pazymi: "; cin >> studentTemp[size].examMark;
+
+        studentTemp[size].marksCount = indeksas;
+        size++;
+
+        cout << "Prideti dar viena studenta? (parasykite taip/ne): "; 
+        cin >> choice;
+
+    } while (choice == "taip");
 }*/

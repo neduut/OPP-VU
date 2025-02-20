@@ -9,6 +9,7 @@ bool isMarkValid(string mark);
 bool isCountValid(string count);
 bool isMenuChoiceValid(string choice);
 bool isChoiceValid(string choice);
+bool isSizeValid(string size);
 
 string getRandomFirstName();
 string getRandomLastName();

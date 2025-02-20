@@ -31,8 +31,9 @@ struct StudentMixed {
     ~StudentMixed() {
         delete[] marks;
     }
-};
+};*/
 
+/*
 //second try
 struct StudentMixed {
     string firstName;
@@ -72,12 +73,11 @@ struct StudentMixed {
 };*/
 
 
-
-
 void readInput(vector<StudentMixed>& students, string choice);
 double averageFinalMark(const StudentMixed& student);
 double medianFinalMark(const StudentMixed& student);
 void output(vector<StudentMixed>& students);
+// failed 3rd time function void readInput(vector<StudentMixed>& students);
 
 #endif 
 

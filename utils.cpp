@@ -39,6 +39,15 @@ bool isChoiceValid(string choice) {
     return true;
 }
 
+bool isSizeValid(string size) {
+    for (char c : size) {
+        if (!isdigit(c)) return false;
+    }
+    int sizeInt = stoi(size);
+    if (sizeInt < 1) return false;
+    return true;
+}
+
 string getRandomFirstName() {
     string names[] = {"Jonas", "Petras", "Mantas", "Dovydas", "Karolis", "Tomas", "Justinas", "Rokas", "Marius", "Aurimas"};
     return names[rand() % 10];
