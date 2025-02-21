@@ -18,7 +18,7 @@ int main() {
         cin >> choice;
 
         if(!isMenuChoiceValid(choice)){
-            cout << INVALID_MANU_CHOICE;
+            cout << INVALID_MENU_CHOICE;
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             continue;
