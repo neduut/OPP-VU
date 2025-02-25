@@ -126,23 +126,21 @@ double medianFinalMark(const StudentVector& student)
 
 void output(vector<StudentVector>& students, string finalType)
 {
-    while(true){
-        if(finalType == "v") {
-            cout << left << setw(17) << "Pavarde" << setw(17) << "Vardas" << setw(17) << "Galutinis (Vid.)" << endl; 
-            cout << "--------------------------------------------------" << endl;
-            for (StudentVector student : students) {
-                double average = averageFinalMark(student);
-                cout << left << setw(17) << student.firstName << setw(17) << student.lastName << setw(19) << fixed << setprecision(2) << average << endl;
-            }
-            break;
-        } else{
-            cout << left << setw(17) << "Pavarde" << setw(17) << "Vardas" << setw(17) << "Galutinis (Med.)" << endl; 
-            cout << "--------------------------------------------------" << endl;
-            for (StudentVector student : students) {
-                double median = medianFinalMark(student);
-                cout << left << setw(17) << student.firstName << setw(17) << student.lastName << setw(19) << fixed << setprecision(2) << median << endl;
-            }
-            break;
+    if(finalType == "v") {
+        cout << left << setw(17) << "Pavarde" << setw(17) << "Vardas" << setw(17) << "Galutinis (Vid.)" << endl; 
+        cout << "--------------------------------------------------" << endl;
+        for (StudentVector student : students) {
+            double average = averageFinalMark(student);
+            cout << left << setw(17) << student.firstName << setw(17) << student.lastName << setw(19) << fixed << setprecision(2) << average << endl;
         }
+        break;
+    } else{
+        cout << left << setw(17) << "Pavarde" << setw(17) << "Vardas" << setw(17) << "Galutinis (Med.)" << endl; 
+        cout << "--------------------------------------------------" << endl;
+        for (StudentVector student : students) {
+            double median = medianFinalMark(student);
+            cout << left << setw(17) << student.firstName << setw(17) << student.lastName << setw(19) << fixed << setprecision(2) << median << endl;
+        }
+        break;
     }
 }
