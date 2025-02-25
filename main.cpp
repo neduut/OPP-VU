@@ -30,15 +30,15 @@
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
             }
 
-            if (menuChoice == "4") {
+            if (menuChoice == "5") {
                 // if students vector is not empty, calculate and output final marks
                 if (!students.empty()) {
                     output(students, finalType);
                 }
                 break;
             }
-
-            readInput(students, menuChoice);
+            else if  (menuChoice == "4") readFromFile(students);
+            else readInput(students, menuChoice);
         }
 
         return 0;

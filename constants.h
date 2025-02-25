@@ -18,7 +18,8 @@ constexpr char MENU_TEXT[] =
     "1 - Ivesti viska rankiniu budu\n"
     "2 - Generuoti atsitiktinius pazymius (vardus ivesti ranka)\n"
     "3 - Generuoti atsitiktinius vardus ir pazymius\n"
-    "4 - Uzdaryti programa\n";
+    "4 - Skaityti is failo\n"
+    "5 - Uzdaryti programa\n";
 
 // errors
 const string INVALID_FIRST_NAME_ERROR = "Klaida: ivestas netinkamas vardas! "; 
