@@ -4,13 +4,21 @@
 #include "mylib.h"
 
 // user prompts
-const string ENTER_FIRST_NAME = "Iveskite varda (norint sustoti iveskite -1): ";
+const string ENTER_FIRST_NAME = "Iveskite varda: ";
 const string ENTER_LAST_NAME = "Iveskite pavarde: "; 
 const string ENTER_MARK = "Iveskite namu darbu pazymi (norint sustoti iveskite -1): "; 
+const string ENTER_MARK_IN_MIXED = "Iveskite namu darbu pazymi: ";
 const string ENTER_EXAM_MARK = "Iveskite egzamino pazymi: ";
 const string ENTER_FINAL_TYPE = "Pasirinkite galutinio pazymio tipa (v-vidurkis / m-mediana): ";
 const string ENTER_MARKS_COUNT = "Iveskite namu darbu pazymiu skaiciu: ";
-const string ENTER_SIZE = "Iveskite pazymiu kieki: ";
+const string ADD_ANOTHER_MARK = "Ar norite ivesti dar viena namu darba? (taip/ne): ";
+const string ADD_ANOTHER_STUDENT = "Ar norite ivesti dar viena studenta? (taip/ne): ";
+constexpr char MENU_TEXT[] = 
+    "\nPasirinkite ka norite daryti:\n"
+    "1 - Ivesti viska rankiniu budu\n"
+    "2 - Generuoti atsitiktinius pazymius (vardus ivesti ranka)\n"
+    "3 - Generuoti atsitiktinius vardus ir pazymius\n"
+    "4 - Uzdaryti programa\n";
 
 // errors
 const string INVALID_FIRST_NAME_ERROR = "Klaida: ivestas netinkamas vardas! "; 
@@ -22,6 +30,7 @@ const string INVALID_MARKS_COUNT_ERROR = "Klaida: pazymiu skaicius turi buti sve
 const string INVALID_MENU_CHOICE = "Klaida: netinkamas menu pasirinkimas ! ";
 const string INVALID_CHOICE = "Klaida: netinkamas pasirinkimas! ";
 const string INVALID_SIZE_ERROR = "Klaida: dydis turi buti sveikasis skaicius! ";
+const string INVALID_MARKS_COUNT = "Klaida: turite ivesti bent viena pazymi! ";
 
 // menu choice
 const string MENU_CHOICE_1 = "1 - Ivesti studentu duomenis";
