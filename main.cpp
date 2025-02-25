@@ -9,31 +9,41 @@ int main() {
     #else
         std::vector<StudentMixed> students;
     #endif
+    
+    string finalType;
+    while (true) {
+        cout << ENTER_FINAL_TYPE;
+        cin >> finalType;
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');  
+        if (isFinalTypeValid(finalType)) {
+            break; 
+        }
+        cout << INVALID_FINAL_TYPE_ERROR;
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    }
 
     while (true) {
-        cout << "\n1 - Ivesti viska rankiniu budu" << endl;
-        cout << "2 - Generuoti atsitiktinius pazymius (vardus ivesti ranka)" << endl;
-        cout << "3 - Generuoti atsitiktinius vardus ir pazymius" << endl;
-        cout << "4 - Uzdaryti programa" << endl;
-        
-        string choice;
-        cin >> choice;
-
-        if(!isMenuChoiceValid(choice)){
+        string menuChoice;
+        while (true) {
+            cout << MENU_TEXT;
+            cin >> menuChoice;
+            if (isMenuChoiceValid(menuChoice)) break;
             cout << INVALID_MENU_CHOICE;
-            cin.clear();
+            cin.clear();    
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            continue;
         }
 
-        if (choice == "4"){
-            //if students vector is not empty, calculate final marks and output them
-            if(!students.empty()){
-             output(students);
+        if (menuChoice == "4") {
+            // if students vector is not empty, calculate and output final marks
+            if (!students.empty()) {
+                output(students, finalType);
             }
             break;
         }
-        readInput(students, choice);
+
+        readInput(students, menuChoice);
     }
+
     return 0;
 }
