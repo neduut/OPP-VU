@@ -10,9 +10,11 @@ bool isCountValid(string count);
 bool isMenuChoiceValid(string choice);
 bool isChoiceValid(string choice);
 bool isSizeValid(string size);
+bool isFinalTypeValid(string finalType);
 
 string getRandomFirstName();
 string getRandomLastName();
+int getRandomNumber();
 int getRandomMark();
 
 #endif

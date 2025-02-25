@@ -48,6 +48,11 @@ bool isSizeValid(string size) {
     return true;
 }
 
+bool isFinalTypeValid(string finalType) {
+    if (finalType != "v" && finalType != "m") return false;
+    return true;
+}
+
 string getRandomFirstName() {
     string names[] = {"Jonas", "Petras", "Mantas", "Dovydas", "Karolis", "Tomas", "Justinas", "Rokas", "Marius", "Aurimas"};
     return names[rand() % 10];
@@ -59,5 +64,15 @@ string getRandomLastName() {
 }
 
 int getRandomMark() {
-    return rand() % 10 + 1;
+    //return rand() % 10 + 1;
+
+    static std::mt19937 mt(static_cast<unsigned int>(std::chrono::high_resolution_clock::now().time_since_epoch().count()));
+    std::uniform_int_distribution<int> dist(1, 10);
+    return dist(mt);
+}
+
+int getRandomNumber() {
+    static std::mt19937 mt(static_cast<unsigned int>(std::chrono::high_resolution_clock::now().time_since_epoch().count()));
+    std::uniform_int_distribution<int> dist(3, 6);
+    return dist(mt);
 }
