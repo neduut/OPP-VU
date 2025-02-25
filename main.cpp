@@ -7,6 +7,7 @@
     #endif
 
     int main() {
+        // median or average
         string finalType;
         while (true) {
             cout << ENTER_FINAL_TYPE;
@@ -19,6 +20,20 @@
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }
 
+        // print to screen or file
+        string printType;
+        while (true) {
+            cout << ENTER_PRINT_TYPE;
+            cin >> printType;
+            if (isFinalPrintValid(printType)) {
+                break;  
+            }
+            cout << INVALID_PRINT_TYPE_ERROR;
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
+
+        // main menu
         while (true) {
             string menuChoice;
             while (true) {
@@ -33,7 +48,7 @@
             if (menuChoice == "5") {
                 // if students vector is not empty, calculate and output final marks
                 if (!students.empty()) {
-                    output(students, finalType);
+                    output(students, finalType, printType);
                 }
                 break;
             }

@@ -101,6 +101,9 @@ void readInput(vector<StudentVector>& students, string menuChoice) {
     } while (choice == "taip"); 
 }
 
+void readFromFile(vector<StudentVector>& students){
+
+}
 double averageFinalMark(const StudentVector& student)
 {
     double sum = 0;
@@ -124,8 +127,7 @@ double medianFinalMark(const StudentVector& student)
     return 0.4 * median + 0.6 * student.examMark;
 }
 
-void output(vector<StudentVector>& students, string finalType)
-{
+void output(vector<StudentVector>& students, string finalType, string printType) {
     if(finalType == "v") {
         cout << left << setw(17) << "Pavarde" << setw(17) << "Vardas" << setw(17) << "Galutinis (Vid.)" << endl; 
         cout << "--------------------------------------------------" << endl;
@@ -133,14 +135,12 @@ void output(vector<StudentVector>& students, string finalType)
             double average = averageFinalMark(student);
             cout << left << setw(17) << student.firstName << setw(17) << student.lastName << setw(19) << fixed << setprecision(2) << average << endl;
         }
-        break;
-    } else{
+    } else {
         cout << left << setw(17) << "Pavarde" << setw(17) << "Vardas" << setw(17) << "Galutinis (Med.)" << endl; 
         cout << "--------------------------------------------------" << endl;
         for (StudentVector student : students) {
             double median = medianFinalMark(student);
             cout << left << setw(17) << student.firstName << setw(17) << student.lastName << setw(19) << fixed << setprecision(2) << median << endl;
         }
-        break;
     }
 }

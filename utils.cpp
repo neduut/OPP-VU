@@ -30,7 +30,7 @@ bool isMenuChoiceValid(string choice) {
         if (!isdigit(c)) return false;
     }
     int choiceInt = stoi(choice);
-    if (choiceInt < 1 || choiceInt > 4) return false;
+    if (choiceInt < 1 || choiceInt > 5) return false;
     return true;
 }
 
@@ -50,6 +50,11 @@ bool isSizeValid(string size) {
 
 bool isFinalTypeValid(string finalType) {
     if (finalType != "v" && finalType != "m") return false;
+    return true;
+}
+
+bool isFinalPrintValid(string printType) {
+    if (printType != "e" && printType != "f") return false;
     return true;
 }
 

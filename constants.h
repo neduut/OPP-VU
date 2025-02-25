@@ -9,7 +9,7 @@ const string ENTER_LAST_NAME = "Iveskite pavarde: ";
 const string ENTER_MARK = "Iveskite namu darbu pazymi (norint sustoti iveskite -1): "; 
 const string ENTER_MARK_IN_MIXED = "Iveskite namu darbu pazymi: ";
 const string ENTER_EXAM_MARK = "Iveskite egzamino pazymi: ";
-const string ENTER_FINAL_TYPE = "Pasirinkite galutinio pazymio tipa (v-vidurkis / m-mediana): ";
+const string ENTER_FINAL_TYPE = "Pasirinkite ar skaiciuoti galutinio balo vidurki ar mediana (v/m): ";
 const string ENTER_MARKS_COUNT = "Iveskite namu darbu pazymiu skaiciu: ";
 const string ADD_ANOTHER_MARK = "Ar norite ivesti dar viena namu darba? (taip/ne): ";
 const string ADD_ANOTHER_STUDENT = "Ar norite ivesti dar viena studenta? (taip/ne): ";
@@ -19,7 +19,8 @@ constexpr char MENU_TEXT[] =
     "2 - Generuoti atsitiktinius pazymius (vardus ivesti ranka)\n"
     "3 - Generuoti atsitiktinius vardus ir pazymius\n"
     "4 - Skaityti is failo\n"
-    "5 - Uzdaryti programa\n";
+    "5 - Uzbaigti programa\n";
+const string ENTER_PRINT_TYPE = "Pasirinkite ar duomenis noresite isvesti ekrane ar i faila (e/f): ";
 
 // errors
 const string INVALID_FIRST_NAME_ERROR = "Klaida: ivestas netinkamas vardas! "; 
@@ -32,6 +33,7 @@ const string INVALID_MENU_CHOICE = "Klaida: netinkamas menu pasirinkimas ! ";
 const string INVALID_CHOICE = "Klaida: netinkamas pasirinkimas! ";
 const string INVALID_SIZE_ERROR = "Klaida: dydis turi buti sveikasis skaicius! ";
 const string INVALID_MARKS_COUNT = "Klaida: turite ivesti bent viena pazymi! ";
+const string INVALID_PRINT_TYPE_ERROR = "Klaida: netinkamas isvedimo tipas! ";
 
 // menu choice
 const string MENU_CHOICE_1 = "1 - Ivesti studentu duomenis";

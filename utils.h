@@ -11,6 +11,7 @@ bool isMenuChoiceValid(string choice);
 bool isChoiceValid(string choice);
 bool isSizeValid(string size);
 bool isFinalTypeValid(string finalType);
+bool isFinalPrintValid(string printType);
 
 string getRandomFirstName();
 string getRandomLastName();

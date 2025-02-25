@@ -13,8 +13,9 @@ struct StudentVector {
 };
 
 void readInput(vector<StudentVector>& students, string menuChoice);
+void readFromFile(vector<StudentVector>& students);
 double averageFinalMark(const StudentVector& student);
 double medianFinalMark(const StudentVector& student);
-void output(vector<StudentVector>& students, string finalType);
+void output(vector<StudentVector>& students, string finalType, string printType);
 
 #endif  

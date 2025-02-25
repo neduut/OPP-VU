@@ -5,7 +5,7 @@
 #include "constants.h"
 #include "utils.h"
 
-//#define USE_VECTOR
+#define USE_VECTOR
 
 #ifdef USE_VECTOR
     #include "vector.h"
