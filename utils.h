@@ -13,6 +13,7 @@ bool isSizeValid(string size);
 
 string getRandomFirstName();
 string getRandomLastName();
+int getRandomNumber();
 int getRandomMark();
 
 #endif
