@@ -1,49 +1,45 @@
-#include "main.h"
-
-int main() {
-    
-    #define USE_VECTOR 
+    #include "main.h"
 
     #ifdef USE_VECTOR
-        std::vector<StudentVector> students;
+    vector<StudentVector> students;
     #else
-        std::vector<StudentMixed> students;
+    vector<StudentMixed> students;
     #endif
-    
-    string finalType;
-    while (true) {
-        cout << ENTER_FINAL_TYPE;
-        cin >> finalType;
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');  
-        if (isFinalTypeValid(finalType)) {
-            break; 
-        }
-        cout << INVALID_FINAL_TYPE_ERROR;
-        cin.clear();
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-    }
 
-    while (true) {
-        string menuChoice;
+    int main() {
+        string finalType;
         while (true) {
-            cout << MENU_TEXT;
-            cin >> menuChoice;
-            if (isMenuChoiceValid(menuChoice)) break;
-            cout << INVALID_MENU_CHOICE;
-            cin.clear();    
+            cout << ENTER_FINAL_TYPE;
+            cin >> finalType;
+            if (isFinalTypeValid(finalType)) {
+                break;  
+            }
+            cout << INVALID_FINAL_TYPE_ERROR;
+            cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }
 
-        if (menuChoice == "4") {
-            // if students vector is not empty, calculate and output final marks
-            if (!students.empty()) {
-                output(students, finalType);
+        while (true) {
+            string menuChoice;
+            while (true) {
+                cout << MENU_TEXT;
+                cin >> menuChoice;
+                if (isMenuChoiceValid(menuChoice)) break;
+                cout << INVALID_MENU_CHOICE;
+                cin.clear();    
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
             }
-            break;
+
+            if (menuChoice == "4") {
+                // if students vector is not empty, calculate and output final marks
+                if (!students.empty()) {
+                    output(students, finalType);
+                }
+                break;
+            }
+
+            readInput(students, menuChoice);
         }
 
-        readInput(students, menuChoice);
+        return 0;
     }
-
-    return 0;
-}
