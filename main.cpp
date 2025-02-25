@@ -2,11 +2,13 @@
 
 int main() {
     
-    //version for vector.cpp
-    //vector<StudentVector> students;
+    #define USE_VECTOR 
 
-    //version for mixed.cpp
-    vector<StudentMixed> students;
+    #ifdef USE_VECTOR
+        std::vector<StudentVector> students;
+    #else
+        std::vector<StudentMixed> students;
+    #endif
 
     while (true) {
         cout << "\n1 - Ivesti viska rankiniu budu" << endl;
@@ -35,4 +37,3 @@ int main() {
     }
     return 0;
 }
-
