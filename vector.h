@@ -10,12 +10,13 @@ struct StudentVector {
     string lastName;
     vector<int> marks;
     int examMark;
+    double finalMark; 
 };
 
-void readInput(vector<StudentVector>& students, string menuChoice);
-void readFromFile(vector<StudentVector>& students);
-double averageFinalMark(const StudentVector& student);
-double medianFinalMark(const StudentVector& student);
+void readInput(vector<StudentVector>& students, string menuChoice, string finalType);
+void readFromFile(vector<StudentVector>& students, string finalType);
+double averageFinalMark(const vector<int>& marks, int examMark);
+double medianFinalMark(const vector<int> marks, int examMark);
 void output(vector<StudentVector>& students, string finalType, string printType);
 
 #endif  

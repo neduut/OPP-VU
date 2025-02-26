@@ -1,12 +1,11 @@
     #include "main.h"
 
-    #ifdef USE_VECTOR
-    vector<StudentVector> students;
-    #else
-    vector<StudentMixed> students;
-    #endif
+    // i ekrana su buferiu, i ostringstreama su reserve ir suskaiciuot eilutes
 
     int main() {
+        //ar geriau ji definint ar palikt cia maine
+        vector<StudentVector> students;
+
         // median or average
         string finalType;
         while (true) {
@@ -48,12 +47,13 @@
             if (menuChoice == "5") {
                 // if students vector is not empty, calculate and output final marks
                 if (!students.empty()) {
+                    //pabandyt idet ta shrink_to_fit
                     output(students, finalType, printType);
                 }
                 break;
             }
-            else if  (menuChoice == "4") readFromFile(students);
-            else readInput(students, menuChoice);
+            else if  (menuChoice == "4") readFromFile(students, finalType);
+            else readInput(students, menuChoice, finalType);
         }
 
         return 0;

@@ -34,11 +34,22 @@ const string INVALID_CHOICE = "Klaida: netinkamas pasirinkimas! ";
 const string INVALID_SIZE_ERROR = "Klaida: dydis turi buti sveikasis skaicius! ";
 const string INVALID_MARKS_COUNT = "Klaida: turite ivesti bent viena pazymi! ";
 const string INVALID_PRINT_TYPE_ERROR = "Klaida: netinkamas isvedimo tipas! ";
+const string FILE_OPEN_ERROR = "Klaida: nepavyko atidaryti failo! ";
 
 // menu choice
 const string MENU_CHOICE_1 = "1 - Ivesti studentu duomenis";
 const string MENU_CHOICE_2 = "2 - Generuoti atsitiktinius pazymius";
 const string MENU_CHOICE_3 = "3 - Generuoti atsisitiktinius vardus ir pazymius";
 const string MENU_CHOICE_4 = "4 - Uzbaigti programa";
+
+// output
+string outputHeader(const string& type) {
+    ostringstream oss;
+    oss << left << setw(17) << "Pavarde" 
+        << setw(17) << "Vardas" 
+        << setw(17) << "Galutinis (" << type << ")\n"
+        << string(51, '-'); 
+    return oss.str();
+}
 
 #endif

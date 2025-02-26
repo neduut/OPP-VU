@@ -1,6 +1,6 @@
 #include "vector.h"
 
-void readInput(vector<StudentVector>& students, string menuChoice) {
+void readInput(vector<StudentVector>& students, string menuChoice, string finalType) {
     string choice;
     do {
         // first and last name
@@ -87,7 +87,11 @@ void readInput(vector<StudentVector>& students, string menuChoice) {
             cout << "Egzamino pazymys: " << examMark << endl;
         }       
 
-        students.push_back(StudentVector{firstName, lastName, marks, examMark});
+        double finalMark = (finalType == "v") ? averageFinalMark( marks, examMark) 
+                                              : medianFinalMark(marks, examMark);
+
+        students.push_back(StudentVector{firstName, lastName, marks, examMark, finalMark});
+
 
         while (true) {
             cout << ADD_ANOTHER_STUDENT << endl;
@@ -101,10 +105,31 @@ void readInput(vector<StudentVector>& students, string menuChoice) {
     } while (choice == "taip"); 
 }
 
-void readFromFile(vector<StudentVector>& students){
+void readFromFile(vector<StudentVector>& students, string finalType) {
+    ifstream file("kursiokai.txt");
+    if (!file.is_open()) {
+        cout << FILE_OPEN_ERROR << endl;
+        return;
+    }
+    string line;
+    while (getline(file, line)) {
+        istringstream stream(line);
+        string firstName, lastName;
+        stream >> firstName >> lastName;
+        vector<int> marks;
+        int mark;
+        while (stream >> mark) {
+            marks.push_back(mark);
+        }
+        int examMark = marks.back();
+        marks.pop_back();
+        students.push_back(StudentVector{firstName, lastName, marks, examMark});
+    }
+    file.close();
 
 }
-double averageFinalMark(const StudentVector& student)
+
+double averageFinalMark(const vector<int>& marks, int examMark)
 {
     double sum = 0;
     for (int mark : student.marks) {
@@ -114,7 +139,7 @@ double averageFinalMark(const StudentVector& student)
     return 0.4 * average + 0.6 * student.examMark;
 }
 
-double medianFinalMark(const StudentVector& student)
+double medianFinalMark(const vector<int>& marks, int examMark)
 {
     vector<int> marks = student.marks;
     sort(marks.begin(), marks.end());
@@ -127,20 +152,17 @@ double medianFinalMark(const StudentVector& student)
     return 0.4 * median + 0.6 * student.examMark;
 }
 
+//paredaguot kad spausdinimas butu su auto 
+//padaryt kad ne po viena studenta skaciuotu galutini o visus vienu metu kad butu galima surusiuot
+//paziuret kaip geriau ar po viena siust i funkcija skaiciavimo ar visa vectoriu nusiusst i funcija
 void output(vector<StudentVector>& students, string finalType, string printType) {
-    if(finalType == "v") {
-        cout << left << setw(17) << "Pavarde" << setw(17) << "Vardas" << setw(17) << "Galutinis (Vid.)" << endl; 
-        cout << "--------------------------------------------------" << endl;
-        for (StudentVector student : students) {
-            double average = averageFinalMark(student);
-            cout << left << setw(17) << student.firstName << setw(17) << student.lastName << setw(19) << fixed << setprecision(2) << average << endl;
-        }
-    } else {
-        cout << left << setw(17) << "Pavarde" << setw(17) << "Vardas" << setw(17) << "Galutinis (Med.)" << endl; 
-        cout << "--------------------------------------------------" << endl;
-        for (StudentVector student : students) {
-            double median = medianFinalMark(student);
-            cout << left << setw(17) << student.firstName << setw(17) << student.lastName << setw(19) << fixed << setprecision(2) << median << endl;
-        }
+    cout << generateHeader(finalType == "v" ? "Vid." : "Med.") << endl;
+
+    for (const StudentVector& student : students) {
+        cout << left << setw(17) << student.firstName 
+                  << setw(17) << student.lastName 
+                  << setw(19) << fixed << setprecision(2) 
+                  << student.finalMark << endl;
     }
+}
 }
