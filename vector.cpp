@@ -66,7 +66,7 @@ void readInput(vector<Student>& students, char menuChoice, char finalType) {
 void readFromFile(vector<Student>& students, char finalType) {
     students.reserve(1000000);
 
-    ifstream file("studentai10000.txt");
+    ifstream file("studentai1000000.txt");
     if (!file) {
         cout << FILE_OPEN_ERROR << endl;
         return;
