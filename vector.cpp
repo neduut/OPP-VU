@@ -5,16 +5,25 @@ void handleMenu(vector<Student>& students, const char& finalType) {
         char menuChoice = getMenuChoice()[0];
 
         if (menuChoice == '5') {
-            // if students vector is not empty, calculate and output final marks
+            // If students vector is not empty, calculate and output final marks
             if (!students.empty()) {
                 char sortType = getSortType()[0];
                 char printType = getPrintType()[0];
                 sortStudents(students, sortType);
+        
+                TimeMeasurement finalMarks("Rezultatu isvedimas");
+                finalMarks.start();
                 output(students, finalType, printType);
+                finalMarks.stop();
             }
             break;
         }
-        else if  (menuChoice == '4') readFromFile(students, finalType);
+        else if (menuChoice == '4') {
+            TimeMeasurement fileRead("Failo nuskaitymas");
+            fileRead.start();
+            readFromFile(students, finalType);
+            fileRead.stop();
+        }
         else readInput(students, menuChoice, finalType);
     }
 }
@@ -126,7 +135,6 @@ void sortStudents(vector<Student>& students, char sortType) {
     }
 }
 
-
 /*void sortStudents(vector<Student>& students, char sortType) {
     if (sortType == 'v') {
         sort(students.begin(), students.end(), [](const Student& a, const Student& b) {
@@ -143,7 +151,6 @@ void sortStudents(vector<Student>& students, char sortType) {
         });
     }
 }*/
-
 
 void output(vector<Student>& students, char finalType, char printType) {
     if (printType == 'e') {  

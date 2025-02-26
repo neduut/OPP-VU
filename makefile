@@ -1,12 +1,12 @@
 CXX = g++
 CXXFLAGS = -std=c++11 -Wall -Wextra
 
-COMMON_OBJ = main.o utils.o
+COMMON_OBJ = main.o utils.o timeMeasurement.o vector.o
 
 all: main
 
-main: $(COMMON_OBJ) vector.o
-	$(CXX) $(COMMON_OBJ) vector.o -o main
+main: $(COMMON_OBJ)
+	$(CXX) $(COMMON_OBJ) -o main
 
 main.o: main.cpp main.h
 	$(CXX) $(CXXFLAGS) -c main.cpp -o main.o
@@ -17,5 +17,8 @@ vector.o: vector.cpp vector.h
 utils.o: utils.cpp utils.h
 	$(CXX) $(CXXFLAGS) -c utils.cpp -o utils.o
 
+timeMeasurement.o: timeMeasurement.cpp timeMeasurement.h
+	$(CXX) $(CXXFLAGS) -c timeMeasurement.cpp -o timeMeasurement.o
+
 clean:
-	rm -f $(COMMON_OBJ) vector.o main
+	rm -f $(COMMON_OBJ) main
