@@ -1,6 +1,8 @@
 #include "vector.h"
 
 void readInput(vector<StudentVector>& students, string menuChoice, string finalType) {
+    students.reserve(1000000);
+
     string choice;
     do {
         // first and last name
@@ -90,7 +92,8 @@ void readInput(vector<StudentVector>& students, string menuChoice, string finalT
         double finalMark = (finalType == "v") ? averageFinalMark( marks, examMark) 
                                               : medianFinalMark(marks, examMark);
 
-        students.push_back(StudentVector{firstName, lastName, marks, examMark, finalMark});
+        students.emplace_back(move(firstName), move(lastName), move(marks), examMark, finalMark);
+
 
 
         while (true) {
@@ -103,11 +106,15 @@ void readInput(vector<StudentVector>& students, string menuChoice, string finalT
         }
 
     } while (choice == "taip"); 
+
+    students.shrink_to_fit();
 }
 
 void readFromFile(vector<StudentVector>& students, string finalType) {
+    students.reserve(1000000);
+
     ifstream file("kursiokai.txt");
-    if (!file.is_open()) {
+    if (!file) {
         cout << FILE_OPEN_ERROR << endl;
         return;
     }
@@ -123,10 +130,14 @@ void readFromFile(vector<StudentVector>& students, string finalType) {
         }
         int examMark = marks.back();
         marks.pop_back();
-        students.push_back(StudentVector{firstName, lastName, marks, examMark});
+
+        double finalMark = (finalType == "v") ? averageFinalMark( marks, examMark) 
+                                              : medianFinalMark(marks, examMark);
+
+        students.emplace_back(firstName, lastName, move(marks), examMark, finalMark);
     }
     file.close();
-
+    students.shrink_to_fit();
 }
 
 double averageFinalMark(const vector<int>& marks, int examMark)
@@ -152,13 +163,10 @@ double medianFinalMark(const StudentVector& student)
     return 0.4 * median + 0.6 * student.examMark;
 }
 
-//paredaguot kad spausdinimas butu su auto 
-//padaryt kad ne po viena studenta skaciuotu galutini o visus vienu metu kad butu galima surusiuot
-//paziuret kaip geriau ar po viena siust i funkcija skaiciavimo ar visa vectoriu nusiusst i funcija
 void output(vector<StudentVector>& students, string finalType, string printType) {
     cout << generateHeader(finalType == "v" ? "Vid." : "Med.") << endl;
 
-    for (const StudentVector& student : students) {
+    for (const auto& student : students) { 
         cout << left << setw(17) << student.firstName 
                   << setw(17) << student.lastName 
                   << setw(19) << fixed << setprecision(2) 

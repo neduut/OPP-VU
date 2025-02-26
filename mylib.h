@@ -32,5 +32,11 @@ using std::numeric_limits;
 using std::streamsize;
 using std::sort;
 using std::stoi;
+using std::move;
+using std::ostringstream;
+using std::istringstream;
+using std::ifstream;
+using std::ofstream;
+
 
 #endif
