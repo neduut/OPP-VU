@@ -3,6 +3,7 @@
 
 #include "mylib.h"
 #include "constants.h"
+#include "vector.h"
 
 // requests
 string getFinalType();

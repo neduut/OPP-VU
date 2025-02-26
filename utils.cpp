@@ -222,4 +222,3 @@ int getRandomMark() {
     std::uniform_int_distribution<int> dist(1, 10);
     return dist(mt);*/
 }
-
