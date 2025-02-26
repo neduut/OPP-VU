@@ -160,27 +160,43 @@ void output(vector<Student>& students, char finalType, char printType) {
                  << setw(19) << fixed << setprecision(2) 
                  << student.finalMark << endl;
         }
-    } else {
+    } else 
+    {
+        vector<string> lines; // Vector to store all lines before writing
+        lines.reserve(students.size() + 2); // Reserve space for efficiency
+    
+        // Add the header
+        ostringstream header;
+        string type = (finalType == 'v') ? "Vid." : "Med.";
+        header << left << setw(17) << "Vardas"
+               << setw(17) << "Pavarde"
+               << setw(17) << type << endl
+               << string(38, '-') << endl;
+        lines.push_back(header.str());
+    
+        // Collect student data into the vector
+        for (const auto& student : students) {
+            ostringstream ss;
+            ss << left << setw(17) << student.firstName
+               << setw(17) << student.lastName
+               << setw(19) << fixed << setprecision(2)
+               << student.finalMark << endl;
+            lines.push_back(ss.str());
+        }
+    
         ofstream file("rezultatai.txt");
         if (!file) {
-            cout << FILE_OPEN_ERROR << endl;
+            cerr << FILE_OPEN_ERROR << endl;
             return;
         }
-        string type = (finalType == 'v') ? "Vid." : "Med.";
-
-        file << left << setw(17) << "Vardas"
-             << setw(17) << "Pavarde"
-             << setw(17) << type << endl; 
-        file << string(38, '-') << endl; 
-
-        for (const auto& student : students) { 
-            file << left << setw(17) << student.firstName 
-                 << setw(17) << student.lastName 
-                 << setw(19) << fixed << setprecision(2) 
-                 << student.finalMark << endl;
+    
+        // Write all lines to the file in one operation
+        for (const auto& line : lines) {
+            file.write(line.c_str(), line.size());
         }
-
-        cout << FILE_WRITE_SUCCESS << endl;
+    
         file.close();
+        cout << FILE_WRITE_SUCCESS << endl;
     }
+    
 }
