@@ -40,7 +40,7 @@ string getFirstName(char menuChoice) {
         }
     } else {  
         firstName = getRandomFirstName();
-        cout << "Studentas: " << firstName << endl;
+        cout << "Studentas: " << firstName;
     }
     return firstName;
 }
@@ -111,8 +111,7 @@ vector<int> getHomeworkMarks(char menuChoice) {
             marks.push_back(stoi(tempMark));
         }
     } else {
-        int number = getRandomNumber();
-        for (int i = 0; i < number; i++) {
+        for (int i = 0; i < 10; i++) {
             marks.push_back(getRandomMark());
             cout << "Pazymys " << i + 1 << ": " << marks[i] << endl;
         }
@@ -224,9 +223,3 @@ int getRandomMark() {
     return dist(mt);*/
 }
 
-int getRandomNumber() {
-    return rand() % 4 + 3;
-    /*static std::mt19937 mt(static_cast<unsigned int>(std::chrono::high_resolution_clock::now().time_since_epoch().count()));
-    std::uniform_int_distribution<int> dist(3, 6);
-    return dist(mt);*/
-}

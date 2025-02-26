@@ -27,7 +27,6 @@ bool isFinalPrintValid(string printType);
 // random generators
 string getRandomFirstName();
 string getRandomLastName();
-int getRandomNumber();
 int getRandomMark();
 
 #endif

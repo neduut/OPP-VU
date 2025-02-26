@@ -134,7 +134,7 @@ void output(vector<Student>& students, char finalType, char printType) {
         cout << left << setw(17) << "Vardas"
              << setw(17) << "Pavarde"
              << setw(17) << type << endl; 
-        cout << string(39, '-') << endl; 
+        cout << string(38, '-') << endl; 
 
         for (const auto& student : students) { 
             cout << left << setw(17) << student.firstName 
@@ -153,7 +153,7 @@ void output(vector<Student>& students, char finalType, char printType) {
         file << left << setw(17) << "Vardas"
              << setw(17) << "Pavarde"
              << setw(17) << type << endl; 
-        file << string(39, '-') << endl; 
+        file << string(38, '-') << endl; 
 
         for (const auto& student : students) { 
             file << left << setw(17) << student.firstName 
