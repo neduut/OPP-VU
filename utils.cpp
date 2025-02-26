@@ -1,5 +1,152 @@
 #include "utils.h"
 
+// requests
+string getFinalType() {
+    string finalType;
+    while (true) {
+        cout << ENTER_FINAL_TYPE;
+        cin >> finalType;
+        if (isFinalTypeValid(finalType)) break;
+        cout << INVALID_FINAL_TYPE_ERROR;
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    }
+    return finalType;
+}
+
+string getMenuChoice() {
+    string choice;
+    while (true) {
+        cout << MENU_TEXT;
+        cin >> choice;
+        if (isMenuChoiceValid(choice)) break;
+        cout << INVALID_CHOICE;
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    }
+    return choice;
+}
+
+string getFirstName(char menuChoice) {
+    string firstName;
+    if (menuChoice == '1' || menuChoice == '2') {
+        while (true) {
+            cout << ENTER_FIRST_NAME;
+            cin >> firstName;
+            if (isNameValid(firstName)) break;
+            cout << INVALID_FIRST_NAME_ERROR;
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
+    } else {  
+        firstName = getRandomFirstName();
+        cout << "Studentas: " << firstName << endl;
+    }
+    return firstName;
+}
+
+string getLastName(char menuChoice) {
+    string lastName;
+    
+    if (menuChoice == '1' || menuChoice == '2') {
+        while (true) {
+            cout << ENTER_LAST_NAME;
+            cin >> lastName;
+            if (isNameValid(lastName)) break;
+            cout << INVALID_LAST_NAME_ERROR;
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
+    } else {  
+        lastName = getRandomLastName();
+        cout << " " << lastName << endl;
+    }
+    return lastName;
+}
+
+int getExamMark(char menuChoice) {
+    string tempMark;
+    int examMark;
+    if (menuChoice == '1') {
+        while (true) {
+            cout << ENTER_EXAM_MARK;
+            cin >> tempMark;
+            if (!isMarkValid(tempMark)) {
+                cout << INVALID_EXAM_MARK_ERROR;
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                continue;
+            }
+            examMark = stoi(tempMark);
+            break;
+        }
+    } else {
+        examMark = getRandomMark();
+        cout << "Egzamino pazymys: " << examMark << endl;
+    }  
+    return examMark;
+}
+
+vector<int> getHomeworkMarks(char menuChoice) {
+    vector<int> marks;
+    if (menuChoice == '1') {
+        string tempMark;
+        while (true) {
+            cout << ENTER_MARK;
+            cin >> tempMark;
+
+            if (tempMark == "-1" && marks.empty()) {  
+                cout << INVALID_MARKS_COUNT;
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                continue;
+            } else if (tempMark == "-1") break;
+
+            if (!isMarkValid(tempMark)) {
+                cout << INVALID_MARK_ERROR;
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                continue;
+            }
+            marks.push_back(stoi(tempMark));
+        }
+    } else {
+        int number = getRandomNumber();
+        for (int i = 0; i < number; i++) {
+            marks.push_back(getRandomMark());
+            cout << "Pazymys " << i + 1 << ": " << marks[i] << endl;
+        }
+    }
+    return marks;
+}
+
+string getPrintType() {
+    string printType;
+    while (true) {
+        cout << ENTER_PRINT_TYPE;
+        cin >> printType;
+        if (isFinalPrintValid(printType)) break;
+        cout << INVALID_PRINT_TYPE_ERROR;
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    }
+    return printType;
+}
+
+string getSortType() {
+    string sortType;
+    while (true) {
+        cout << ENTER_SORT_TYPE;
+        cin >> sortType;
+        if (sortType == "v" || sortType == "p" || sortType == "g") break;
+        cout << INVALID_CHOICE;
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    }
+    return sortType;
+}
+
+// validations
 bool isNameValid(string name) {
     for (char c : name) {
         if (!isalpha(c)) return false;
@@ -58,6 +205,7 @@ bool isFinalPrintValid(string printType) {
     return true;
 }
 
+// random generators
 string getRandomFirstName() {
     string names[] = {"Jonas", "Petras", "Mantas", "Dovydas", "Karolis", "Tomas", "Justinas", "Rokas", "Marius", "Aurimas"};
     return names[rand() % 10];
@@ -69,15 +217,16 @@ string getRandomLastName() {
 }
 
 int getRandomMark() {
-    //return rand() % 10 + 1;
+    return rand() % 10 + 1;
 
-    static std::mt19937 mt(static_cast<unsigned int>(std::chrono::high_resolution_clock::now().time_since_epoch().count()));
+    /*static mt19937 mt(static_cast<unsigned int>(std::chrono::high_resolution_clock::now().time_since_epoch().count()));
     std::uniform_int_distribution<int> dist(1, 10);
-    return dist(mt);
+    return dist(mt);*/
 }
 
 int getRandomNumber() {
-    static std::mt19937 mt(static_cast<unsigned int>(std::chrono::high_resolution_clock::now().time_since_epoch().count()));
+    return rand() % 4 + 3;
+    /*static std::mt19937 mt(static_cast<unsigned int>(std::chrono::high_resolution_clock::now().time_since_epoch().count()));
     std::uniform_int_distribution<int> dist(3, 6);
-    return dist(mt);
+    return dist(mt);*/
 }

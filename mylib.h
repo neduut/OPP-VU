@@ -17,6 +17,7 @@
 #include <cstdlib>
 #include <chrono>
 #include <random>
+#include <sstream>
 
 using std::cin;
 using std::cout;
@@ -37,6 +38,5 @@ using std::ostringstream;
 using std::istringstream;
 using std::ifstream;
 using std::ofstream;
-
 
 #endif
