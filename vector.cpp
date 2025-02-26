@@ -139,7 +139,7 @@ double averageFinalMark(const vector<int>& marks, int examMark)
     return 0.4 * average + 0.6 * student.examMark;
 }
 
-double medianFinalMark(const vector<int>& marks, int examMark)
+double medianFinalMark(const StudentVector& student)
 {
     vector<int> marks = student.marks;
     sort(marks.begin(), marks.end());
@@ -164,5 +164,4 @@ void output(vector<StudentVector>& students, string finalType, string printType)
                   << setw(19) << fixed << setprecision(2) 
                   << student.finalMark << endl;
     }
-}
 }
