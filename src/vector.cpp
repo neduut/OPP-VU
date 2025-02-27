@@ -79,6 +79,7 @@ void readFromFile(vector<Student>& students, char finalType) {
             istringstream stream(line);
             string firstName, lastName;
             stream >> firstName >> lastName;
+            
             vector<int> marks;
             int mark;
             while (stream >> mark) {
@@ -96,6 +97,7 @@ void readFromFile(vector<Student>& students, char finalType) {
         cout << FILE_READ_SUCCESS << endl;
         file.close();
         students.shrink_to_fit();
+
     } catch (const std::exception& e) {
         cerr << e.what() << endl;
     }
