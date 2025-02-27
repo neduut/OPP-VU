@@ -218,7 +218,8 @@ string getRandomLastName() {
 int getRandomMark() {
     return rand() % 10 + 1;
 
-    /*static mt19937 mt(static_cast<unsigned int>(std::chrono::high_resolution_clock::now().time_since_epoch().count()));
-    std::uniform_int_distribution<int> dist(1, 10);
-    return dist(mt);*/
+    /*std::random_device rd;
+    std::mt19937 mt(rd());
+    std::uniform_int_distribution<int> mark(1, 10);
+    return mark(mt);*/
 }
