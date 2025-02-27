@@ -6,10 +6,12 @@
 *.so
 *.a
 *.lib
+
 studentai10000.txt
 studentai100000.txt
 studentai1000000.txt
 kursiokai.txt
 rezultatai.txt
+ToDo.txt
 
 

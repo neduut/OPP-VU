@@ -29,7 +29,7 @@ void handleMenu(vector<Student>& students, const char& finalType) {
 }
 
 void readInput(vector<Student>& students, char menuChoice, char finalType) {
-    students.reserve(1000000);
+    students.reserve(10000);
 
     string choice;
     do {
@@ -64,38 +64,41 @@ void readInput(vector<Student>& students, char menuChoice, char finalType) {
 }
 
 void readFromFile(vector<Student>& students, char finalType) {
-    students.reserve(1000000);
+    try {
+        students.reserve(1000000);
 
-    ifstream file("studentai1000000.txt");
-    if (!file) {
-        cout << FILE_OPEN_ERROR << endl;
-        return;
-    }
-
-    string line;
-    getline(file, line); 
-
-    while (getline(file, line)) {
-        istringstream stream(line);
-        string firstName, lastName;
-        stream >> firstName >> lastName;
-        vector<int> marks;
-        int mark;
-        while (stream >> mark) {
-            marks.push_back(mark);
+        ifstream file("studentai1000000.txt");
+        if (!file) {
+            throw std::runtime_error(FILE_OPEN_ERROR);
         }
-        int examMark = marks.back();
-        marks.pop_back();
 
-        double finalMark = (finalType == 'v') ? averageFinalMark(marks, examMark) 
-                                              : medianFinalMark(marks, examMark);
+        string line;
+        getline(file, line); //first line as header
 
-        students.push_back({firstName, lastName, marks, examMark, finalMark});
+        while (getline(file, line)) {
+            istringstream stream(line);
+            string firstName, lastName;
+            stream >> firstName >> lastName;
+            vector<int> marks;
+            int mark;
+            while (stream >> mark) {
+                marks.push_back(mark);
+            }
+            int examMark = marks.back();
+            marks.pop_back();
+
+            double finalMark = (finalType == 'v') ? averageFinalMark(marks, examMark) 
+                                                  : medianFinalMark(marks, examMark);
+
+            students.push_back({firstName, lastName, marks, examMark, finalMark});
+        }
+
+        cout << FILE_READ_SUCCESS << endl;
+        file.close();
+        students.shrink_to_fit();
+    } catch (const std::exception& e) {
+        cerr << e.what() << endl;
     }
-
-    cout << FILE_READ_SUCCESS << endl;
-    file.close();
-    students.shrink_to_fit();
 }
 
 double averageFinalMark(const vector<int>& marks, int examMark){
@@ -119,23 +122,7 @@ double medianFinalMark(const vector<int>& marks, int examMark){
     return 0.4 * median + 0.6 * examMark;
 }
 
-bool byName(const Student& a, const Student& b) { return a.firstName < b.firstName; }
-bool bySurname(const Student& a, const Student& b) { return a.lastName < b.lastName; }
-bool byFinal(const Student& a, const Student& b) { return a.finalMark > b.finalMark; }
-
 void sortStudents(vector<Student>& students, char sortType) {
-    if (sortType == 'v') {
-        sort(students.begin(), students.end(), byName);
-    }
-    else if (sortType == 'p') {
-        sort(students.begin(), students.end(), bySurname);
-    }
-    else {
-        sort(students.begin(), students.end(), byFinal);
-    }
-}
-
-/*void sortStudents(vector<Student>& students, char sortType) {
     if (sortType == 'v') {
         sort(students.begin(), students.end(), [](const Student& a, const Student& b) {
             return a.firstName < b.firstName;
@@ -150,7 +137,7 @@ void sortStudents(vector<Student>& students, char sortType) {
             return a.finalMark > b.finalMark;
         });
     }
-}*/
+}
 
 void output(vector<Student>& students, char finalType, char printType) {
     if (printType == 'e') {  
