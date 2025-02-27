@@ -29,7 +29,7 @@ void handleMenu(vector<Student>& students, const char& finalType) {
 }
 
 void readInput(vector<Student>& students, char menuChoice, char finalType) {
-    students.reserve(1000000);
+    students.reserve(10000);
 
     string choice;
     do {
@@ -119,23 +119,7 @@ double medianFinalMark(const vector<int>& marks, int examMark){
     return 0.4 * median + 0.6 * examMark;
 }
 
-bool byName(const Student& a, const Student& b) { return a.firstName < b.firstName; }
-bool bySurname(const Student& a, const Student& b) { return a.lastName < b.lastName; }
-bool byFinal(const Student& a, const Student& b) { return a.finalMark > b.finalMark; }
-
 void sortStudents(vector<Student>& students, char sortType) {
-    if (sortType == 'v') {
-        sort(students.begin(), students.end(), byName);
-    }
-    else if (sortType == 'p') {
-        sort(students.begin(), students.end(), bySurname);
-    }
-    else {
-        sort(students.begin(), students.end(), byFinal);
-    }
-}
-
-/*void sortStudents(vector<Student>& students, char sortType) {
     if (sortType == 'v') {
         sort(students.begin(), students.end(), [](const Student& a, const Student& b) {
             return a.firstName < b.firstName;
@@ -150,7 +134,7 @@ void sortStudents(vector<Student>& students, char sortType) {
             return a.finalMark > b.finalMark;
         });
     }
-}*/
+}
 
 void output(vector<Student>& students, char finalType, char printType) {
     if (printType == 'e') {  
