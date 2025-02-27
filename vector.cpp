@@ -123,19 +123,23 @@ double medianFinalMark(const vector<int>& marks, int examMark){
 }
 
 void sortStudents(vector<Student>& students, char sortType) {
-    if (sortType == 'v') {
-        sort(students.begin(), students.end(), [](const Student& a, const Student& b) {
-            return a.firstName < b.firstName;
-        });
-    } else if (sortType == 'p') {
-        sort(students.begin(), students.end(), [](const Student& a, const Student& b) {
-            return a.lastName < b.lastName;
-        });
-    }
-    else {
-        sort(students.begin(), students.end(), [](const Student& a, const Student& b) {
-            return a.finalMark > b.finalMark;
-        });
+    try {
+        if (sortType == 'v') {
+            sort(students.begin(), students.end(), [](const Student& a, const Student& b) {
+                return a.firstName < b.firstName;
+            });
+        } else if (sortType == 'p') {
+            sort(students.begin(), students.end(), [](const Student& a, const Student& b) {
+                return a.lastName < b.lastName;
+            });
+        }
+        else {
+            sort(students.begin(), students.end(), [](const Student& a, const Student& b) {
+                return a.finalMark > b.finalMark;
+            });
+        }
+    } catch (const std::exception& e) {
+        cerr << "Klaida rikiuojant: " << e.what() << endl;
     }
 }
 
