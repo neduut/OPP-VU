@@ -67,7 +67,7 @@ void readFromFile(vector<Student>& students, char finalType) {
     try {
         students.reserve(1000000);
 
-        ifstream file("studentai1000000.txt");
+        ifstream file("studentai10000.txt");
         if (!file) {
             throw std::runtime_error(FILE_OPEN_ERROR);
         }
@@ -140,57 +140,59 @@ void sortStudents(vector<Student>& students, char sortType) {
 }
 
 void output(vector<Student>& students, char finalType, char printType) {
-    if (printType == 'e') {  
-        string type = (finalType == 'v') ? "Vid." : "Med."; 
+    try {
+        if (printType == 'e') {  
+            string type = (finalType == 'v') ? "Vid." : "Med."; 
 
-        cout << left << setw(17) << "Vardas"
-             << setw(17) << "Pavarde"
-             << setw(17) << type << endl; 
-        cout << string(38, '-') << endl; 
+            cout << left << setw(17) << "Vardas"
+                 << setw(17) << "Pavarde"
+                 << setw(17) << type << endl; 
+            cout << string(38, '-') << endl; 
 
-        for (const auto& student : students) { 
-            cout << left << setw(17) << student.firstName 
-                 << setw(17) << student.lastName 
-                 << setw(19) << fixed << setprecision(2) 
-                 << student.finalMark << endl;
+            for (const auto& student : students) { 
+                cout << left << setw(17) << student.firstName 
+                     << setw(17) << student.lastName 
+                     << setw(19) << fixed << setprecision(2) 
+                     << student.finalMark << endl;
+            }
+        } else {
+            vector<string> lines; // vector to store all lines before writing
+            lines.reserve(students.size() + 2); // reserve space for efficiency
+        
+            // add the header
+            ostringstream header;
+            string type = (finalType == 'v') ? "Vid." : "Med.";
+            header << left << setw(17) << "Vardas"
+                   << setw(17) << "Pavarde"
+                   << setw(17) << type << endl
+                   << string(38, '-') << endl;
+            lines.push_back(header.str());
+        
+            // collect student data into the vector
+            for (const auto& student : students) {
+                ostringstream ss;
+                ss << left << setw(17) << student.firstName
+                   << setw(17) << student.lastName
+                   << setw(19) << fixed << setprecision(2)
+                   << student.finalMark << endl;
+                lines.push_back(ss.str());
+            }
+        
+            ofstream file("rezultatai.txt");
+            if (!file) {
+                throw std::runtime_error(FILE_OPEN_ERROR);
+            }
+        
+            // write all lines to the file in one operation
+            for (const auto& line : lines) {
+                file.write(line.c_str(), line.size());
+            }
+        
+            file.close();
+            cout << FILE_WRITE_SUCCESS << endl;
         }
-    } else 
-    {
-        vector<string> lines; // Vector to store all lines before writing
-        lines.reserve(students.size() + 2); // Reserve space for efficiency
-    
-        // Add the header
-        ostringstream header;
-        string type = (finalType == 'v') ? "Vid." : "Med.";
-        header << left << setw(17) << "Vardas"
-               << setw(17) << "Pavarde"
-               << setw(17) << type << endl
-               << string(38, '-') << endl;
-        lines.push_back(header.str());
-    
-        // Collect student data into the vector
-        for (const auto& student : students) {
-            ostringstream ss;
-            ss << left << setw(17) << student.firstName
-               << setw(17) << student.lastName
-               << setw(19) << fixed << setprecision(2)
-               << student.finalMark << endl;
-            lines.push_back(ss.str());
-        }
-    
-        ofstream file("rezultatai.txt");
-        if (!file) {
-            cerr << FILE_OPEN_ERROR << endl;
-            return;
-        }
-    
-        // Write all lines to the file in one operation
-        for (const auto& line : lines) {
-            file.write(line.c_str(), line.size());
-        }
-    
-        file.close();
-        cout << FILE_WRITE_SUCCESS << endl;
+    } catch (const std::exception& e) {
+        cerr << e.what() << endl;
     }
-    
 }
+
