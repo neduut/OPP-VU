@@ -1,4 +1,5 @@
 #include "vector.h"
+#include "mylib.h"
 
 void handleMenu(vector<Student>& students, const char& finalType) {
     while (true) {
@@ -34,7 +35,7 @@ void readInput(vector<Student>& students, char menuChoice, char finalType) {
     string choice;
     do {
         // first and last name
-        string firstName = getFirstName(menuChoice);
+        std::string firstName = getFirstName(menuChoice);
         string lastName = getLastName(menuChoice);
 
         // homework marks

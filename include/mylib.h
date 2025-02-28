@@ -18,6 +18,7 @@
 #include <chrono>
 #include <random>
 #include <sstream>
+#include <iostream> //templatam
 
 using std::cin;
 using std::cout;
@@ -40,6 +41,7 @@ using std::ifstream;
 using std::ofstream;
 using std::cerr;
 using std::to_string;
+std::random_device rd;
 
 
 #endif

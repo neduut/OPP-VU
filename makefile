@@ -8,7 +8,7 @@ all: main
 main: $(COMMON_OBJ) vector.o
 	$(CXX) $(COMMON_OBJ) vector.o -o main
 
-main.o: src/main.cpp include/main.h
+main.o: src/main.cpp
 	$(CXX) $(CXXFLAGS) -c src/main.cpp -o main.o
 
 vector.o: src/vector.cpp include/vector.h
