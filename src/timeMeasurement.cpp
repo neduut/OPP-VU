@@ -15,10 +15,10 @@ void TimeMeasurement::start() {
 // Stop measurement and display the time
 void TimeMeasurement::stop() {
     endTime = high_resolution_clock::now();
-    std::cout << "---> " << actionName << " took: " << getTimeDifference() << " ms\n";
+    std::cout << "---> " << actionName << " took: " << getTimeDifference() << " s\n";
 }
 
 // Returns the time difference (ms)
 double TimeMeasurement::getTimeDifference() {
-    return duration<double, std::milli>(endTime - startTime).count();
+    return duration<double>(endTime - startTime).count();
 }
