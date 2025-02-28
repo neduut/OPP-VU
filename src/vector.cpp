@@ -131,19 +131,24 @@ double medianFinalMark(const vector<int>& marks, int examMark){
     return 0.4 * median + 0.6 * examMark;
 }
 
+#include <algorithm>
+#include <vector>
+#include <iostream>
+
+using namespace std;
+
 void sortStudents(vector<Student>& students, char sortType) {
     try {
         if (sortType == 'v') {
-            sort(students.begin(), students.end(), [](const Student& a, const Student& b) {
+            stable_sort(students.begin(), students.end(), [](const Student& a, const Student& b) {
                 return a.firstName < b.firstName;
             });
         } else if (sortType == 'p') {
-            sort(students.begin(), students.end(), [](const Student& a, const Student& b) {
+            stable_sort(students.begin(), students.end(), [](const Student& a, const Student& b) {
                 return a.lastName < b.lastName;
             });
-        }
-        else {
-            sort(students.begin(), students.end(), [](const Student& a, const Student& b) {
+        } else {
+            stable_sort(students.begin(), students.end(), [](const Student& a, const Student& b) {
                 return a.finalMark > b.finalMark;
             });
         }
