@@ -1,4 +1,7 @@
 #include "vector.h"
+#include "utils.h"
+#include "timeMeasurement.h"
+#include "constants.h"
 
 void handleMenu(vector<Student>& students, const char& finalType) {
     while (true) {
@@ -95,6 +98,7 @@ void readFromFile(vector<Student>& students, char finalType) {
                                                   : medianFinalMark(marks, examMark);
 
             students.push_back({firstName, lastName, marks, examMark, finalMark});
+            marks.clear();
         }
 
         cout << FILE_READ_SUCCESS << endl;

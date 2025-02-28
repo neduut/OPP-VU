@@ -1,24 +1,24 @@
 CXX = g++
 CXXFLAGS = -std=c++11 -Wall -Wextra -Iinclude
 
-COMMON_OBJ = main.o utils.o timeMeasurement.o
+COMMON_OBJ = main.o utils.o timeMeasurement.o 
 
 all: main
 
 main: $(COMMON_OBJ) vector.o
 	$(CXX) $(COMMON_OBJ) vector.o -o main
 
-main.o: src/main.cpp
+main.o: src/main.cpp include/mylib.h include/utils.h include/vector.h include/timeMeasurement.h
 	$(CXX) $(CXXFLAGS) -c src/main.cpp -o main.o
 
-vector.o: src/vector.cpp include/vector.h 
+vector.o: src/vector.cpp include/mylib.h include/vector.h include/utils.h include/timeMeasurement.h
 	$(CXX) $(CXXFLAGS) -c src/vector.cpp -o vector.o
 
-utils.o: src/utils.cpp include/utils.h
+utils.o: src/utils.cpp include/mylib.h include/utils.h include/constants.h
 	$(CXX) $(CXXFLAGS) -c src/utils.cpp -o utils.o
 
-timeMeasurement.o: src/timeMeasurement.cpp include/timeMeasurement.h
+timeMeasurement.o: src/timeMeasurement.cpp include/mylib.h include/timeMeasurement.h
 	$(CXX) $(CXXFLAGS) -c src/timeMeasurement.cpp -o timeMeasurement.o
 
 clean:
-	rm -f $(COMMON_OBJ) vector.o main
+	rm -f $(COMMON_OBJ) vector.o main 

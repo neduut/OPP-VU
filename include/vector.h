@@ -2,9 +2,6 @@
 #define VECTOR_H
 
 #include "mylib.h"
-#include "constants.h"
-#include "utils.h"
-#include "timeMeasurement.h"
 
 struct Student {
     string firstName;

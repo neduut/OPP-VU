@@ -2,8 +2,6 @@
 #define UTILS_H
 
 #include "mylib.h"
-#include "constants.h"
-#include "vector.h"
 
 // requests
 string getFinalType();
