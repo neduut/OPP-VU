@@ -11,7 +11,7 @@ main: $(COMMON_OBJ) vector.o
 main.o: src/main.cpp
 	$(CXX) $(CXXFLAGS) -c src/main.cpp -o main.o
 
-vector.o: src/vector.cpp include/vector.h
+vector.o: src/vector.cpp include/vector.h 
 	$(CXX) $(CXXFLAGS) -c src/vector.cpp -o vector.o
 
 utils.o: src/utils.cpp include/utils.h

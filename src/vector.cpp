@@ -1,5 +1,4 @@
 #include "vector.h"
-#include "mylib.h"
 
 void handleMenu(vector<Student>& students, const char& finalType) {
     while (true) {
