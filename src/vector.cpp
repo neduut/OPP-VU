@@ -67,7 +67,7 @@ void readFromFile(vector<Student>& students, char finalType) {
     try {
         students.reserve(1000000);
 
-        ifstream file("studentai10000.txt");
+        ifstream file("assets/studentai10000.txt");
         if (!file) {
             throw std::runtime_error(FILE_OPEN_ERROR);
         }
@@ -184,7 +184,7 @@ void output(vector<Student>& students, char finalType, char printType) {
                 lines.push_back(ss.str());
             }
         
-            ofstream file("rezultatai.txt");
+            ofstream file("assets/rezultatai.txt");
             if (!file) {
                 throw std::runtime_error(FILE_OPEN_ERROR);
             }
