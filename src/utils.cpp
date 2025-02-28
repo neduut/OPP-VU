@@ -216,9 +216,9 @@ string getRandomLastName() {
 }
 
 int getRandomMark() {
-    //return rand() % 10 + 1;
+    return rand() % 10 + 1;
 
-    std::mt19937 mt(rd());
+    /*std::mt19937 mt(rd());
     std::uniform_int_distribution<int> mark(1, 10);
-    return mark(mt);
+    return mark(mt);*/
 }

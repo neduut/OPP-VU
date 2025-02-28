@@ -36,6 +36,7 @@ const string INVALID_SIZE_ERROR = "Klaida: dydis turi buti sveikasis skaicius! "
 const string INVALID_MARKS_COUNT = "Klaida: turite ivesti bent viena pazymi! ";
 const string INVALID_PRINT_TYPE_ERROR = "Klaida: netinkamas isvedimo tipas! ";
 const string FILE_OPEN_ERROR = "Klaida: nepavyko atidaryti failo! ";
+const string EMPTY_ARRAY_ERROR = "Klaida: pazymiu masyvas tuscias! ";
 
 // success 
 const string FILE_READ_SUCCESS = "Duomenys nuskaityti sekmingai! ";

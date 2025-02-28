@@ -9,6 +9,7 @@ void handleMenu(vector<Student>& students, const char& finalType) {
             if (!students.empty()) {
                 char sortType = getSortType()[0];
                 char printType = getPrintType()[0];
+                cout << endl;
                 sortStudents(students, sortType);
         
                 TimeMeasurement finalMarks("Rezultatu isvedimas");
@@ -85,6 +86,8 @@ void readFromFile(vector<Student>& students, char finalType) {
             while (stream >> mark) {
                 marks.push_back(mark);
             }
+
+            if (marks.empty()) throw std::runtime_error(EMPTY_ARRAY_ERROR);
             int examMark = marks.back();
             marks.pop_back();
 
