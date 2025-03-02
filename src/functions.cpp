@@ -5,15 +5,15 @@
 
 void handleMenu(vector<Student>& students) {
     while (true) {
-        char menuChoice = getMenuChoice()[0];
+        int menuChoice = getMenuChoice();
 
-        if (menuChoice == '5') {
+        if (menuChoice == 5) {
             if (!students.empty()) {
                 cout << endl;
 
-                char groupType = getGroupType()[0];  // by average or median?
-                char sortType = getSortType()[0];    // by first name, last name or final mark?
-                char outputType = getPrintType()[0]; // to console or to file?
+                int groupType = getGroupType();  // by average or median?
+                int sortType = getSortType();    // by first name, last name or final mark?
+                int outputType = getPrintType(); // to console or to file?
 
                 // KAZKAS CIA NE TAIP SU VEKTORIUM !!!!!!!!!!!!!!
                 vector<Student> kietiakai;
@@ -26,7 +26,7 @@ void handleMenu(vector<Student>& students) {
                 sortStudents(kietiakai, sortType);
                 sortStudents(vargsiukai, sortType);
 
-                if (outputType == 'e') {
+                if (outputType == 1) {
                     printToConsole(kietiakai, vargsiukai);
                 } else {
                     printToFile(kietiakai, "kietiakuRezultatai.txt");
@@ -35,7 +35,7 @@ void handleMenu(vector<Student>& students) {
             }
             break;
         }
-        else if (menuChoice == '4') {
+        else if (menuChoice == 4) {
             readFromFile(students);
         }
         else {
@@ -81,7 +81,7 @@ void readInput(vector<Student>& students, char menuChoice) {
 
 void readFromFile(vector<Student>& students) {
     try {
-        int fileSize = getFileSize()[0];
+        int fileSize = getFileSize();
         students.reserve(fileSize); 
         
         ifstream file("studentai" + to_string(fileSize) + ".txt");
@@ -151,17 +151,21 @@ double medianFinalMark(const vector<int>& marks, int examMark){
 
 void sortStudents(vector<Student>& students, char sortType) {
     try {
-        if (sortType == 'v') {
+        if (sortType == 1) {
             stable_sort(students.begin(), students.end(), [](const Student& a, const Student& b) {
                 return a.firstName < b.firstName;
             });
-        } else if (sortType == 'p') {
+        } else if (sortType == 2) {
             stable_sort(students.begin(), students.end(), [](const Student& a, const Student& b) {
                 return a.lastName < b.lastName;
             });
+        } else if (sortType == 3) { 
+            stable_sort(students.begin(), students.end(), [](const Student& a, const Student& b) {
+                return a.avgFinal < b.avgFinal;
+            });
         } else {
             stable_sort(students.begin(), students.end(), [](const Student& a, const Student& b) {
-                return a.finalMark > b.finalMark;
+                return a.medianFinal < b.medianFinal;
             });
         }
     } catch (const std::exception& e) {
@@ -171,9 +175,9 @@ void sortStudents(vector<Student>& students, char sortType) {
 
 void groupStudents(vector<Student>& students, vector<Student>& kietiakai, vector<Student>& vargsiukai, char groupType) {
     try {
-        if (groupType == 'v') {
+        if (groupType == 1) {
             for (const auto& student : students) {
-                if (student.finalMark >= 5) {
+                if (student.avgFinal >= 5) {
                     kietiakai.push_back(student);
                 } else {
                     vargsiukai.push_back(student);
@@ -181,7 +185,7 @@ void groupStudents(vector<Student>& students, vector<Student>& kietiakai, vector
             }
         } else {
             for (const auto& student : students) {
-                if (student.finalMark >= 5) {
+                if (student.medianFinal >= 5) {
                     kietiakai.push_back(student);
                 } else {
                     vargsiukai.push_back(student);
@@ -223,50 +227,51 @@ void printToConsole(vector<Student>& kietiakai, vector<Student>& vargsiukai) {
 }
 
 void printToFile(vector<Student>& students, const string& fileName) {
-    try{
-            ofstream file(fileName);
-            if (!file) {
-                throw std::runtime_error(FILE_OPEN_ERROR);
-            }
-            //file.exceptions(ofstream::failbit | ofstream::badbit);// automatically throws exceptions on fail
-        
-            TimeMeasurement finalMarks("Rezultatu isvedimas");
-            finalMarks.start();
-
-            vector<string> lines; // vector to store all lines before writing
-            lines.reserve(students.size() + 2); // reserve space for efficiency, +2 for header and separator
-        
-            // add the header
-            ostringstream header;
-            header << left << setw(17) << "Vardas"
-                << setw(17) << "Pavarde"
-                << setw(19) << "Galutinis (Vid.)"
-                << setw(19) << "Galutinis (Med.)" << '\n'
-                << string(75, '-') << '\n'; 
-            lines.push_back(header.str());
-        
-            // collect student data into the vector
-            for (const auto& student : students) {
-                ostringstream ss;
-                ss << left << setw(17) << student.firstName 
-                     << setw(17) << student.lastName 
-                     << setw(19) << fixed << setprecision(2) 
-                     << student.avgFinal  
-                     << setw(19) << fixed << setprecision(2) 
-                     << student.medianFinal 
-                     << '\n';
-                lines.push_back(ss.str());
-            }
-
-            // write all lines to the file in one operation
-            for (const auto& line : lines) {
-                file.write(line.c_str(), line.size());
-            }
-
-            file.close();
-            finalMarks.stop();
-            cout << FILE_WRITE_SUCCESS << endl;
+    try {
+        ofstream file(fileName);
+        if (!file) {
+            throw std::runtime_error(FILE_OPEN_ERROR);
         }
+        
+        // file.exceptions(ofstream::failbit | ofstream::badbit); // automatically throws exceptions on fail
+
+        TimeMeasurement finalMarks("Rezultatu isvedimas");
+        finalMarks.start();
+
+        vector<string> lines; // Vector to store all lines before writing
+        lines.reserve(students.size() + 2); // Reserve space for efficiency, +2 for header and separator
+        
+        // Add the header
+        ostringstream header;
+        header << left << setw(17) << "Vardas"
+               << setw(17) << "Pavarde"
+               << setw(19) << "Galutinis (Vid.)"
+               << setw(19) << "Galutinis (Med.)" << '\n'
+               << string(75, '-') << '\n';
+        lines.push_back(header.str());
+        
+        // Collect student data into the vector
+        for (const auto& student : students) {
+            ostringstream ss;
+            ss << left << setw(17) << student.firstName
+               << setw(17) << student.lastName
+               << setw(19) << fixed << setprecision(2) << student.avgFinal
+               << setw(19) << fixed << setprecision(2) << student.medianFinal
+               << '\n';
+            lines.push_back(ss.str());
+        }
+
+        // Write all lines to the file in one operation
+        for (const auto& line : lines) {
+            file.write(line.c_str(), line.size());
+        }
+
+        file.close();
+        finalMarks.stop();
+        cout << FILE_WRITE_SUCCESS << endl;
+
     } catch (const std::exception& e) {
-        cerr << "Klaida: " << e.what() << endl;
+        cerr << "Error: " << e.what() << endl;
+    }
 }
+

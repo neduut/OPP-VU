@@ -4,43 +4,43 @@
 static std::random_device rd;
 
 // requests
-string getSortType() {
+int getSortType() {
     string sortType;
     while (true) {
         cout << ENTER_SORT_TYPE;
         cin >> sortType;
-        if (sortType == "v" || sortType == "p" || sortType == "g") break;
+        if (stoi(sortType) >= 1 && stoi(sortType) <= 4) break;
         cout << INVALID_CHOICE;
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
     }
-    return sortType;
+    return stoi(sortType);
 }
 
-string getOutputType() {
-    string outputType;
+int getPrintType() {
+    string printType;
     while (true) {
-        cout << ENTER_OUTPUT_TYPE;
-        cin >> outputType;
-        if (isOutputTypeValid(outputType)) break;
+        cout << ENTER_PRINT_TYPE;
+        cin >> printType;
+        if (stoi(printType) == 1 || stoi(printType) == 2) break;
         cout << INVALID_OUTPUT_TYPE_ERROR;
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
     }
-    return outputType;
+    return stoi(printType);
 }
 
-string getMenuChoice() {
+int getMenuChoice() {
     string choice;
     while (true) {
         cout << MENU_TEXT;
         cin >> choice;
-        if (isMenuChoiceValid(choice)) break;
+        if (stoi(choice) >= 1 && stoi(choice) <= 5) break;
         cout << INVALID_CHOICE;
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
     }
-    return choice;
+    return stoi(choice);
 }
 
 string getFirstName(char menuChoice) {
@@ -135,34 +135,40 @@ vector<int> getHomeworkMarks(char menuChoice) {
     return marks;
 }
 
-string getGroupType() {
+int getGroupType() {
     string groupType;
     while (true) {
         cout << ENTER_GROUP_TYPE;
         cin >> groupType;
-        if (isGroupTypeValid(groupType)) break;
-        cout << INVALID_CHOICE;
+        if (groupType == "1" || groupType == "2") break;
+        cout << INVALID_GROUP_TYPE;
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
     }
-    return groupType;
+    return stoi(groupType);
 }
 
-int getFileSize(){
-    int size;
+int getFileSize() {
+    string size;
     while (true) {
         cout << ENTER_FILE_SIZE;
         cin >> size;
-        if (isFileSizeValid(size)) break;
+        if (stoi(size) >= 1 && stoi(size) <= 5) break;
         cout << INVALID_FILE_SIZE;
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
     }
-    if size == 1 return 1000;
-    if size == 2 return 10000;
-    if size == 3 return 100000;
-    if size == 4 return 1000000;
-    if size == 5 return 10000000;
+
+    int sizeInt = stoi(size); 
+
+    switch (sizeInt) {
+        case 1: return 1000;
+        case 2: return 10000;
+        case 3: return 100000;
+        case 4: return 1000000;
+        case 5: return 10000000;
+        default: return 0;
+    }
 }
 
 // validations
@@ -182,50 +188,8 @@ bool isMarkValid(string mark) {
     return true;
 }
 
-bool isCountValid(string count) {
-    for (char c : count) {
-        if (!isdigit(c)) return false;
-    }
-    int countInt = stoi(count);
-    if (countInt < 1) return false;
-    return true;
-}
-
-bool isMenuChoiceValid(string choice) {
-    for (char c : choice) {
-        if (!isdigit(c)) return false;
-    }
-    int choiceInt = stoi(choice);
-    if (choiceInt < 1 || choiceInt > 5) return false;
-    return true;
-}
-
 bool isChoiceValid(string choice) {
     if (choice != "taip" && choice != "ne") return false;
-    return true;
-}
-
-bool isSizeValid(string size) {
-    for (char c : size) {
-        if (!isdigit(c)) return false;
-    }
-    int sizeInt = stoi(size);
-    if (sizeInt < 1) return false;
-    return true;
-}
-
-bool isOutputTypeValid(string outputType) {
-    if (outputType != "e" && outputType != "f") return false;
-    return true;
-}
-
-bool isGroupTypeValid(string groupType) {
-    if (groupType != "v" && groupType != "m") return false;
-    return true;
-}
-
-bool isFileSizeValid(int size) {
-    if (size < 1 || size > 5) return false;
     return true;
 }
 
