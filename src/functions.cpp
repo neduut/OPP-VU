@@ -11,18 +11,18 @@ void handleMenu(vector<Student>& students) {
             if (!students.empty()) {
                 cout << endl;
 
-                char groupType = getGroupType()[0];  // Pagal vidurkį ar medianą?
-                char sortType = getSortType()[0];    // Pagal vardą, pavardę ar galutinį balą?
-                char outputType = getPrintType()[0]; // Į konsolę ar į failą?
+                char groupType = getGroupType()[0];  // by average or median?
+                char sortType = getSortType()[0];    // by first name, last name or final mark?
+                char outputType = getPrintType()[0]; // to console or to file?
 
                 // KAZKAS CIA NE TAIP SU VEKTORIUM !!!!!!!!!!!!!!
                 vector<Student> kietiakai;
                 vector<Student> vargsiukai;
 
-                // padalinam i dvi grupes
+                // separate students into 2 groups
                 groupStudents(students, kietiakai, vargsiukai, groupType);
 
-                // surikiuojam
+                // sort students
                 sortStudents(kietiakai, sortType);
                 sortStudents(vargsiukai, sortType);
 
@@ -81,9 +81,10 @@ void readInput(vector<Student>& students, char menuChoice) {
 
 void readFromFile(vector<Student>& students) {
     try {
-        students.reserve(1000000);
-
-        ifstream file("assets/studentai1000000.txt");
+        int fileSize = getFileSize()[0];
+        students.reserve(fileSize); 
+        
+        ifstream file("studentai" + to_string(fileSize) + ".txt");
         if (!file) {
             throw std::runtime_error(FILE_OPEN_ERROR);
         }
@@ -115,7 +116,6 @@ void readFromFile(vector<Student>& students) {
         double medianFinal = medianFinalMark(marks, examMark);
 
         students.push_back({firstName, lastName, marks, examMark, avgFinal, medianFinal});
-
         }
 
         file.close();
@@ -193,14 +193,15 @@ void groupStudents(vector<Student>& students, vector<Student>& kietiakai, vector
     }
 }
 
-void printToConsole(vector<Student>& students) {
+void printToConsole(vector<Student>& kietiakai, vector<Student>& vargsiukai) {
     cout << left << setw(17) << "Vardas"
          << setw(17) << "Pavarde"
          << setw(19) << "Galutinis (Vid.)"
          << setw(19) << "Galutinis (Med.)" << '\n'; 
     cout << string(70, '-') << '\n'; 
 
-    for (const auto& student : students) { 
+    cout << "Kietiakai: " << endl;
+    for (const auto& student : kietiakai) { 
         cout << left << setw(17) << student.firstName 
              << setw(17) << student.lastName 
              << setw(19) << fixed << setprecision(2) 
@@ -209,7 +210,16 @@ void printToConsole(vector<Student>& students) {
              << student.medianFinal 
              << '\n';
     }
-
+    cout << "Vargsiukai: " << endl;
+    for (const auto& student : vargsiukai) { 
+        cout << left << setw(17) << student.firstName 
+             << setw(17) << student.lastName 
+             << setw(19) << fixed << setprecision(2) 
+             << student.avgFinal  
+             << setw(19) << fixed << setprecision(2) 
+             << student.medianFinal 
+             << '\n';
+    }
 }
 
 void printToFile(vector<Student>& students, const string& fileName) {

@@ -5,7 +5,7 @@
    
 int main() {
 
-    // settings for lithuanian characters
+    // settings to enable lithuanian characters
     _setmode(_fileno(stdout), _O_U8TEXT);
     _setmode(_fileno(stderr), _O_U8TEXT);
 
@@ -13,7 +13,6 @@ int main() {
     program.start();
 
     vector<Student> students;
-    // isiaiskint ka daryt su tuo menu 
     handleMenu(students, sortType, printType);
 
     program.stop();

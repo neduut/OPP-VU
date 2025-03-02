@@ -148,6 +148,23 @@ string getGroupType() {
     return groupType;
 }
 
+int getFileSize(){
+    int size;
+    while (true) {
+        cout << ENTER_FILE_SIZE;
+        cin >> size;
+        if (isFileSizeValid(size)) break;
+        cout << INVALID_FILE_SIZE;
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    }
+    if size == 1 return 1000;
+    if size == 2 return 10000;
+    if size == 3 return 100000;
+    if size == 4 return 1000000;
+    if size == 5 return 10000000;
+}
+
 // validations
 bool isNameValid(string name) {
     for (char c : name) {
@@ -204,6 +221,11 @@ bool isOutputTypeValid(string outputType) {
 
 bool isGroupTypeValid(string groupType) {
     if (groupType != "v" && groupType != "m") return false;
+    return true;
+}
+
+bool isFileSizeValid(int size) {
+    if (size < 1 || size > 5) return false;
     return true;
 }
 

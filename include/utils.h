@@ -12,7 +12,7 @@ string getFirstName(char menuChoice);
 string getLastName(char menuChoice);
 int getExamMark(char menuChoice);
 vector<int> getHomeworkMarks(char menuChoice);
-
+int getFileSize();
 
 // validations
 bool isNameValid(string name);
@@ -23,6 +23,7 @@ bool isChoiceValid(string choice);
 bool isSizeValid(string size);
 bool isOutputTypeValid(string printType);
 bool isGroupTypeValid(string groupType);
+bool isFileSizeValid(int size);
 
 // random generators
 string getRandomFirstName();

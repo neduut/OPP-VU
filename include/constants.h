@@ -22,6 +22,13 @@ constexpr char MENU_TEXT[] =
     "4 - Skaityti is failo\n"
     "5 - Uzbaigti programa\n";
 const string ENTER_GROUP_TYPE = "Pasirinkite grupavimo tipa (v-vidurkis / m-mediana): ";
+constexpr char ENTER_FILE_SIZE[]= 
+    "\nPasirinkite kokio dydzio faila norite atidaryti:\n"
+    "1 - 1000\n"
+    "2 - 10 000\n"
+    "3 - 100 000"
+    "4 - 1 000 000"
+    "5 - 10 000 000\n";
 
 // errors
 const string INVALID_FIRST_NAME_ERROR = "Klaida: ivestas netinkamas vardas! "; 

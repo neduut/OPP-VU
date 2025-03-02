@@ -19,7 +19,7 @@ double averageFinalMark(const vector<int>& marks, int examMark);
 double medianFinalMark(const vector<int>& marks, int examMark);
 void sortStudents(vector<Student>& students, char sortType);
 void groupStudents(vector<Student>& students, char groupType);
-void printToConsole(vector<Student>& students);
+void printToConsole(vector<Student>& kietiakai, vector<Student>& vargsiukai);
 void printToFile(vector<Student>& students, const string& fileName);
 
 #endif  
