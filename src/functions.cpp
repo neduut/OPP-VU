@@ -15,6 +15,7 @@ void handleMenu(vector<Student>& students) {
                 char sortType = getSortType()[0];    // Pagal vardą, pavardę ar galutinį balą?
                 char outputType = getPrintType()[0]; // Į konsolę ar į failą?
 
+                // KAZKAS CIA NE TAIP SU VEKTORIUM !!!!!!!!!!!!!!
                 vector<Student> kietiakai;
                 vector<Student> vargsiukai;
 
@@ -165,6 +166,30 @@ void sortStudents(vector<Student>& students, char sortType) {
         }
     } catch (const std::exception& e) {
         cerr << "Klaida rikiuojant: " << e.what() << endl;
+    }
+}
+
+void groupStudents(vector<Student>& students, vector<Student>& kietiakai, vector<Student>& vargsiukai, char groupType) {
+    try {
+        if (groupType == 'v') {
+            for (const auto& student : students) {
+                if (student.finalMark >= 5) {
+                    kietiakai.push_back(student);
+                } else {
+                    vargsiukai.push_back(student);
+                }
+            }
+        } else {
+            for (const auto& student : students) {
+                if (student.finalMark >= 5) {
+                    kietiakai.push_back(student);
+                } else {
+                    vargsiukai.push_back(student);
+                }
+            }
+        }
+    } catch (const std::exception& e) {
+        cerr << "Klaida grupuojant: " << e.what() << endl;
     }
 }
 
