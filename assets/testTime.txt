@@ -1,16 +1,16 @@
 v0.2
 
 studentai 10000  
-vid. nuskaitymas iš failo: 109.158 ms (~0.109 s)  
-vid. rezultatų išvedimo laikas: 53.667 ms (~0.054 s)  
-vid. bendras programos laikas: 14 179.4 ms (~14.18 s)  
+vid. nuskaitymas iš failo: ~0.109 s
+vid. rezultatų išvedimo laikas: ~0.051 s
+vid. bendras programos laikas: ~14.18 s
 
 studentai 100000  
-vid. nuskaitymas iš failo: 1 396.7 ms (~1.40 s)  
-vid. rezultatų išvedimo laikas: 499.162 ms (~0.50 s)  
-vid. bendras programos laikas: 17 208.2 ms (~17.21 s)  
+vid. nuskaitymas iš failo: ~1.37 s
+vid. rezultatų išvedimo laikas: ~0.50 s
+vid. bendras programos laikas: ~17.21 s
 
 studentai 1000000  
-vid. nuskaitymas iš failo: 6 966.79 ms (~6.97 s)  
-vid. rezultatų išvedimo laikas: 5 202.06 ms (~5.20 s)  
-vid. bendras programos laikas: 29 184.3 ms (~29.18 s)
+vid. nuskaitymas iš failo: ~6.97 s
+vid. rezultatų išvedimo laikas: ~4.76 s
+vid. bendras programos laikas: ~25.18 s
