@@ -4,14 +4,15 @@
 #include "mylib.h"
 
 // requests
-string getFinalType();
+string getSortType();
+string getGroupType();
+string getOutputType();
 string getMenuChoice();
 string getFirstName(char menuChoice);
 string getLastName(char menuChoice);
 int getExamMark(char menuChoice);
 vector<int> getHomeworkMarks(char menuChoice);
-string getPrintType();
-string getSortType();
+
 
 // validations
 bool isNameValid(string name);
@@ -20,8 +21,8 @@ bool isCountValid(string count);
 bool isMenuChoiceValid(string choice);
 bool isChoiceValid(string choice);
 bool isSizeValid(string size);
-bool isFinalTypeValid(string finalType);
-bool isFinalPrintValid(string printType);
+bool isOutputTypeValid(string printType);
+bool isGroupTypeValid(string groupType);
 
 // random generators
 string getRandomFirstName();

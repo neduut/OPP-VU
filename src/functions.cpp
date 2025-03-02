@@ -1,31 +1,38 @@
-#include "vector.h"
+#include "functions.h"
 #include "utils.h"
 #include "timeMeasurement.h"
 #include "constants.h"
 
-void handleMenu(vector<Student>& students, const char& finalType) {
+void handleMenu(vector<Student>& students, const char& sortType, const char& printType) {
     while (true) {
         char menuChoice = getMenuChoice()[0];
 
         if (menuChoice == '5') {
             // If students vector is not empty, calculate and output final marks
             if (!students.empty()) {
-                char sortType = getSortType()[0];
-                char printType = getPrintType()[0];
                 cout << endl;
+
+                char groupType = getGroupType()[0]; // by median or average ?
+                char sortType = getSortType()[0]; // by first name, last name or by grade ?
+                char outputType = getPrintType()[0]; // console or file ?
+
+                //sutvarkyt spausdinimo funkcija, sugalvot ar ten tik failus atidarysiu jau ar viska siunciu
+                //kuriuo metu viska sudedu i du failus
+
                 sortStudents(students, sortType);
-                output(students, finalType, printType);
+                char printType = (printType == 'e') ? printToConsole(students);
+                : printToFile(students);
             }
             break;
         }
         else if (menuChoice == '4') {
-            readFromFile(students, finalType);
+            readFromFile(students);
         }
-        else readInput(students, menuChoice, finalType);
+        else readInput(students, menuChoice);
     }
 }
 
-void readInput(vector<Student>& students, char menuChoice, char finalType) {
+void readInput(vector<Student>& students, char menuChoice) {
     students.reserve(10000);
 
     string choice;
@@ -41,10 +48,10 @@ void readInput(vector<Student>& students, char menuChoice, char finalType) {
         int examMark = getExamMark(menuChoice);     
 
         // final mark
-        double finalMark = (finalType == 'v') ? averageFinalMark(marks, examMark) 
-                                              : medianFinalMark(marks, examMark);
+        double avgFinal = averageFinalMark(marks, examMark);
+        double medianFinal = medianFinalMark(marks, examMark);
 
-        students.push_back({firstName, lastName, marks, examMark, finalMark});
+        students.push_back({firstName, lastName, marks, examMark, avgFinal, medianFinal});
 
         while (true) {
             cout << ADD_ANOTHER_STUDENT << endl;
@@ -60,7 +67,7 @@ void readInput(vector<Student>& students, char menuChoice, char finalType) {
     students.shrink_to_fit();
 }
 
-void readFromFile(vector<Student>& students, char finalType) {
+void readFromFile(vector<Student>& students) {
     try {
         students.reserve(1000000);
 
@@ -91,10 +98,12 @@ void readFromFile(vector<Student>& students, char finalType) {
             int examMark = marks.back();
             marks.pop_back();
 
-            double finalMark = (finalType == 'v') ? averageFinalMark(marks, examMark) 
-                                                  : medianFinalMark(marks, examMark);
+        // final mark
+        double avgFinal = averageFinalMark(marks, examMark);
+        double medianFinal = medianFinalMark(marks, examMark);
 
-            students.push_back({firstName, lastName, marks, examMark, finalMark});
+        students.push_back({firstName, lastName, marks, examMark, avgFinal, medianFinal});
+
         }
 
         file.close();
@@ -148,23 +157,27 @@ void sortStudents(vector<Student>& students, char sortType) {
     }
 }
 
-void output(vector<Student>& students, char finalType, char printType) {
-    try {
-        if (printType == 'e') {  
-            string type = (finalType == 'v') ? "Vid." : "Med."; 
+void printToConsole(vector<Student>& students) {
+    cout << left << setw(17) << "Vardas"
+         << setw(17) << "Pavarde"
+         << setw(19) << "Galutinis (Vid.)"
+         << setw(19) << "Galutinis (Med.)" << '\n'; 
+    cout << string(70, '-') << '\n'; 
 
-            cout << left << setw(17) << "Vardas"
-                 << setw(17) << "Pavarde"
-                 << setw(17) << type << '\n'; 
-            cout << string(38, '-') << '\n'; 
+    for (const auto& student : students) { 
+        cout << left << setw(17) << student.firstName 
+             << setw(17) << student.lastName 
+             << setw(19) << fixed << setprecision(2) 
+             << student.avgFinal  
+             << setw(19) << fixed << setprecision(2) 
+             << student.medianFinal 
+             << '\n';
+    }
 
-            for (const auto& student : students) { 
-                cout << left << setw(17) << student.firstName 
-                     << setw(17) << student.lastName 
-                     << setw(19) << fixed << setprecision(2) 
-                     << student.finalMark << '\n';
-            }
-        } else {
+}
+
+void printToFile(vector<Student>& students) {
+    try{
             ofstream file("assets/rezultatai.txt");
             if (!file) {
                 throw std::runtime_error(FILE_OPEN_ERROR);
@@ -207,6 +220,4 @@ void output(vector<Student>& students, char finalType, char printType) {
         }
     } catch (const std::exception& e) {
         cerr << e.what() << endl;
-    }
 }
-

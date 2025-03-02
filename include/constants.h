@@ -9,7 +9,8 @@ const string ENTER_LAST_NAME = "Iveskite pavarde: ";
 const string ENTER_MARK = "Iveskite namu darbu pazymi (norint sustoti iveskite -1): "; 
 const string ENTER_MARK_IN_MIXED = "Iveskite namu darbu pazymi: ";
 const string ENTER_EXAM_MARK = "Iveskite egzamino pazymi: ";
-const string ENTER_FINAL_TYPE = "Pasirinkite pagal ka skaiciuoti galutini bala (v-vidurki /m-mediana): ";
+const string ENTER_SORT_TYPE = "Pasirinkite pagal ka rusiuoti studentus (v-varda /p-pavarde /g-galutini bala): ";
+const string ENTER_OUTPUT_TYPE = "Pasirinkite i kur isvesti duomenis (e-ekrana /f-faila): ";
 const string ENTER_MARKS_COUNT = "Iveskite namu darbu pazymiu skaiciu: ";
 const string ADD_ANOTHER_MARK = "Ar norite ivesti dar viena namu darba? (taip/ne): ";
 const string ADD_ANOTHER_STUDENT = "Ar norite ivesti dar viena studenta? (taip/ne): ";
@@ -20,21 +21,19 @@ constexpr char MENU_TEXT[] =
     "3 - Generuoti atsitiktinius vardus ir pazymius\n"
     "4 - Skaityti is failo\n"
     "5 - Uzbaigti programa\n";
-    const string ENTER_SORT_TYPE = "Pasirinkite pagal ka norite surusiuoti studentus (v-varda /p-pavarde /g-galutini bala): ";
-const string ENTER_PRINT_TYPE = "Pasirinkite i kur norite isvesti duomenis (e-ekrana /f-faila): ";
+const string ENTER_GROUP_TYPE = "Pasirinkite grupavimo tipa (v-vidurkis / m-mediana): ";
 
 // errors
 const string INVALID_FIRST_NAME_ERROR = "Klaida: ivestas netinkamas vardas! "; 
 const string INVALID_LAST_NAME_ERROR = "Klaida: ivesta netinkama pavarde! "; 
 const string INVALID_MARK_ERROR = "Klaida: pazymys turi buti sveikasis skaicius nuo 1 iki 10! "; 
 const string INVALID_EXAM_MARK_ERROR = "Klaida: egzamino pazymys turi buti sveikasis skaicius nuo 1 iki 10! "; 
-const string INVALID_FINAL_TYPE_ERROR = "Klaida: ivestas netinkamas galutinio pazymio tipas! ";
 const string INVALID_MARKS_COUNT_ERROR = "Klaida: pazymiu skaicius turi buti sveikasis skaicius ir mazesnis nei 10! ";
 const string INVALID_MENU_CHOICE = "Klaida: netinkamas menu pasirinkimas ! ";
 const string INVALID_CHOICE = "Klaida: netinkamas pasirinkimas! ";
 const string INVALID_SIZE_ERROR = "Klaida: dydis turi buti sveikasis skaicius! ";
 const string INVALID_MARKS_COUNT = "Klaida: turite ivesti bent viena pazymi! ";
-const string INVALID_PRINT_TYPE_ERROR = "Klaida: netinkamas isvedimo tipas! ";
+const string INVALID_OUTPUT_TYPE_ERROR = "Klaida: netinkamas isvedimo tipas! ";
 const string FILE_OPEN_ERROR = "Klaida: nepavyko atidaryti failo! ";
 const string EMPTY_ARRAY_ERROR = "Klaida: pazymiu masyvas tuscias! ";
 

@@ -4,17 +4,30 @@
 static std::random_device rd;
 
 // requests
-string getFinalType() {
-    string finalType;
+string getSortType() {
+    string sortType;
     while (true) {
-        cout << ENTER_FINAL_TYPE;
-        cin >> finalType;
-        if (isFinalTypeValid(finalType)) break;
-        cout << INVALID_FINAL_TYPE_ERROR;
+        cout << ENTER_SORT_TYPE;
+        cin >> sortType;
+        if (sortType == "v" || sortType == "p" || sortType == "g") break;
+        cout << INVALID_CHOICE;
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
     }
-    return finalType;
+    return sortType;
+}
+
+string getOutputType() {
+    string outputType;
+    while (true) {
+        cout << ENTER_OUTPUT_TYPE;
+        cin >> outputType;
+        if (isOutputTypeValid(outputType)) break;
+        cout << INVALID_OUTPUT_TYPE_ERROR;
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    }
+    return outputType;
 }
 
 string getMenuChoice() {
@@ -122,30 +135,17 @@ vector<int> getHomeworkMarks(char menuChoice) {
     return marks;
 }
 
-string getPrintType() {
-    string printType;
+string getGroupType() {
+    string groupType;
     while (true) {
-        cout << ENTER_PRINT_TYPE;
-        cin >> printType;
-        if (isFinalPrintValid(printType)) break;
-        cout << INVALID_PRINT_TYPE_ERROR;
-        cin.clear();
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-    }
-    return printType;
-}
-
-string getSortType() {
-    string sortType;
-    while (true) {
-        cout << ENTER_SORT_TYPE;
-        cin >> sortType;
-        if (sortType == "v" || sortType == "p" || sortType == "g") break;
+        cout << ENTER_GROUP_TYPE;
+        cin >> groupType;
+        if (isGroupTypeValid(groupType)) break;
         cout << INVALID_CHOICE;
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
     }
-    return sortType;
+    return groupType;
 }
 
 // validations
@@ -197,13 +197,13 @@ bool isSizeValid(string size) {
     return true;
 }
 
-bool isFinalTypeValid(string finalType) {
-    if (finalType != "v" && finalType != "m") return false;
+bool isOutputTypeValid(string outputType) {
+    if (outputType != "e" && outputType != "f") return false;
     return true;
 }
 
-bool isFinalPrintValid(string printType) {
-    if (printType != "e" && printType != "f") return false;
+bool isGroupTypeValid(string groupType) {
+    if (groupType != "v" && groupType != "m") return false;
     return true;
 }
 
