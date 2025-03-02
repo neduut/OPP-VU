@@ -64,7 +64,7 @@ void readFromFile(vector<Student>& students, char finalType) {
     try {
         students.reserve(1000000);
 
-        ifstream file("assets/studetnai10000.txt");
+        ifstream file("assets/studentai1000000.txt");
         if (!file) {
             throw std::runtime_error(FILE_OPEN_ERROR);
         }
