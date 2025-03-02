@@ -84,7 +84,7 @@ void readFromFile(vector<Student>& students) {
         int fileSize = getFileSize();
         students.reserve(fileSize); 
         
-        ifstream file("studentai" + to_string(fileSize) + ".txt");
+        ifstream file("assets/studentai" + to_string(fileSize) + ".txt");
         if (!file) {
             throw std::runtime_error(FILE_OPEN_ERROR);
         }
@@ -228,7 +228,7 @@ void printToConsole(vector<Student>& kietiakai, vector<Student>& vargsiukai) {
 
 void printToFile(vector<Student>& students, const string& fileName) {
     try {
-        ofstream file(fileName);
+        ofstream file("assets/" + fileName);
         if (!file) {
             throw std::runtime_error(FILE_OPEN_ERROR);
         }
