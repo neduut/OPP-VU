@@ -1,5 +1,6 @@
 #include "utils.h"
 #include "constants.h"
+#include "timeMeasurement.h"
 
 static std::random_device rd;
 
@@ -127,7 +128,7 @@ vector<int> getHomeworkMarks(char menuChoice) {
             marks.push_back(stoi(tempMark));
         }
     } else {
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 6; i++) {
             marks.push_back(getRandomMark());
             cout << "Pazymys " << i + 1 << ": " << marks[i] << endl;
         }
@@ -194,6 +195,55 @@ bool isChoiceValid(string choice) {
 }
 
 // random generators
+void generateFile() {
+    try {
+        int size = 10000;
+        string fileName = "assets/studentai" + to_string(size) + ".txt";
+        ofstream file(fileName);
+        if (!file) {
+            throw std::runtime_error(FILE_OPEN_ERROR);
+        }
+
+        TimeMeasurement fileWrite("Failo generavimas");
+        fileWrite.start();
+
+        vector<string> lines;
+        lines.reserve(size + 1); //+1 for header
+
+        ostringstream header;
+        header << left << setw(15) << "Vardas"
+               << setw(15) << "Pavardė";
+        for (int j = 1; j <= 10; j++) {
+            header << setw(8) << "ND" + to_string(j);
+        }
+        header << setw(10) << "Egzaminas" << '\n';
+        lines.push_back(header.str());
+
+        for (int i = 0; i < size; i++) {
+            ostringstream ss;
+            ss << left << setw(15) << "Vardas" + to_string(i + 1)
+               << setw(15) << "Pavardė" + to_string(i + 1);
+            for (int j = 0; j < 10; j++) {
+                ss << setw(8) << getRandomMark();
+            }
+            ss << setw(10) << getRandomMark() << '\n';
+            lines.push_back(ss.str());
+        }
+
+        // write all lines to the file in one operation
+        for (const auto& line : lines) {
+            file.write(line.c_str(), line.size());
+        }
+
+        file.close();
+        fileWrite.stop();
+        cout << FILE_WRITE_SUCCESS << endl;
+
+    } catch (const std::exception& e) { 
+        cerr << "Klaida: " << e.what() << endl;
+    }
+}
+
 string getRandomFirstName() {
     string names[] = {"Jonas", "Petras", "Mantas", "Dovydas", "Karolis", "Tomas", "Justinas", "Rokas", "Marius", "Aurimas"};
     return names[rand() % 10];

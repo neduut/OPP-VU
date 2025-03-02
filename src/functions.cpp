@@ -238,10 +238,10 @@ void printToFile(vector<Student>& students, const string& fileName) {
         TimeMeasurement finalMarks("Rezultatu isvedimas");
         finalMarks.start();
 
-        vector<string> lines; // Vector to store all lines before writing
-        lines.reserve(students.size() + 2); // Reserve space for efficiency, +2 for header and separator
+        vector<string> lines; // vector to store all lines before writing
+        lines.reserve(students.size() + 2); // reserve space for efficiency, +2 for header and separator
         
-        // Add the header
+        // add the header
         ostringstream header;
         header << left << setw(17) << "Vardas"
                << setw(17) << "Pavarde"
@@ -250,7 +250,7 @@ void printToFile(vector<Student>& students, const string& fileName) {
                << string(75, '-') << '\n';
         lines.push_back(header.str());
         
-        // Collect student data into the vector
+        // collect student data into the vector
         for (const auto& student : students) {
             ostringstream ss;
             ss << left << setw(17) << student.firstName
@@ -261,7 +261,7 @@ void printToFile(vector<Student>& students, const string& fileName) {
             lines.push_back(ss.str());
         }
 
-        // Write all lines to the file in one operation
+        // write all lines to the file in one operation
         for (const auto& line : lines) {
             file.write(line.c_str(), line.size());
         }
