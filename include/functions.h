@@ -12,13 +12,13 @@ struct Student {
     double medianFinal;
 };
 
-void handleMenu(vector<Student>& students, const char& sortType, const char& printType);
+void handleMenu(vector<Student>& students);
 void readInput(vector<Student>& students, char menuChoice);
 void readFromFile(vector<Student>& students);
 double averageFinalMark(const vector<int>& marks, int examMark);
 double medianFinalMark(const vector<int>& marks, int examMark);
 void sortStudents(vector<Student>& students, char sortType);
 void printToConsole(vector<Student>& students);
-void printToFile(vector<Student>& students);
+void printToFile(vector<Student>& students, const string& fileName);
 
 #endif  

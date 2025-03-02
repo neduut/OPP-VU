@@ -3,32 +3,43 @@
 #include "timeMeasurement.h"
 #include "constants.h"
 
-void handleMenu(vector<Student>& students, const char& sortType, const char& printType) {
+void handleMenu(vector<Student>& students) {
     while (true) {
         char menuChoice = getMenuChoice()[0];
 
         if (menuChoice == '5') {
-            // If students vector is not empty, calculate and output final marks
             if (!students.empty()) {
                 cout << endl;
 
-                char groupType = getGroupType()[0]; // by median or average ?
-                char sortType = getSortType()[0]; // by first name, last name or by grade ?
-                char outputType = getPrintType()[0]; // console or file ?
+                char groupType = getGroupType()[0];  // Pagal vidurkį ar medianą?
+                char sortType = getSortType()[0];    // Pagal vardą, pavardę ar galutinį balą?
+                char outputType = getPrintType()[0]; // Į konsolę ar į failą?
 
-                //sutvarkyt spausdinimo funkcija, sugalvot ar ten tik failus atidarysiu jau ar viska siunciu
-                //kuriuo metu viska sudedu i du failus
+                vector<Student> kietiakai;
+                vector<Student> vargsiukai;
 
-                sortStudents(students, sortType);
-                char printType = (printType == 'e') ? printToConsole(students);
-                : printToFile(students);
+                // padalinam i dvi grupes
+                groupStudents(students, kietiakai, vargsiukai, groupType);
+
+                // surikiuojam
+                sortStudents(kietiakai, sortType);
+                sortStudents(vargsiukai, sortType);
+
+                if (outputType == 'e') {
+                    printToConsole(kietiakai, vargsiukai);
+                } else {
+                    printToFile(kietiakai, "kietiakuRezultatai.txt");
+                    printToFile(vargsiukai, "vargsiukuRezultatai.txt");
+                }
             }
             break;
         }
         else if (menuChoice == '4') {
             readFromFile(students);
         }
-        else readInput(students, menuChoice);
+        else {
+            readInput(students, menuChoice);
+        }
     }
 }
 
@@ -176,9 +187,9 @@ void printToConsole(vector<Student>& students) {
 
 }
 
-void printToFile(vector<Student>& students) {
+void printToFile(vector<Student>& students, const string& fileName) {
     try{
-            ofstream file("assets/rezultatai.txt");
+            ofstream file(fileName);
             if (!file) {
                 throw std::runtime_error(FILE_OPEN_ERROR);
             }
@@ -188,24 +199,27 @@ void printToFile(vector<Student>& students) {
             finalMarks.start();
 
             vector<string> lines; // vector to store all lines before writing
-            lines.reserve(students.size() + 2); // reserve space for efficiency. +2 for header and separator
+            lines.reserve(students.size() + 2); // reserve space for efficiency, +2 for header and separator
         
             // add the header
             ostringstream header;
-            string type = (finalType == 'v') ? "Vid." : "Med.";
             header << left << setw(17) << "Vardas"
-                   << setw(17) << "Pavarde"
-                   << setw(17) << type << '\n'
-                   << string(38, '-') << '\n';
+                << setw(17) << "Pavarde"
+                << setw(19) << "Galutinis (Vid.)"
+                << setw(19) << "Galutinis (Med.)" << '\n'
+                << string(75, '-') << '\n'; 
             lines.push_back(header.str());
         
             // collect student data into the vector
             for (const auto& student : students) {
                 ostringstream ss;
-                ss << left << setw(17) << student.firstName
-                   << setw(17) << student.lastName
-                   << setw(19) << fixed << setprecision(2)
-                   << student.finalMark << '\n';
+                ss << left << setw(17) << student.firstName 
+                     << setw(17) << student.lastName 
+                     << setw(19) << fixed << setprecision(2) 
+                     << student.avgFinal  
+                     << setw(19) << fixed << setprecision(2) 
+                     << student.medianFinal 
+                     << '\n';
                 lines.push_back(ss.str());
             }
 
@@ -219,5 +233,5 @@ void printToFile(vector<Student>& students) {
             cout << FILE_WRITE_SUCCESS << endl;
         }
     } catch (const std::exception& e) {
-        cerr << e.what() << endl;
+        cerr << "Klaida: " << e.what() << endl;
 }
