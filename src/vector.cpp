@@ -68,14 +68,18 @@ void readFromFile(vector<Student>& students, char finalType) {
     try {
         students.reserve(1000000);
 
-        ifstream file("assets/studentai10000.txt");
+        ifstream file("assets/studentai1000000.txt");
         if (!file) {
             throw std::runtime_error(FILE_OPEN_ERROR);
         }
+        //file.exceptions(ifstream::failbit | ifstream::badbit);// automatically throws exceptions on fail
+
+        TimeMeasurement fileRead("Failo nuskaitymas");
+        fileRead.start();
+
+        file.ignore(numeric_limits<streamsize>::max(), '\n'); // skip the first line
 
         string line;
-        getline(file, line); //first line as header
-
         while (getline(file, line)) {
             istringstream stream(line);
             string firstName, lastName;
@@ -97,8 +101,9 @@ void readFromFile(vector<Student>& students, char finalType) {
             students.push_back({firstName, lastName, marks, examMark, finalMark});
         }
 
-        cout << FILE_READ_SUCCESS << endl;
         file.close();
+        fileRead.stop();
+        cout << FILE_READ_SUCCESS << endl;
         students.shrink_to_fit();
 
     } catch (const std::exception& e) {
@@ -155,26 +160,35 @@ void output(vector<Student>& students, char finalType, char printType) {
 
             cout << left << setw(17) << "Vardas"
                  << setw(17) << "Pavarde"
-                 << setw(17) << type << endl; 
-            cout << string(38, '-') << endl; 
+                 << setw(17) << type << '\n'; 
+            cout << string(38, '-') << '\n'; 
 
             for (const auto& student : students) { 
                 cout << left << setw(17) << student.firstName 
                      << setw(17) << student.lastName 
                      << setw(19) << fixed << setprecision(2) 
-                     << student.finalMark << endl;
+                     << student.finalMark << '\n';
             }
         } else {
+            ofstream file("assets/rezultatai.txt");
+            if (!file) {
+                throw std::runtime_error(FILE_OPEN_ERROR);
+            }
+            //file.exceptions(ofstream::failbit | ofstream::badbit);// automatically throws exceptions on fail
+        
+            TimeMeasurement finalMarks("Rezultatu isvedimas");
+            finalMarks.start();
+
             vector<string> lines; // vector to store all lines before writing
-            lines.reserve(students.size() + 2); // reserve space for efficiency
+            lines.reserve(students.size() + 2); // reserve space for efficiency. +2 for header and separator
         
             // add the header
             ostringstream header;
             string type = (finalType == 'v') ? "Vid." : "Med.";
             header << left << setw(17) << "Vardas"
                    << setw(17) << "Pavarde"
-                   << setw(17) << type << endl
-                   << string(38, '-') << endl;
+                   << setw(17) << type << '\n'
+                   << string(38, '-') << '\n';
             lines.push_back(header.str());
         
             // collect student data into the vector
@@ -183,21 +197,17 @@ void output(vector<Student>& students, char finalType, char printType) {
                 ss << left << setw(17) << student.firstName
                    << setw(17) << student.lastName
                    << setw(19) << fixed << setprecision(2)
-                   << student.finalMark << endl;
+                   << student.finalMark << '\n';
                 lines.push_back(ss.str());
             }
-        
-            ofstream file("assets/rezultatai.txt");
-            if (!file) {
-                throw std::runtime_error(FILE_OPEN_ERROR);
-            }
-        
+
             // write all lines to the file in one operation
             for (const auto& line : lines) {
                 file.write(line.c_str(), line.size());
             }
-        
+
             file.close();
+            finalMarks.stop();
             cout << FILE_WRITE_SUCCESS << endl;
         }
     } catch (const std::exception& e) {
