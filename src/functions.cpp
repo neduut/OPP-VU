@@ -243,20 +243,20 @@ void printToFile(vector<Student>& students, const string& fileName) {
         
         // add the header
         ostringstream header;
-        header << left << setw(17) << "Vardas"
-               << setw(17) << "Pavarde"
-               << setw(19) << "Galutinis (Vid.)"
-               << setw(19) << "Galutinis (Med.)" << '\n'
-               << string(75, '-') << '\n';
+        header << left << setw(15) << "Vardas"
+               << setw(15) << "Pavarde"
+               << setw(20) << "Galutinis (Vid.)"
+               << setw(20) << "Galutinis (Med.)" << '\n'
+               << string(66, '-') << '\n'; 
         lines.push_back(header.str());
         
         // collect student data into the vector
         for (const auto& student : students) {
             ostringstream ss;
-            ss << left << setw(17) << student.firstName
-               << setw(17) << student.lastName
-               << setw(19) << fixed << setprecision(2) << student.avgFinal
-               << setw(19) << fixed << setprecision(2) << student.medianFinal
+            ss << left << setw(15) << student.firstName
+               << setw(15) << student.lastName
+               << setw(20) << fixed << setprecision(2) << student.avgFinal
+               << setw(20) << fixed << setprecision(2) << student.medianFinal
                << '\n';
             lines.push_back(ss.str());
         }
@@ -274,4 +274,3 @@ void printToFile(vector<Student>& students, const string& fileName) {
         cerr << "Error: " << e.what() << endl;
     }
 }
-

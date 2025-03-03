@@ -7,10 +7,13 @@
 *.a
 *.lib
 
+ToDo.txt
 studentai10000.txt
 studentai100000.txt
 studentai1000000.txt
-rezultatai.txt
-ToDo.txt
+studentai10000000.txt
+studentai100000000.txt
+kietiakuRezultatai.txt
+vargsiukaiRezultatai.txt
 
 
