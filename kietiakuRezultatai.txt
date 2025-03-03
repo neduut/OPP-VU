@@ -1,3 +1,0 @@
-Vardas           Pavarde          Galutinis (Vid.)   Galutinis (Med.)   
----------------------------------------------------------------------------
-Petras           Bagdonas         5.00               4.80               
