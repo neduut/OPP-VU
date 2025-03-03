@@ -90,9 +90,6 @@ void readFromFile(vector<Student>& students) {
         }
         //file.exceptions(ifstream::failbit | ifstream::badbit);// automatically throws exceptions on fail
 
-        TimeMeasurement fileRead("Failo nuskaitymas");
-        fileRead.start();
-
         file.ignore(numeric_limits<streamsize>::max(), '\n'); // skip the first line
 
         string line;
@@ -119,7 +116,6 @@ void readFromFile(vector<Student>& students) {
         }
 
         file.close();
-        fileRead.stop();
         cout << FILE_READ_SUCCESS << endl;
         students.shrink_to_fit();
 
@@ -235,9 +231,6 @@ void printToFile(vector<Student>& students, const string& fileName) {
         
         // file.exceptions(ofstream::failbit | ofstream::badbit); // automatically throws exceptions on fail
 
-        TimeMeasurement finalMarks("Rezultatu isvedimas");
-        finalMarks.start();
-
         vector<string> lines; // vector to store all lines before writing
         lines.reserve(students.size() + 2); // reserve space for efficiency, +2 for header and separator
         
@@ -267,7 +260,6 @@ void printToFile(vector<Student>& students, const string& fileName) {
         }
 
         file.close();
-        finalMarks.stop();
         cout << FILE_WRITE_SUCCESS << endl;
 
     } catch (const std::exception& e) {

@@ -11,13 +11,8 @@ int main() {
 
     generateFile(10000);
 
-    TimeMeasurement program("Bendras programos vykdymas");
-    program.start();
-
     vector<Student> students;
     handleMenu(students);
-
-    program.stop();
 
     return 0;
 }

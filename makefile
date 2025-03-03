@@ -21,4 +21,4 @@ timeMeasurement.o: src/timeMeasurement.cpp include/mylib.h include/timeMeasureme
 	$(CXX) $(CXXFLAGS) -c src/timeMeasurement.cpp -o timeMeasurement.o
 
 clean:
-	rm -f $(COMMON_OBJ) functions.o main 
+	rm -f $(COMMON_OBJ) main 

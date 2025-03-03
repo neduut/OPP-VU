@@ -1,6 +1,5 @@
 #include "utils.h"
 #include "constants.h"
-#include "timeMeasurement.h"
 
 static std::random_device rd;
 
@@ -203,9 +202,6 @@ void generateFile(int size) {
             throw std::runtime_error(FILE_OPEN_ERROR);
         }
 
-        TimeMeasurement fileWrite("Failo generavimas");
-        fileWrite.start();
-
         vector<string> lines;
         lines.reserve(size + 1); //+1 for header
 
@@ -235,7 +231,6 @@ void generateFile(int size) {
         }
 
         file.close();
-        fileWrite.stop();
         cout << FILE_WRITE_SUCCESS << endl;
 
     } catch (const std::exception& e) { 
