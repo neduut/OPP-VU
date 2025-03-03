@@ -9,7 +9,7 @@ int main() {
     // enable lithuanian characters in console
     SetConsoleOutputCP(65001);
 
-    generateFile();
+    generateFile(10000);
 
     TimeMeasurement program("Bendras programos vykdymas");
     program.start();

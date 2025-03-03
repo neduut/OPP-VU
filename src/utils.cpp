@@ -195,9 +195,8 @@ bool isChoiceValid(string choice) {
 }
 
 // random generators
-void generateFile() {
+void generateFile(int size) {
     try {
-        int size = 10000;
         string fileName = "assets/studentai" + to_string(size) + ".txt";
         ofstream file(fileName);
         if (!file) {

@@ -20,7 +20,7 @@ bool isMarkValid(string mark);
 bool isChoiceValid(string choice);
 
 // random generators
-void generateFile();
+void generateFile(int size);
 string getRandomFirstName();
 string getRandomLastName();
 int getRandomMark();
