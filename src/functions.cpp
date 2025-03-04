@@ -1,6 +1,7 @@
 #include "functions.h"
 #include "utils.h"
 #include "constants.h"
+#include "timeMeasurement.h"
 
 void handleMenu(vector<Student>& students) {
     while (true) {
@@ -188,67 +189,59 @@ double medianFinalMark(const vector<int>& marks, int examMark){
 }
 
 void sortStudents(vector<Student>& students, char sortType) {
-    try {
-        if (sortType == 1) {
-            stable_sort(students.begin(), students.end(), [](const Student& a, const Student& b) {
-                return a.firstName < b.firstName;
-            });
-        } else if (sortType == 2) {
-            stable_sort(students.begin(), students.end(), [](const Student& a, const Student& b) {
-                return a.lastName < b.lastName;
-            });
-        } else if (sortType == 3) { 
-            stable_sort(students.begin(), students.end(), [](const Student& a, const Student& b) {
-                return a.avgFinal < b.avgFinal;
-            });
-        } else {
-            stable_sort(students.begin(), students.end(), [](const Student& a, const Student& b) {
-                return a.medianFinal < b.medianFinal;
-            });
-        }
-    } catch (const std::exception& e) {
-        cerr << "Klaida rikiuojant: " << e.what() << endl;
+    if (sortType == 1) {
+        stable_sort(students.begin(), students.end(), [](const Student& a, const Student& b) {
+            return a.firstName < b.firstName;
+        });
+    } else if (sortType == 2) {
+        stable_sort(students.begin(), students.end(), [](const Student& a, const Student& b) {
+            return a.lastName < b.lastName;
+        });
+    } else if (sortType == 3) { 
+        stable_sort(students.begin(), students.end(), [](const Student& a, const Student& b) {
+            return a.avgFinal < b.avgFinal;
+        });
+    } else {
+        stable_sort(students.begin(), students.end(), [](const Student& a, const Student& b) {
+            return a.medianFinal < b.medianFinal;
+        });
     }
 }
 
 void groupStudents(vector<Student>& students, vector<Student>& kietiakai, vector<Student>& vargsiukai, char groupType) {
-    try {
-        if (groupType == 1) {
-            for (const auto& student : students) {
-                if (student.avgFinal >= 5) {
-                    kietiakai.push_back(student);
-                } else {
-                    vargsiukai.push_back(student);
-                }
-            }
-        } else {
-            for (const auto& student : students) {
-                if (student.medianFinal >= 5) {
-                    kietiakai.push_back(student);
-                } else {
-                    vargsiukai.push_back(student);
-                }
+    if (groupType == 1) {
+        for (const auto& student : students) {
+            if (student.avgFinal >= 5) {
+                kietiakai.push_back(student);
+            } else {
+                vargsiukai.push_back(student);
             }
         }
-    } catch (const std::exception& e) {
-        cerr << "Klaida grupuojant: " << e.what() << endl;
+    } else {
+        for (const auto& student : students) {
+            if (student.medianFinal >= 5) {
+                kietiakai.push_back(student);
+            } else {
+                vargsiukai.push_back(student);
+            }
+        }
     }
 }
 
 void printToConsole(vector<Student>& kietiakai, vector<Student>& vargsiukai) {
     cout << left << setw(17) << "Vardas"
          << setw(17) << "Pavarde"
-         << setw(19) << "Galutinis (Vid.)"
-         << setw(19) << "Galutinis (Med.)" << '\n'; 
-    cout << string(70, '-') << '\n'; 
+         << setw(23) << "Galutinis (Vid.)"
+         << setw(23) << "Galutinis (Med.)" << '\n'; 
+    cout << string(80, '-') << '\n'; 
 
     cout << "Kietiakai: " << endl;
     for (const auto& student : kietiakai) { 
         cout << left << setw(17) << student.firstName 
              << setw(17) << student.lastName 
-             << setw(19) << fixed << setprecision(2) 
+             << setw(23) << fixed << setprecision(2) 
              << student.avgFinal  
-             << setw(19) << fixed << setprecision(2) 
+             << setw(23) << fixed << setprecision(2) 
              << student.medianFinal 
              << '\n';
     }
@@ -256,9 +249,9 @@ void printToConsole(vector<Student>& kietiakai, vector<Student>& vargsiukai) {
     for (const auto& student : vargsiukai) { 
         cout << left << setw(17) << student.firstName 
              << setw(17) << student.lastName 
-             << setw(19) << fixed << setprecision(2) 
+             << setw(23) << fixed << setprecision(2) 
              << student.avgFinal  
-             << setw(19) << fixed << setprecision(2) 
+             << setw(23) << fixed << setprecision(2) 
              << student.medianFinal 
              << '\n';
     }
@@ -270,33 +263,31 @@ void printToFile(vector<Student>& students, const string& fileName) {
         if (!file) {
             throw std::runtime_error(FILE_OPEN_ERROR);
         }
-        
-        // file.exceptions(ofstream::failbit | ofstream::badbit); // automatically throws exceptions on fail
 
-        vector<string> lines; // vector to store all lines before writing
-        lines.reserve(students.size() + 2); // reserve space for efficiency, +2 for header and separator
-        
-        // add the header
+        vector<string> lines; // Vector to store all lines before writing
+        lines.reserve(students.size() + 2); // Reserve space for efficiency, +2 for header and separator
+
+        // Add the header
         ostringstream header;
-        header << left << setw(15) << "Vardas"
-               << setw(15) << "Pavarde"
+        header << left << setw(17) << "Vardas"
+               << setw(16) << "Pavarde"
                << setw(20) << "Galutinis (Vid.)"
                << setw(20) << "Galutinis (Med.)" << '\n'
-               << string(66, '-') << '\n'; 
+               << string(69, '-') << '\n'; // Adjust separator length
         lines.push_back(header.str());
-        
-        // collect student data into the vector
+
+        // Collect student data into the vector
         for (const auto& student : students) {
             ostringstream ss;
-            ss << left << setw(15) << student.firstName
-               << setw(15) << student.lastName
+            ss << left << setw(17) << student.firstName
+               << setw(17) << student.lastName
                << setw(20) << fixed << setprecision(2) << student.avgFinal
                << setw(20) << fixed << setprecision(2) << student.medianFinal
                << '\n';
             lines.push_back(ss.str());
         }
 
-        // write all lines to the file in one operation
+        // Write all lines to the file in one operation
         for (const auto& line : lines) {
             file.write(line.c_str(), line.size());
         }
@@ -309,3 +300,60 @@ void printToFile(vector<Student>& students, const string& fileName) {
     }
 }
 
+void run_speed_test_1(int size, const std::string& fileName) {
+    std::ofstream runTimeResults(fileName, std::ios::app); // open file in append mode
+
+
+    if (runTimeResults.is_open()) {
+        runTimeResults << "Failas: studentai" << size << ".txt\n";
+
+        TimeMeasurement genTime("Failo generavimas");
+
+        genTime.start();
+        generateFile(size);
+        genTime.stop(runTimeResults); 
+
+        runTimeResults.close();  
+    } else {
+        std::cerr << FILE_OPEN_ERROR << std::endl;
+    }
+}
+
+void run_speed_test_2(int size, const std::string& fileName) {
+    std::ofstream runTimeResults(fileName, std::ios::app); // open file in append mode
+
+    if (runTimeResults.is_open()) {
+        TimeMeasurement programTime("Programos vykdymo laikas");
+        programTime.start();
+
+        vector<Student> students;
+
+        TimeMeasurement readTime("Duomenų nuskaitymas iš failo");
+        readTime.start();
+        readFromFile(students, size);
+        readTime.stop(runTimeResults); 
+
+        vector<Student> kietiakai;
+        vector<Student> vargsiukai;
+
+        TimeMeasurement groupingTime("Studentų rūšiavimas į dvi grupes");
+        groupingTime.start();
+        groupStudents(students, kietiakai, vargsiukai, 1);
+        groupingTime.stop(runTimeResults); 
+
+        TimeMeasurement printTime("Išvedimas į du naujus failus");
+        printTime.start();
+        printToFile(kietiakai, "kietiakai.txt");
+        printToFile(vargsiukai, "vargsiukai.txt");
+        printTime.stop(runTimeResults);  
+
+        programTime.stop(runTimeResults); 
+
+        runTimeResults << "\n";
+
+        runTimeResults.close(); 
+    } else {
+        std::cerr << FILE_OPEN_ERROR << std::endl;
+    }
+    cout << "\nLaiko tyrimo rezultatai įrašyti į failą: " << fileName << "\n" << endl;
+}

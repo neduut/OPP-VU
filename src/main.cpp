@@ -1,7 +1,6 @@
 #include "mylib.h"
 #include "utils.h"
 #include "functions.h"
-#include "timeMeasurement.h"
 #include <windows.h>
    
 int main() {
@@ -11,8 +10,8 @@ int main() {
 
     vector<Student> students;
 
-    run_speed_test_1(10000);
-    run_speed_test_2(10000);
+    run_speed_test_1(1000, "assets/runTimeResults.txt");
+    run_speed_test_2(1000, "assets/runTimeResults.txt");
 
     //handleMenu(students);
 

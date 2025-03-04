@@ -3,6 +3,7 @@
 
 #include <chrono>
 #include <iostream>
+#include <fstream>  
 
 class TimeMeasurement {
 private:
@@ -17,14 +18,14 @@ public:
     // Start measurement
     void start();
 
-    // Stop measurement and display the time
-    void stop();
+    // Stop measurement and log the time to file
+    void stop(std::ofstream& runTimeResults);
 
-    // Get time difference (ms)
+    // Get time difference (seconds)
     double getTimeDifference();
-};
 
-void run_speed_test_1(int size);
-void run_speed_test_2(int size);
+    // Getter for action name (optional)
+    std::string getActionName() const { return actionName; }
+};
 
 #endif
