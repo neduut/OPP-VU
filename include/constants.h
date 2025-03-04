@@ -9,6 +9,7 @@ const string ENTER_LAST_NAME = "Įveskite pavardę: ";
 const string ENTER_MARK = "Įveskite namų darbų pažymį (norint sustoti, įveskite -1): "; 
 const string ENTER_MARK_IN_MIXED = "Įveskite namų darbų pažymį: ";
 const string ENTER_EXAM_MARK = "Įveskite egzamino pažymį: ";
+const string ENTER_GROUP_TYPE = "Pasirinkite grupavimo tipą (1 - vidurkis / 2 - mediana): ";
 const string ENTER_SORT_TYPE = "Pasirinkite, pagal ką rūšiuoti studentus (1 - vardą / 2 - pavardę / 3 - galutinį balą (vid.) / 4 - galutinį balą (med.)): ";
 const string ENTER_PRINT_TYPE = "Pasirinkite, kur išvesti duomenis (1 - ekraną / 2 - failą): ";
 const string ENTER_MARKS_COUNT = "Įveskite namų darbų pažymių skaičių: ";
@@ -22,8 +23,6 @@ constexpr char MENU_TEXT[] =
     "3 - Generuoti atsitiktinius vardus ir pažymius\n"
     "4 - Skaityti iš failo\n"
     "5 - Užbaigti programą\n";
-
-const string ENTER_GROUP_TYPE = "Pasirinkite grupavimo tipą (1 - vidurkis / 2 - mediana): ";
 
 constexpr char ENTER_FILE_SIZE[] = 
     "\nPasirinkite, kokio dydžio failą norite atidaryti:\n"

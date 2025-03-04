@@ -24,7 +24,7 @@ public:
     double getTimeDifference();
 };
 
-// void run_speed_test_1(int size);
-// void run_speed_test_2(int size);
+void run_speed_test_1(int size);
+void run_speed_test_2(int size);
 
 #endif

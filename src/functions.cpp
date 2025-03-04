@@ -14,7 +14,6 @@ void handleMenu(vector<Student>& students) {
                 int sortType = getSortType();    // by first name, last name or final mark?
                 int outputType = getPrintType(); // to console or to file?
 
-                // KAZKAS CIA NE TAIP SU VEKTORIUM !!!!!!!!!!!!!!
                 vector<Student> kietiakai;
                 vector<Student> vargsiukai;
 
@@ -35,7 +34,8 @@ void handleMenu(vector<Student>& students) {
             break;
         }
         else if (menuChoice == 4) {
-            readFromFile(students);
+            int fileSize = getFileSize();
+            readFromFile(students, fileSize);
         }
         else {
             readInput(students, menuChoice);
@@ -122,9 +122,8 @@ void readInput(vector<Student>& students, char menuChoice) {
     students.shrink_to_fit();
 }
 
-void readFromFile(vector<Student>& students) {
+void readFromFile(vector<Student>& students, int fileSize) {
     try {
-        int fileSize = getFileSize();
         students.reserve(fileSize); 
         
         ifstream file("assets/studentai" + to_string(fileSize) + ".txt");

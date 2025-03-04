@@ -1,4 +1,5 @@
 #include "TimeMeasurement.h"
+#include "functions.h"
 
 using namespace std::chrono;
 
@@ -23,5 +24,38 @@ double TimeMeasurement::getTimeDifference() {
     return duration<double>(endTime - startTime).count();
 }
 
-//void run_speed_test_1(int size) { }
-//void run_speed_test_2(int size) { }
+void run_speed_test_1(int size) {
+    TimeMeasurement genTime("Failo generavimas");
+
+    genTime.start();
+    generateFile(size);
+    genTime.stop();
+}
+
+void run_speed_test_2(int size) {
+    TimeMeasurement programTime("Visos programos veikimo laikas");
+    programTime.start();
+
+    vector<Student> students;
+
+    TimeMeasurement readTime("Duomenų nuskaitymas iš failo: ");
+    readTime.start();
+    readFromFile(students, size);
+    readTime.stop();
+
+    vector<Student> kietiakai;
+    vector<Student> vargsiukai;
+
+    TimeMeasurement groupingTime("Studentų rūšiavimas į dvi grupes: ");
+    groupingTime.start();
+    groupStudents(students, kietiakai, vargsiukai, 1);
+    groupingTime.stop();
+
+    TimeMeasurement printTime("Duomenų išvedimas į 2 failus: ");
+    printTime.start();
+    printToFile(kietiakai, "kietiakai.txt");
+    printToFile(vargsiukai, "vargsiukai.txt");
+    printTime.stop();
+
+    programTime.stop();
+ }
