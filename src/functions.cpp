@@ -59,8 +59,8 @@ void generateFile(int size) {
         ostringstream header;
         header << left << setw(15) << "Vardas"
                << setw(15) << "Pavardė";
-        for (int j = 1; j <= 10; ++j) {
-            header << setw(8) << "ND" + to_string(j);  // Adding 10 grades (ND1, ND2, ..., ND10)
+        for (int j = 1; j <= 5; ++j) {  
+            header << setw(8) << "ND" + to_string(j);
         }
         header << setw(10) << "Egzaminas" << '\n';
         lines.push_back(header.str());
@@ -70,10 +70,10 @@ void generateFile(int size) {
             ostringstream ss;
             ss << left << setw(15) << "Vardas" + to_string(i + 1)
                << setw(15) << "Pavardė" + to_string(i + 1);
-            for (int j = 0; j < 10; ++j) {
-                ss << setw(8) << getRandomMark();  // Use getRandomMark() to generate a random grade for each ND
+            for (int j = 0; j < 5; ++j) {  
+                ss << setw(8) << getRandomMark();  
             }
-            ss << setw(10) << getRandomMark() << '\n';  // Add exam mark using getRandomMark()
+            ss << setw(10) << getRandomMark() << '\n';  // Add exam mark
             lines.push_back(ss.str());
         }
 
@@ -133,36 +133,36 @@ void readFromFile(vector<Student>& students, int fileSize) {
         if (!file) {
             throw std::runtime_error(FILE_OPEN_ERROR);
         }
-        //file.exceptions(ifstream::failbit | ifstream::badbit);// automatically throws exceptions on fail
 
         file.ignore(numeric_limits<streamsize>::max(), '\n'); // skip the first line
 
-        string line;
+        string firstName, lastName, line;
         while (getline(file, line)) {
             istringstream stream(line);
-            string firstName, lastName;
             stream >> firstName >> lastName;
             
             vector<int> marks;
+            marks.reserve(6); 
+            
             int mark;
             while (stream >> mark) {
                 marks.push_back(mark);
             }
 
             if (marks.empty()) throw std::runtime_error(EMPTY_ARRAY_ERROR);
+            
             int examMark = marks.back();
             marks.pop_back();
-
-        // final mark
-        double avgFinal = averageFinalMark(marks, examMark);
-        double medianFinal = medianFinalMark(marks, examMark);
-
-        students.push_back({firstName, lastName, marks, examMark, avgFinal, medianFinal});
+            
+            double avgFinal = averageFinalMark(marks, examMark);
+            double medianFinal = medianFinalMark(marks, examMark);
+            
+            students.emplace_back(Student{std::move(firstName), std::move(lastName), std::move(marks), examMark, avgFinal, medianFinal});
         }
 
         file.close();
-        cout << FILE_READ_SUCCESS << endl;
         students.shrink_to_fit();
+        cout << FILE_READ_SUCCESS << endl;
 
     } catch (const std::exception& e) {
         cerr << e.what() << endl;
@@ -266,36 +266,30 @@ void printToFile(vector<Student>& students, const string& fileName) {
             throw std::runtime_error(FILE_OPEN_ERROR);
         }
 
-        vector<string> lines; // Vector to store all lines before writing
-        lines.reserve(students.size() + 2); // Reserve space for efficiency, +2 for header and separator
+        vector<string> lines;
+        lines.reserve(students.size() + 2);
 
-        // Add the header
         ostringstream header;
-        header << left << setw(17) << "Vardas"
-               << setw(16) << "Pavarde"
-               << setw(20) << "Galutinis (Vid.)"
-               << setw(20) << "Galutinis (Med.)" << '\n'
-               << string(69, '-') << '\n'; // Adjust separator length
+        header << left << setw(15) << "Vardas"
+               << setw(20) << "Pavarde"
+               << setw(17) << "Galutinis (Vid.)" << '\n'
+               << string(60, '-') << '\n';
         lines.push_back(header.str());
 
-        // Collect student data into the vector
         for (const auto& student : students) {
             ostringstream ss;
-            ss << left << setw(17) << student.firstName
-               << setw(17) << student.lastName
-               << setw(20) << fixed << setprecision(2) << student.avgFinal
-               << setw(20) << fixed << setprecision(2) << student.medianFinal
-               << '\n';
+            ss << setw(15) << left << student.firstName
+               << setw(20) << student.lastName
+               << setw(17) << fixed << setprecision(2) << student.avgFinal << '\n';
             lines.push_back(ss.str());
         }
 
-        // Write all lines to the file in one operation
         for (const auto& line : lines) {
             file.write(line.c_str(), line.size());
         }
 
         file.close();
-        cout << FILE_WRITE_SUCCESS << "(failas: " << fileName << ")" << endl;
+        cout << "Rezultatai issaugoti faile: " << fileName << "\n";
 
     } catch (const std::exception& e) {
         cerr << "Error: " << e.what() << endl;

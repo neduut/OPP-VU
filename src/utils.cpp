@@ -128,7 +128,7 @@ vector<int> getHomeworkMarks(char menuChoice) {
             marks.push_back(stoi(tempMark));
         }
     } else {
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < 5; i++) {
             marks.push_back(getRandomMark());
             cout << "Pazymys " << i + 1 << ": " << marks[i] << endl;
         }
