@@ -1,39 +1,22 @@
-Failas: studentai1000.txt
----> Failo generavimas took: 0.143742 s
----> Duomenų nuskaitymas iš failo took: 0.0310918 s
----> Studentų rūšiavimas į dvi grupes took: 0.0006232 s
----> Išvedimas į du naujus failus took: 0.0090621 s
----> Programos vykdymo laikas took: 0.0408882 s
 
-Failas: studentai1000.txt
----> Failo generavimas took: 0.142121 s
----> Duomenų nuskaitymas iš failo took: 0.0289733 s
----> Studentų rūšiavimas į dvi grupes took: 0.0007009 s
----> Išvedimas į du naujus failus took: 0.0099875 s
----> Programos vykdymo laikas took: 0.0397579 s
+Failas: studentai100000.txt
+---> Failo generavimas took: 0.265431 s
+---> Duomenų nuskaitymas iš failo took: 0.477703 s
+---> Studentų rūšiavimas į dvi grupes took: 0.047677 s
+---> Išvedimas į du naujus failus took: 0.330176 s
+---> Programos vykdymo laikas took: 0.855689 s
 
-Failas: studentai1000.txt
----> Failo generavimas took: 0.14094 s
----> Duomenų nuskaitymas iš failo took: 0.0303686 s
----> Studentų rūšiavimas į dvi grupes took: 0.00084 s
----> Išvedimas į du naujus failus took: 0.0093592 s
----> Programos vykdymo laikas took: 0.0406499 s
+Failas: studentai100000.txt
+---> Failo generavimas took: 14.8394 s
+---> Duomenų nuskaitymas iš failo took: 0.491918 s
+---> Studentų rūšiavimas į dvi grupes took: 0.0508466 s
+---> Išvedimas į du naujus failus took: 0.344042 s
+---> Programos vykdymo laikas took: 0.886921 s
 
-----------------------------------------------------------------------
-
-
-
-Failas: studentai1000.txt
----> Failo generavimas took: 0.140657 s
----> Duomenų nuskaitymas iš failo took: 0.0313401 s
----> Studentų rūšiavimas į dvi grupes took: 0.00107 s
----> Išvedimas į du naujus failus took: 0.0100781 s
----> Programos vykdymo laikas took: 0.04269 s
-
-Failas: studentai1000.txt
----> Failo generavimas took: 0.142759 s
----> Duomenų nuskaitymas iš failo took: 0.0335204 s
----> Studentų rūšiavimas į dvi grupes took: 0.0005685 s
----> Išvedimas į du naujus failus took: 0.0086045 s
----> Programos vykdymo laikas took: 0.0427761 s
+Failas: studentai100000.txt
+---> Failo generavimas took: 0.249055 s
+---> Duomenų nuskaitymas iš failo took: 0.487003 s
+---> Studentų rūšiavimas į dvi grupes took: 0.0439212 s
+---> Išvedimas į du naujus failus took: 0.344724 s
+---> Programos vykdymo laikas took: 0.875757 s
 

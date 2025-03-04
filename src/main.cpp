@@ -10,8 +10,8 @@ int main() {
 
     vector<Student> students;
 
-    run_speed_test_1(1000, "assets/runTimeResults.txt");
-    run_speed_test_2(1000, "assets/runTimeResults.txt");
+    run_speed_test_1(100000, "assets/runTimeResults.txt");
+    run_speed_test_2(100000, "assets/runTimeResults.txt");
 
     //handleMenu(students);
 

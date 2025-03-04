@@ -53,38 +53,40 @@ void generateFile(int size) {
         }
 
         vector<string> lines;
-        lines.reserve(size + 1); //+1 for header
+        lines.reserve(size + 1); // Reserve space for size + 1 (header)
 
+        // Add header
         ostringstream header;
         header << left << setw(15) << "Vardas"
                << setw(15) << "Pavardė";
-        for (int j = 1; j <= 10; j++) {
-            header << setw(8) << "ND" + to_string(j);
+        for (int j = 1; j <= 10; ++j) {
+            header << setw(8) << "ND" + to_string(j);  // Adding 10 grades (ND1, ND2, ..., ND10)
         }
         header << setw(10) << "Egzaminas" << '\n';
         lines.push_back(header.str());
 
-        for (int i = 0; i < size; i++) {
+        // Generate student data
+        for (int i = 0; i < size; ++i) {
             ostringstream ss;
             ss << left << setw(15) << "Vardas" + to_string(i + 1)
                << setw(15) << "Pavardė" + to_string(i + 1);
-            for (int j = 0; j < 10; j++) {
-                ss << setw(8) << getRandomMark();
+            for (int j = 0; j < 10; ++j) {
+                ss << setw(8) << getRandomMark();  // Use getRandomMark() to generate a random grade for each ND
             }
-            ss << setw(10) << getRandomMark() << '\n';
+            ss << setw(10) << getRandomMark() << '\n';  // Add exam mark using getRandomMark()
             lines.push_back(ss.str());
         }
 
-        // write all lines to the file in one operation
+        // Write all lines to the file in one operation
         for (const auto& line : lines) {
             file.write(line.c_str(), line.size());
         }
 
         file.close();
-        cout << FILE_WRITE_SUCCESS << endl;
+        cout << FILE_WRITE_SUCCESS << fileName << endl;
 
     } catch (const std::exception& e) { 
-        cerr << "Klaida: " << e.what() << endl;
+        cerr << "Error: " << e.what() << endl;
     }
 }
 
