@@ -1,6 +1,5 @@
 #include "functions.h"
 #include "utils.h"
-#include "timeMeasurement.h"
 #include "constants.h"
 
 void handleMenu(vector<Student>& students) {
@@ -41,6 +40,50 @@ void handleMenu(vector<Student>& students) {
         else {
             readInput(students, menuChoice);
         }
+    }
+}
+
+void generateFile(int size) {
+    try {
+        string fileName = "assets/studentai" + to_string(size) + ".txt";
+        ofstream file(fileName);
+        if (!file) {
+            throw std::runtime_error(FILE_OPEN_ERROR);
+        }
+
+        vector<string> lines;
+        lines.reserve(size + 1); //+1 for header
+
+        ostringstream header;
+        header << left << setw(15) << "Vardas"
+               << setw(15) << "Pavardė";
+        for (int j = 1; j <= 10; j++) {
+            header << setw(8) << "ND" + to_string(j);
+        }
+        header << setw(10) << "Egzaminas" << '\n';
+        lines.push_back(header.str());
+
+        for (int i = 0; i < size; i++) {
+            ostringstream ss;
+            ss << left << setw(15) << "Vardas" + to_string(i + 1)
+               << setw(15) << "Pavardė" + to_string(i + 1);
+            for (int j = 0; j < 10; j++) {
+                ss << setw(8) << getRandomMark();
+            }
+            ss << setw(10) << getRandomMark() << '\n';
+            lines.push_back(ss.str());
+        }
+
+        // write all lines to the file in one operation
+        for (const auto& line : lines) {
+            file.write(line.c_str(), line.size());
+        }
+
+        file.close();
+        cout << FILE_WRITE_SUCCESS << endl;
+
+    } catch (const std::exception& e) { 
+        cerr << "Klaida: " << e.what() << endl;
     }
 }
 
@@ -260,9 +303,10 @@ void printToFile(vector<Student>& students, const string& fileName) {
         }
 
         file.close();
-        cout << FILE_WRITE_SUCCESS << endl;
+        cout << FILE_WRITE_SUCCESS << "(failas: " << fileName << ")" << endl;
 
     } catch (const std::exception& e) {
         cerr << "Error: " << e.what() << endl;
     }
 }
+

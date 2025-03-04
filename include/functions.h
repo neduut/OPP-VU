@@ -13,6 +13,7 @@ struct Student {
 };
 
 void handleMenu(vector<Student>& students);
+void generateFile(int size);
 void readInput(vector<Student>& students, char menuChoice);
 void readFromFile(vector<Student>& students);
 double averageFinalMark(const vector<int>& marks, int examMark);

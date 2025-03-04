@@ -22,3 +22,6 @@ void TimeMeasurement::stop() {
 double TimeMeasurement::getTimeDifference() {
     return duration<double>(endTime - startTime).count();
 }
+
+//void run_speed_test_1(int size) { }
+//void run_speed_test_2(int size) { }
