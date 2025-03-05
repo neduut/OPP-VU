@@ -348,6 +348,10 @@ void run_speed_test_2(int size, const std::string& fileName) {
         groupStudents(students, kietiakai, vargsiukai, 1);
         groupingTime.stop(runTimeResults); 
 
+        students.clear(); 
+        kietiakai.shrink_to_fit();
+        vargsiukai.shrink_to_fit();
+
         TimeMeasurement printTime("Išvedimas į du naujus failus");
         printTime.start();
         printToFile(kietiakai, "kietiakai.txt");
