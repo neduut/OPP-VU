@@ -312,7 +312,7 @@ void run_speed_test_1(int size, const std::string& fileName) {
 
 
     if (runTimeResults.is_open()) {
-        runTimeResults << "Failas: studentai" << size << ".txt\n";
+        runTimeResults << "Failo studentai" << size << ".txt generavimas\n";
 
         TimeMeasurement genTime("Failo generavimas");
 
@@ -321,6 +321,8 @@ void run_speed_test_1(int size, const std::string& fileName) {
         genTime.stop(runTimeResults); 
 
         runTimeResults.close();  
+        runTimeResults << "\n";
+
     } else {
         std::cerr << FILE_OPEN_ERROR << std::endl;
     }
@@ -330,6 +332,7 @@ void run_speed_test_2(int size, const std::string& fileName) {
     std::ofstream runTimeResults(fileName, std::ios::app); // open file in append mode
 
     if (runTimeResults.is_open()) {
+        runTimeResults << "Programos vykdymas su failu studentai" << size << ".txt\n";
         TimeMeasurement programTime("Programos vykdymo laikas");
         programTime.start();
 
@@ -348,6 +351,10 @@ void run_speed_test_2(int size, const std::string& fileName) {
         groupStudents(students, kietiakai, vargsiukai, 1);
         groupingTime.stop(runTimeResults); 
 
+        students.clear(); 
+        kietiakai.shrink_to_fit();
+        vargsiukai.shrink_to_fit();
+
         TimeMeasurement printTime("Išvedimas į du naujus failus");
         printTime.start();
         printToFile(kietiakai, "kietiakai.txt");
@@ -355,7 +362,6 @@ void run_speed_test_2(int size, const std::string& fileName) {
         printTime.stop(runTimeResults);  
 
         programTime.stop(runTimeResults); 
-
         runTimeResults << "\n";
 
         runTimeResults.close(); 
