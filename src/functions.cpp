@@ -21,10 +21,15 @@ void handleMenu(vector<Student>& students) {
                 // separate students into 2 groups
                 groupStudents(students, kietiakai, vargsiukai, groupType);
 
+                students.clear(); // clear students vector
+                kietiakai.shrink_to_fit();
+                vargsiukai.shrink_to_fit();
+
                 // sort students
                 sortStudents(kietiakai, sortType);
                 sortStudents(vargsiukai, sortType);
 
+                // if output type is 1, print to console, if 2, print to file
                 if (outputType == 1) {
                     printToConsole(kietiakai, vargsiukai);
                 } else {
@@ -191,18 +196,22 @@ double medianFinalMark(const vector<int>& marks, int examMark){
 }
 
 void sortStudents(vector<Student>& students, char sortType) {
+    // if sortType is 1, sort by first name
     if (sortType == 1) {
         stable_sort(students.begin(), students.end(), [](const Student& a, const Student& b) {
             return a.firstName < b.firstName;
         });
+    // if sortType is 2, sort by last name
     } else if (sortType == 2) {
         stable_sort(students.begin(), students.end(), [](const Student& a, const Student& b) {
             return a.lastName < b.lastName;
         });
+    // if sortType is 3, sort by average final mark
     } else if (sortType == 3) { 
         stable_sort(students.begin(), students.end(), [](const Student& a, const Student& b) {
             return a.avgFinal < b.avgFinal;
         });
+    // if sortType is 4, sort by median final mark
     } else {
         stable_sort(students.begin(), students.end(), [](const Student& a, const Student& b) {
             return a.medianFinal < b.medianFinal;
@@ -211,6 +220,7 @@ void sortStudents(vector<Student>& students, char sortType) {
 }
 
 void groupStudents(vector<Student>& students, vector<Student>& kietiakai, vector<Student>& vargsiukai, char groupType) {
+    // if groupType is 1, group by average final mark
     if (groupType == 1) {
         for (const auto& student : students) {
             if (student.avgFinal >= 5) {
@@ -219,6 +229,7 @@ void groupStudents(vector<Student>& students, vector<Student>& kietiakai, vector
                 vargsiukai.push_back(student);
             }
         }
+    // if groupType is 2, group by median final mark
     } else {
         for (const auto& student : students) {
             if (student.medianFinal >= 5) {
