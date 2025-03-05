@@ -10,10 +10,12 @@ int main() {
 
     vector<Student> students;
 
-    run_speed_test_1(10000000, "assets/runTimeResults.txt");
-    run_speed_test_2(10000000, "assets/runTimeResults.txt");
+    // pirma susikurt faila, tada ji uzarchivuot
+    speedTest1(10000000, "assets/runTimeResults.txt");
+    // paskui atlikti 5 testus su tuo paciu failu
+    speedTest2(10000000, "assets/runTimeResults.txt");
 
-    //handleMenu(students); 
+    handleMenu(students); 
 
     return 0;
 }

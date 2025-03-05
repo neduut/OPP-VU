@@ -22,7 +22,7 @@ void sortStudents(vector<Student>& students, char sortType);
 void groupStudents(vector<Student>& students, vector<Student>& kietiakai, vector<Student>& vargsiukai, char groupType);
 void printToConsole(vector<Student>& kietiakai, vector<Student>& vargsiukai);
 void printToFile(vector<Student>& students, const string& fileName);
-void run_speed_test_1(int size, const std::string& fileName);
-void run_speed_test_2(int size, const std::string& fileName);
+void speedTest1(int size, const std::string& fileName);
+void speedTest2(int size, const std::string& fileName);
 
 #endif  
