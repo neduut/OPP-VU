@@ -2,9 +2,6 @@ Failas: studentai1000.txt
 ---> Failo generavimas took: 0.0038511 s
 
 Failas: studentai1000.txt
----> Failo generavimas took: 0.0038511 s
-
-Failas: studentai1000.txt
 ---> Failo generavimas took: 0.0031794 s
 
 Failas: studentai1000.txt
