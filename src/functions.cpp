@@ -312,7 +312,7 @@ void speedTest1(int size, const std::string& fileName) {
 
 
     if (runTimeResults.is_open()) {
-        runTimeResults << "Failo studentai" << size << ".txt generavimas\n";
+        runTimeResults << "Failas: studentai" << size << ".txt\n";
 
         TimeMeasurement genTime("Failo generavimas");
 
@@ -333,7 +333,7 @@ void speedTest2(int size, const std::string& fileName) {
     std::ofstream runTimeResults(fileName, std::ios::app); // open file in append mode
 
     if (runTimeResults.is_open()) {
-        runTimeResults << "Programos vykdymas su failu studentai" << size << ".txt\n";
+        runTimeResults << "Failas: studentai" << size << ".txt\n";
         TimeMeasurement programTime("Programos vykdymo laikas");
         programTime.start();
 
