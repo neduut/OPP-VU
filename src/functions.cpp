@@ -312,7 +312,7 @@ void speedTest1(int size, const std::string& fileName) {
 
 
     if (runTimeResults.is_open()) {
-        runTimeResults << "Failas: studentai" << size << ".txt\n";
+        runTimeResults << "Failo studentai" << size << ".txt generavimas\n";
 
         TimeMeasurement genTime("Failo generavimas");
 
