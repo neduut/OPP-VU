@@ -19,7 +19,7 @@ void handleProgramMenu(vector<Student>& students) {
                 vector<Student> vargsiukai;
 
                 // separate students into 2 groups
-                groupStudents(students, kietiakai, vargsiukai, groupType);
+                groupStudents1(students, kietiakai, vargsiukai, groupType);
 
                 students.clear(); // clear students vector
                 kietiakai.shrink_to_fit();
@@ -60,17 +60,17 @@ void handleTestMenu() {
             int fileSize = getFileSize();
             speedTest(fileSize, "assets/runTimeResults.txt");
         }
-        /*else if (testMenuChoice == 2) {
+        else if (testMenuChoice == 2) {
             int fileSize = getFileSize();
-            sstrategy1(fileSize, "assets/runTimeResults.txt");
+            strategies(fileSize, "assets/runTimeResults.txt", 1);
         }
         else if (testMenuChoice == 3) {
             int fileSize = getFileSize();
-            strategy2(fileSize, "assets/runTimeResults.txt");
+            strategies(fileSize, "assets/runTimeResults.txt", 2);
         }
-        else if (testMenuChoice == 4) {
+        /*else if (testMenuChoice == 4) {
             int fileSize = getFileSize();
-            srategy3(fileSize, "assets/runTimeResults.txt");
+            srategy3(fileSize, "assets/runTimeResults.txt", 3);
         }*/
     }
 }
@@ -239,26 +239,31 @@ void sortStudents(vector<Student>& students, char sortType) {
     }
 }
 
-void groupStudents(vector<Student>& students, vector<Student>& kietiakai, vector<Student>& vargsiukai, char groupType) {
-    // if groupType is 1, group by average final mark
-    if (groupType == 1) {
-        for (const auto& student : students) {
-            if (student.avgFinal >= 5) {
-                kietiakai.push_back(student);
-            } else {
-                vargsiukai.push_back(student);
-            }
-        }
-    // if groupType is 2, group by median final mark
-    } else {
-        for (const auto& student : students) {
-            if (student.medianFinal >= 5) {
-                kietiakai.push_back(student);
-            } else {
-                vargsiukai.push_back(student);
-            }
+void groupStudents1(vector<Student>& students, vector<Student>& kietiakai, vector<Student>& vargsiukai, char groupType) {
+    for (const auto& student : students) {
+        double finalMark = (groupType == 1) ? student.avgFinal : student.medianFinal;
+        
+        if (finalMark >= 5) {
+            kietiakai.push_back(student);
+        } else {
+            vargsiukai.push_back(student);
         }
     }
+}
+
+void groupStudents2(vector<Student>& students, vector<Student>& kietiakai, vector<Student>& vargsiukai, char groupType) {
+    for (auto it = students.begin(); it != students.end();) {
+        double finalMark = (groupType == 1) ? it->avgFinal : it->medianFinal;
+
+        if (finalMark < 5) {
+            vargsiukai.push_back(*it);
+            it = students.erase(it);  
+        } else {
+            ++it;  
+        }
+    }
+    kietiakai.insert(kietiakai.end(), students.begin(), students.end());
+    students.clear(); 
 }
 
 void printToConsole(vector<Student>& kietiakai, vector<Student>& vargsiukai) {
@@ -352,7 +357,7 @@ void speedTest(int size, const std::string& fileName) {
 
         TimeMeasurement groupingTime("Studentų rūšiavimas į dvi grupes");
         groupingTime.start();
-        groupStudents(students, kietiakai, vargsiukai, 1);
+        groupStudents1(students, kietiakai, vargsiukai, 1);
         groupingTime.stop(runTimeResults); 
 
         students.clear(); 
@@ -367,3 +372,43 @@ void speedTest(int size, const std::string& fileName) {
     }
     cout << "\nLaiko tyrimo rezultatai įrašyti į failą: " << fileName << "\n" << endl;
 }
+
+void strategies(int size, const std::string& fileName, int strategy) {
+    std::ofstream runTimeResults(fileName, std::ios::app); 
+
+    if (runTimeResults.is_open()) {
+        runTimeResults << "Vektorius\n";
+        runTimeResults << "Failas: studentai" << size << ".txt\n";
+        TimeMeasurement groupingTime("Studentų rūšiavimas į dvi grupes (strategija 1)");
+
+        vector<Student> students;
+        vector<Student> kietiakai;
+        vector<Student> vargsiukai;
+
+        if (strategy == 1) {
+            groupingTime.start();
+            groupStudents1(students, kietiakai, vargsiukai, 1);
+            groupingTime.stop(runTimeResults); 
+        } else if (strategy == 2) {
+            groupingTime.start();
+            groupStudents2(students, kietiakai, vargsiukai, 1);
+            groupingTime.stop(runTimeResults); 
+        } /*else {
+            groupingTime.start();
+            groupStudents3(students, kietiakai, vargsiukai, 1);
+            groupingTime.stop(runTimeResults); 
+        }*/
+
+        /*students.clear(); 
+        kietiakai.shrink_to_fit();
+        vargsiukai.shrink_to_fit();*/
+
+        runTimeResults << "\n";
+
+        runTimeResults.close(); 
+    } else {
+        std::cerr << FILE_OPEN_ERROR << std::endl;
+    }
+    cout << "\nLaiko tyrimo rezultatai įrašyti į failą: " << fileName << "\n" << endl;
+}
+

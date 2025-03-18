@@ -20,9 +20,12 @@ void readFromFile(vector<Student>& students, int fileSize);
 double averageFinalMark(const vector<int>& marks, int examMark);
 double medianFinalMark(const vector<int>& marks, int examMark);
 void sortStudents(vector<Student>& students, char sortType);
-void groupStudents(vector<Student>& students, vector<Student>& kietiakai, vector<Student>& vargsiukai, char groupType);
+void groupStudents1(vector<Student>& students, vector<Student>& kietiakai, vector<Student>& vargsiukai, char groupType);
+void groupStudents2(vector<Student>& students, vector<Student>& kietiakai, vector<Student>& vargsiukai, char groupType);
+//void groupStudents3(vector<Student>& students, vector<Student>& kietiakai, vector<Student>& vargsiukai, char groupType);
 void printToConsole(vector<Student>& kietiakai, vector<Student>& vargsiukai);
 void printToFile(vector<Student>& students, const string& fileName);
 void speedTest(int size, const std::string& fileName);
+void strategies(int size, const std::string& fileName, int strategy);
 
 #endif  
