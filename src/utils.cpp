@@ -5,43 +5,96 @@ std::random_device rd;
 std::mt19937 mt(rd());
 
 // requests
-int getSortType() {
-    string sortType;
+string getYesNo() {
+    string choice;
     while (true) {
-        cout << ENTER_SORT_TYPE;
-        cin >> sortType;
-        if (stoi(sortType) >= 1 && stoi(sortType) <= 4) break;
+        cin >> choice;
+        if (isChoiceValid(choice)) break;
         cout << INVALID_CHOICE;
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
     }
-    return stoi(sortType);
+    return choice;
+}
+
+int getSortType() {
+    int sortType;
+    while (true) {
+        cout << ENTER_SORT_TYPE;
+        string input;
+        cin >> input;
+        try {
+            sortType = stoi(input);
+            if (sortType >= 1 && sortType <= 4) break;
+        } catch (const std::invalid_argument&) {
+        }
+        cout << INVALID_CHOICE;
+    }
+    return sortType;
 }
 
 int getPrintType() {
-    string printType;
+    int printType;
     while (true) {
         cout << ENTER_PRINT_TYPE;
-        cin >> printType;
-        if (stoi(printType) == 1 || stoi(printType) == 2) break;
+        string input;
+        cin >> input;
+        try {
+            printType = stoi(input);
+            if (printType == 1 || printType == 2) break;
+        } catch (const std::invalid_argument&) {
+        }
         cout << INVALID_OUTPUT_TYPE_ERROR;
-        cin.clear();
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
     }
-    return stoi(printType);
+    return printType;
 }
 
 int getMenuChoice() {
-    string choice;
+    int choice;
     while (true) {
         cout << MENU_TEXT;
-        cin >> choice;
-        if (stoi(choice) >= 1 && stoi(choice) <= 5) break;
+        string input;
+        cin >> input;
+        try {
+            choice = stoi(input);
+            if (choice >= 0 && choice <= 2) break;
+        } catch (const std::invalid_argument&) {
+        }
         cout << INVALID_CHOICE;
-        cin.clear();
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
     }
-    return stoi(choice);
+    return choice;
+}
+
+int getTestMenuChoice() {
+    int choice;
+    while (true) {
+        cout << TEST_MENU_TEXT;
+        string input;
+        cin >> input;
+        try {
+            choice = stoi(input);
+            if (choice >= 0 && choice <= 4) break;
+        } catch (const std::invalid_argument&) {
+        }
+        cout << INVALID_CHOICE;
+    }
+    return choice;
+}
+
+int getProgramMenuChoice() {
+    int choice;
+    while (true) {
+        cout << PROGRAM_MENU_TEXT;
+        string input;
+        cin >> input;
+        try {
+            choice = stoi(input);
+            if (choice >= 1 && choice <= 5) break;
+        } catch (const std::invalid_argument&) {
+        }
+        cout << INVALID_CHOICE;
+    }
+    return choice;
 }
 
 string getFirstName(char menuChoice) {

@@ -4,10 +4,13 @@
 #include "mylib.h"
 
 // requests
+string getYesNo();
 int getSortType();
 int getGroupType();
 int getPrintType();
 int getMenuChoice();
+int getProgramMenuChoice();
+int getTestMenuChoice();
 string getFirstName(char menuChoice);
 string getLastName(char menuChoice);
 int getExamMark(char menuChoice);

@@ -3,9 +3,9 @@
 #include "constants.h"
 #include "timeMeasurement.h"
 
-void handleMenu(vector<Student>& students) {
+void handleProgramMenu(vector<Student>& students) {
     while (true) {
-        int menuChoice = getMenuChoice();
+        int menuChoice = getProgramMenuChoice();
 
         if (menuChoice == 5) {
             if (!students.empty()) {
@@ -46,6 +46,32 @@ void handleMenu(vector<Student>& students) {
         else {
             readInput(students, menuChoice);
         }
+    }
+}
+
+void handleTestMenu() {
+    while (true) {
+        int testMenuChoice = getTestMenuChoice();
+
+        if (testMenuChoice == 0) {
+            break;
+        }
+        else if (testMenuChoice == 1) {
+            int fileSize = getFileSize();
+            speedTest(fileSize, "assets/runTimeResults.txt");
+        }
+        /*else if (testMenuChoice == 2) {
+            int fileSize = getFileSize();
+            sstrategy1(fileSize, "assets/runTimeResults.txt");
+        }
+        else if (testMenuChoice == 3) {
+            int fileSize = getFileSize();
+            strategy2(fileSize, "assets/runTimeResults.txt");
+        }
+        else if (testMenuChoice == 4) {
+            int fileSize = getFileSize();
+            srategy3(fileSize, "assets/runTimeResults.txt");
+        }*/
     }
 }
 
@@ -116,14 +142,8 @@ void readInput(vector<Student>& students, char menuChoice) {
 
         students.push_back({firstName, lastName, marks, examMark, avgFinal, medianFinal});
 
-        while (true) {
-            cout << ADD_ANOTHER_STUDENT << endl;
-            cin >> choice;
-            if (isChoiceValid(choice)) break;
-            cout << INVALID_CHOICE;
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        }
+        cout << ADD_ANOTHER_STUDENT << endl;
+        choice = getYesNo();
 
     } while (choice == "taip"); 
 
@@ -307,35 +327,12 @@ void printToFile(vector<Student>& students, const string& fileName) {
     }
 }
 
-void speedTest1(int size, const std::string& fileName) {
-    std::ofstream runTimeResults(fileName, std::ios::app); // open file in append mode
-
-
-    if (runTimeResults.is_open()) {
-        runTimeResults << "Failo studentai" << size << ".txt generavimas\n";
-
-        TimeMeasurement genTime("Failo generavimas");
-
-        genTime.start();
-        generateFile(size);
-        genTime.stop(runTimeResults); 
-
-        runTimeResults.close();  
-        runTimeResults << "\n";
-
-    } else {
-        std::cerr << FILE_OPEN_ERROR << std::endl;
-    }
-    cout << "\nLaiko tyrimo rezultatai įrašyti į failą: " << fileName << "\n" << endl;
-}
-
-void speedTest2(int size, const std::string& fileName) {
+void speedTest(int size, const std::string& fileName) {
     std::ofstream runTimeResults(fileName, std::ios::app); // open file in append mode
 
     if (runTimeResults.is_open()) {
+        runTimeResults << "Vektorius\n";
         runTimeResults << "Failas: studentai" << size << ".txt\n";
-        TimeMeasurement programTime("Programos vykdymo laikas");
-        programTime.start();
 
         vector<Student> students;
 
@@ -343,6 +340,12 @@ void speedTest2(int size, const std::string& fileName) {
         readTime.start();
         readFromFile(students, size);
         readTime.stop(runTimeResults); 
+
+        int sortType = getSortType(); 
+        TimeMeasurement printTime("Studentų rikiavimas didėjimo tvarka");
+        printTime.start();
+        sortStudents(students, sortType);
+        printTime.stop(runTimeResults);  
 
         vector<Student> kietiakai;
         vector<Student> vargsiukai;
@@ -356,13 +359,6 @@ void speedTest2(int size, const std::string& fileName) {
         kietiakai.shrink_to_fit();
         vargsiukai.shrink_to_fit();
 
-        TimeMeasurement printTime("Išvedimas į du naujus failus");
-        printTime.start();
-        printToFile(kietiakai, "kietiakai.txt");
-        printToFile(vargsiukai, "vargsiukai.txt");
-        printTime.stop(runTimeResults);  
-
-        programTime.stop(runTimeResults); 
         runTimeResults << "\n";
 
         runTimeResults.close(); 

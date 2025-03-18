@@ -10,12 +10,16 @@ int main() {
 
     vector<Student> students;
 
-    // pirma susikurt faila, tada ji uzarchivuot
-    speedTest1(10000000, "assets/runTimeResults.txt");
-    // paskui atlikti 5 testus su tuo paciu failu
-    speedTest2(10000000, "assets/runTimeResults.txt");
+    // ar testavimas ar programa
+    int choice = getMenuChoice();
 
-    handleMenu(students); 
+    if (choice == 1) {
+        handleProgramMenu(students);
+    } else if (choice == 2) {
+        handleTestMenu();
+    } else {
+        cout << "Kaip sau nori.\n";
+    }
 
     return 0;
 }
