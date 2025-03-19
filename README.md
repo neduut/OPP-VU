@@ -36,4 +36,4 @@ Visų testų rezultatus galima rasti `assets` kataloge.
 
 ## Išvados
 
-Tyrimas parodė, kad naudojant didesnius failus, `vector` buvo efektyviausias, o `list` buvo mažiausiai efektyvus.
+Tyrimas parodė, kad naudojant didesnius failus, `vector` buvo efektyviausias, o `deque` buvo mažiausiai efektyvus.
