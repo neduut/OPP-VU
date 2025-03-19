@@ -5,6 +5,8 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <deque>
+#include <list>
 #include <limits>
 #include <iomanip>
 #include <cmath>
@@ -24,6 +26,8 @@ using std::cout;
 using std::endl;
 using std::string;
 using std::vector;
+using std::deque;
+using std::list;
 using std::setw;
 using std::left;
 using std::right;
