@@ -1,0 +1,83 @@
+Failas: studentai1000.txt
+---> Studentų rūšiavimas į dvi grupes užtruko: 0.0016388 s
+
+Failas: studentai1000.txt
+---> Studentų rūšiavimas į dvi grupes užtruko: 0.0010452 s
+
+Failas: studentai1000.txt
+---> Studentų rūšiavimas į dvi grupes užtruko: 0.0009789 s
+
+Failas: studentai1000.txt
+---> Studentų rūšiavimas į dvi grupes užtruko: 0.0010273 s
+
+Failas: studentai1000.txt
+---> Studentų rūšiavimas į dvi grupes užtruko: 0.0016562 s
+
+--------------------------------------------------------------------------
+
+Failas: studentai10000.txt
+---> Studentų rūšiavimas į dvi grupes užtruko: 0.0071887 s
+
+Failas: studentai10000.txt
+---> Studentų rūšiavimas į dvi grupes užtruko: 0.0070741 s
+
+Failas: studentai10000.txt
+---> Studentų rūšiavimas į dvi grupes užtruko: 0.0078517 s
+
+Failas: studentai10000.txt
+---> Studentų rūšiavimas į dvi grupes užtruko: 0.0088263 s
+
+Failas: studentai10000.txt
+---> Studentų rūšiavimas į dvi grupes užtruko: 0.0078485 s
+
+--------------------------------------------------------------------------
+
+Failas: studentai100000.txt
+---> Studentų rūšiavimas į dvi grupes užtruko: 0.106579 s
+
+Failas: studentai100000.txt
+---> Studentų rūšiavimas į dvi grupes užtruko: 0.105521 s
+
+Failas: studentai100000.txt
+---> Studentų rūšiavimas į dvi grupes užtruko: 0.0983942 s
+
+Failas: studentai100000.txt
+---> Studentų rūšiavimas į dvi grupes užtruko: 0.0989075 s
+
+Failas: studentai100000.txt
+---> Studentų rūšiavimas į dvi grupes užtruko: 0.104844 s
+
+--------------------------------------------------------------------------
+
+Failas: studentai1000000.txt
+---> Studentų rūšiavimas į dvi grupes užtruko: 1.07138 s
+
+Failas: studentai1000000.txt
+---> Studentų rūšiavimas į dvi grupes užtruko: 1.06476 s
+
+Failas: studentai1000000.txt
+---> Studentų rūšiavimas į dvi grupes užtruko: 1.04605 s
+
+Failas: studentai1000000.txt
+---> Studentų rūšiavimas į dvi grupes užtruko: 1.04385 s
+
+Failas: studentai1000000.txt
+---> Studentų rūšiavimas į dvi grupes užtruko: 1.1264 s
+
+--------------------------------------------------------------------------
+
+Failas: studentai10000000.txt
+---> Studentų rūšiavimas į dvi grupes užtruko: 11.4794 s
+
+Failas: studentai10000000.txt
+---> Studentų rūšiavimas į dvi grupes užtruko: 16.3708 s
+
+Failas: studentai10000000.txt
+---> Studentų rūšiavimas į dvi grupes užtruko: 11.4044 s
+
+Failas: studentai10000000.txt
+---> Studentų rūšiavimas į dvi grupes užtruko: 14.7461 s
+
+Failas: studentai10000000.txt
+---> Studentų rūšiavimas į dvi grupes užtruko: 11.3224 s
+

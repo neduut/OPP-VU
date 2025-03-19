@@ -26,7 +26,7 @@ Testai buvo atliekami po 5 kartus. Buvo tikrinamos šios operacijos:
 
 Visiems testams buvo naudojami tie patys failai, užtikrinant tyrimų patikimumą.
 
-Visų testų rezultatus galima rasti `assets` kataloge.
+Visų testų rezultatus galima rasti `assets` -> `containerTest` kataloge.
 
 ## Testų rezultatų vidurkiai
 
