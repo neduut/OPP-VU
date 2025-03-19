@@ -328,7 +328,7 @@ void printToFile(list<Student>& students, const string& fileName) {
 
         file.close();
         system("cls");
-        cout << "Rezultatai issaugoti faile: " << fileName << "\n";
+        cout << "Rezultatai išsaugoti faile: " << fileName << "\n";
 
     } catch (const std::exception& e) {
         cerr << "Error: " << e.what() << endl;
@@ -442,14 +442,16 @@ void listTest(int size, const std::string& fileName) {
 }
 
 void strategies(int size, const std::string& fileName, int strategy) {
-    std::ofstream runTimeResults("../assets/strategies/" + fileName, std::ios::app); 
+    std::ofstream runTimeResults("../assets/strategiesTest/" + fileName, std::ios::app); 
 
     //int groupType = getGroupType(); 
     if (runTimeResults.is_open()) {
         runTimeResults << "Failas: studentai" << size << ".txt\n";
-        TimeMeasurement groupingTime("Studentų rūšiavimas į dvi grupes (strategija 1)");
+        TimeMeasurement groupingTime("Studentų rūšiavimas į dvi grupes");
 
         list<Student> students;
+        readFromFile(students, size);
+
         list<Student> kietiakai;
         list<Student> vargsiukai;
 
@@ -469,7 +471,6 @@ void strategies(int size, const std::string& fileName, int strategy) {
         printToFile(vargsiukai, "vargsiukai.txt");
 
         runTimeResults << "\n";
-
         runTimeResults.close(); 
     } else {
         std::cerr << FILE_OPEN_ERROR << std::endl;
