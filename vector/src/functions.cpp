@@ -465,7 +465,7 @@ void strategies(int size, const std::string& fileName, int strategy) {
 
         vector<Student> students;
         readFromFile(students, size);
-        
+
         vector<Student> kietiakai;
         vector<Student> vargsiukai;
 
@@ -488,7 +488,6 @@ void strategies(int size, const std::string& fileName, int strategy) {
         vargsiukai.shrink_to_fit();
 
         runTimeResults << "\n";
-
         runTimeResults.close(); 
     } else {
         std::cerr << FILE_OPEN_ERROR << std::endl;
