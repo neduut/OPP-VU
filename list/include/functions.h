@@ -25,7 +25,9 @@ void groupStudents2(vector<Student>& students, vector<Student>& kietiakai, vecto
 //void groupStudents3(vector<Student>& students, vector<Student>& kietiakai, vector<Student>& vargsiukai, char groupType);
 void printToConsole(vector<Student>& kietiakai, vector<Student>& vargsiukai);
 void printToFile(vector<Student>& students, const string& fileName);
-void speedTest(int size, const std::string& fileName);
+void fileGenTest(int size, const std::string& fileName);
+void programTest(int size, const std::string& fileName);
+void vectorTest(int size, const std::string& fileName);
 void strategies(int size, const std::string& fileName, int strategy);
 
 #endif  

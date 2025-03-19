@@ -19,15 +19,14 @@ const string ADD_ANOTHER_STUDENT = "Ar norite įvesti dar vieną studentą? (tai
 constexpr char MENU_TEXT[] = 
     "\nPasirinkite, ką norite daryti:\n"
     "1 - Vykdyti programą\n"
-    "2 - Atlikti pasirinktą tyrimą\n"
+    "2 - Atlikti pasirinktus tyrimus\n"
     "0 - Nieko nenoriu daryti\n";
 
 constexpr char TEST_MENU_TEXT[] =
     "\nPasirinkite tyrimą:\n"
-    "1 - veikimo laikas su vector konteineriu\n"
+    "1 - veikimo laikas su deque konteineriu\n"
     "2 - pirma strategija\n"
     "3 - antra strategija\n"
-    "4 - trecia strategija\n"
     "0 - Užbaigti programa\n";
 
 constexpr char PROGRAM_MENU_TEXT[] = 

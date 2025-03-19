@@ -2,7 +2,7 @@
 #include "utils.h"
 #include "functions.h"
 #include <windows.h>
-   
+
 int main() {
 
     // enable lithuanian characters in console
@@ -23,3 +23,4 @@ int main() {
 
     return 0;
 }
+

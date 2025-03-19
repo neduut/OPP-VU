@@ -58,27 +58,27 @@ void handleTestMenu() {
         }
         else if (testMenuChoice == 1) {
             int fileSize = getFileSize();
-            speedTest(fileSize, "assets/runTimeResults.txt");
+            fileGenTest(fileSize, to_string(fileSize) + ".txt");
         }
         else if (testMenuChoice == 2) {
             int fileSize = getFileSize();
-            strategies(fileSize, "assets/runTimeResults.txt", 1);
+            programTest(fileSize, "runTimeResults.txt");
         }
         else if (testMenuChoice == 3) {
             int fileSize = getFileSize();
-            strategies(fileSize, "assets/runTimeResults.txt", 2);
+            vectorTest(fileSize, "runTimeResults.txt");
         }
-        /*else if (testMenuChoice == 4) {
+        else if (testMenuChoice == 4 || testMenuChoice == 5 || testMenuChoice == 6) {
             int fileSize = getFileSize();
-            srategy3(fileSize, "assets/runTimeResults.txt", 3);
-        }*/
+            strategies(fileSize, "runTimeResults.txt", testMenuChoice);
+        }
     }
 }
 
 void generateFile(int size) {
     try {
-        string fileName = "assets/studentai" + to_string(size) + ".txt";
-        ofstream file(fileName);
+        string fileName = "studentai" + to_string(size) + ".txt";
+        ofstream file("../assets/" + fileName);
         if (!file) {
             throw std::runtime_error(FILE_OPEN_ERROR);
         }
@@ -154,7 +154,7 @@ void readFromFile(vector<Student>& students, int fileSize) {
     try {
         students.reserve(fileSize); 
         
-        ifstream file("assets/studentai" + to_string(fileSize) + ".txt");
+        ifstream file("../assets/studentai" + to_string(fileSize) + ".txt");
         if (!file) {
             throw std::runtime_error(FILE_OPEN_ERROR);
         }
@@ -297,7 +297,7 @@ void printToConsole(vector<Student>& kietiakai, vector<Student>& vargsiukai) {
 
 void printToFile(vector<Student>& students, const string& fileName) {
     try {
-        ofstream file("assets/" + fileName);
+        ofstream file("../assets/" + fileName);
         if (!file) {
             throw std::runtime_error(FILE_OPEN_ERROR);
         }
@@ -332,8 +332,74 @@ void printToFile(vector<Student>& students, const string& fileName) {
     }
 }
 
-void speedTest(int size, const std::string& fileName) {
-    std::ofstream runTimeResults(fileName, std::ios::app); // open file in append mode
+void fileGenTest(int size, const std::string& fileName) {
+    std::ofstream runTimeResults("../assets/" + fileName, std::ios::app); // open file in append mode
+
+    if (runTimeResults.is_open()) {
+        runTimeResults << "Failas: studentai" << size << ".txt\n";
+
+        TimeMeasurement genTime("Failo generavimas");
+
+        genTime.start();
+        generateFile(size);
+        genTime.stop(runTimeResults); 
+
+        runTimeResults.close();  
+        runTimeResults << "\n";
+
+    } else {
+        std::cerr << FILE_OPEN_ERROR << std::endl;
+    }
+    system("cls");
+    cout << "\nLaiko tyrimo rezultatai įrašyti į failą: " << fileName << "\n";
+}
+
+void programTest(int size, const std::string& fileName) {
+    std::ofstream runTimeResults("../assets/" + fileName, std::ios::app); // open file in append mode
+
+    if (runTimeResults.is_open()) {
+        runTimeResults << "Failas: studentai" << size << ".txt\n";
+        TimeMeasurement programTime("Programos vykdymo laikas");
+        programTime.start();
+
+        vector<Student> students;
+
+        TimeMeasurement readTime("Duomenų nuskaitymas iš failo");
+        readTime.start();
+        readFromFile(students, size);
+        readTime.stop(runTimeResults); 
+
+        vector<Student> kietiakai;
+        vector<Student> vargsiukai;
+
+        TimeMeasurement groupingTime("Studentų rūšiavimas į dvi grupes");
+        groupingTime.start();
+        groupStudents1(students, kietiakai, vargsiukai, 1);
+        groupingTime.stop(runTimeResults); 
+
+        students.clear(); 
+        kietiakai.shrink_to_fit();
+        vargsiukai.shrink_to_fit();
+
+        TimeMeasurement printTime("Išvedimas į du naujus failus");
+        printTime.start();
+        printToFile(kietiakai, "kietiakai.txt");
+        printToFile(vargsiukai, "vargsiukai.txt");
+        printTime.stop(runTimeResults);  
+
+        programTime.stop(runTimeResults); 
+        runTimeResults << "\n";
+
+        runTimeResults.close(); 
+    } else {
+        std::cerr << FILE_OPEN_ERROR << std::endl;
+    }
+    system("cls");
+    cout << "Laiko tyrimo rezultatai įrašyti į failą: " << fileName << "\n";
+}
+
+void vectorTest(int size, const std::string& fileName) {
+    std::ofstream runTimeResults("../assets/" + fileName, std::ios::app); // open file in append mode
 
     if (runTimeResults.is_open()) {
         runTimeResults << "Vektorius\n";
@@ -346,15 +412,16 @@ void speedTest(int size, const std::string& fileName) {
         readFromFile(students, size);
         readTime.stop(runTimeResults); 
 
-        int sortType = getSortType(); 
+        //int sortType = getSortType(); 
         TimeMeasurement printTime("Studentų rikiavimas didėjimo tvarka");
         printTime.start();
-        sortStudents(students, sortType);
+        sortStudents(students, 1);
         printTime.stop(runTimeResults);  
 
         vector<Student> kietiakai;
         vector<Student> vargsiukai;
 
+        //int sortGroup = getGroupType();
         TimeMeasurement groupingTime("Studentų rūšiavimas į dvi grupes");
         groupingTime.start();
         groupStudents1(students, kietiakai, vargsiukai, 1);
@@ -370,12 +437,14 @@ void speedTest(int size, const std::string& fileName) {
     } else {
         std::cerr << FILE_OPEN_ERROR << std::endl;
     }
-    cout << "\nLaiko tyrimo rezultatai įrašyti į failą: " << fileName << "\n" << endl;
+    system("cls");
+    cout << "Laiko tyrimo rezultatai įrašyti į failą: " << fileName << "\n";
 }
 
 void strategies(int size, const std::string& fileName, int strategy) {
-    std::ofstream runTimeResults(fileName, std::ios::app); 
+    std::ofstream runTimeResults("../assets/" + fileName, std::ios::app); 
 
+    //int groupType = getGroupType(); 
     if (runTimeResults.is_open()) {
         runTimeResults << "Vektorius\n";
         runTimeResults << "Failas: studentai" << size << ".txt\n";
@@ -385,11 +454,11 @@ void strategies(int size, const std::string& fileName, int strategy) {
         vector<Student> kietiakai;
         vector<Student> vargsiukai;
 
-        if (strategy == 1) {
+        if (strategy == 4) {
             groupingTime.start();
             groupStudents1(students, kietiakai, vargsiukai, 1);
             groupingTime.stop(runTimeResults); 
-        } else if (strategy == 2) {
+        } else if (strategy == 5) {
             groupingTime.start();
             groupStudents2(students, kietiakai, vargsiukai, 1);
             groupingTime.stop(runTimeResults); 
@@ -399,9 +468,9 @@ void strategies(int size, const std::string& fileName, int strategy) {
             groupingTime.stop(runTimeResults); 
         }*/
 
-        /*students.clear(); 
+        students.clear(); 
         kietiakai.shrink_to_fit();
-        vargsiukai.shrink_to_fit();*/
+        vargsiukai.shrink_to_fit();
 
         runTimeResults << "\n";
 
@@ -409,6 +478,6 @@ void strategies(int size, const std::string& fileName, int strategy) {
     } else {
         std::cerr << FILE_OPEN_ERROR << std::endl;
     }
-    cout << "\nLaiko tyrimo rezultatai įrašyti į failą: " << fileName << "\n" << endl;
+    system("cls");
+    cout << "Laiko tyrimo rezultatai įrašyti į failą: " << fileName << "\n";
 }
-

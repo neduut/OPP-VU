@@ -73,7 +73,7 @@ int getTestMenuChoice() {
         cin >> input;
         try {
             choice = stoi(input);
-            if (choice >= 0 && choice <= 4) break;
+            if (choice >= 0 && choice <= 3) break;
         } catch (const std::invalid_argument&) {
         }
         cout << INVALID_CHOICE;
