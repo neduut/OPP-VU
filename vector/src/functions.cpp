@@ -464,6 +464,8 @@ void strategies(int size, const std::string& fileName, int strategy) {
         TimeMeasurement groupingTime("Studentų rūšiavimas į dvi grupes (strategija 1)");
 
         vector<Student> students;
+        readFromFile(students, size);
+        
         vector<Student> kietiakai;
         vector<Student> vargsiukai;
 
