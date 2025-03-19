@@ -21,6 +21,7 @@ double averageFinalMark(const std::list<int>& marks, int examMark);
 double medianFinalMark(const std::list<int>& marks, int examMark);
 void sortStudents(std::list<Student>& students, char sortType);
 void groupStudents1(std::list<Student>& students, std::list<Student>& kietiakai, std::list<Student>& vargsiukai, char groupType);
+void groupStudents2(std::list<Student>& students, std::list<Student>& kietiakai, std::list<Student>& vargsiukai, char groupType);
 void printToConsole(std::list<Student>& kietiakai, std::list<Student>& vargsiukai);
 void printToFile(std::list<Student>& students, const std::string& fileName);
 void fileGenTest(int size, const std::string& fileName);

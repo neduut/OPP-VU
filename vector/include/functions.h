@@ -21,6 +21,8 @@ double averageFinalMark(const vector<int>& marks, int examMark);
 double medianFinalMark(const vector<int>& marks, int examMark);
 void sortStudents(vector<Student>& students, char sortType);
 void groupStudents1(vector<Student>& students, vector<Student>& kietiakai, vector<Student>& vargsiukai, char groupType);
+void groupStudents2(vector<Student>& students, vector<Student>& kietiakai, vector<Student>& vargsiukai, char groupType);
+//void groupStudents3(vector<Student>& students, vector<Student>& kietiakai, vector<Student>& vargsiukai, char groupType);
 void printToConsole(vector<Student>& kietiakai, vector<Student>& vargsiukai);
 void printToFile(vector<Student>& students, const string& fileName);
 void fileGenTest(int size, const std::string& fileName);

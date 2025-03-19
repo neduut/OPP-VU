@@ -22,11 +22,14 @@ constexpr char MENU_TEXT[] =
     "2 - Atlikti pasirinktus tyrimus\n"
     "0 - Nieko nenoriu daryti\n";
 
-constexpr char TEST_MENU_TEXT[] =
+    constexpr char TEST_MENU_TEXT[] =
     "\nPasirinkite tyrimą:\n"
     "1 - failu generavimas\n"
     "2 - programos veikimo laikas\n"
-    "3 - konteinerio testas\n"
+    "3 - konteinerio testas\n" 
+    "4 - pirma strategija\n"
+    "5 - antra strategija\n"
+    "6 - trecia strategija\n" 
     "0 - Užbaigti programa\n";
 
 constexpr char PROGRAM_MENU_TEXT[] = 
