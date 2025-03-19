@@ -21,7 +21,6 @@ double averageFinalMark(const deque<int>& marks, int examMark);
 double medianFinalMark(const deque<int>& marks, int examMark);
 void sortStudents(deque<Student>& students, char sortType);
 void groupStudents1(deque<Student>& students, deque<Student>& kietiakai, deque<Student>& vargsiukai, char groupType);
-void groupStudents2(deque<Student>& students, deque<Student>& kietiakai, deque<Student>& vargsiukai, char groupType);
 void printToConsole(deque<Student>& kietiakai, deque<Student>& vargsiukai);
 void printToFile(deque<Student>& students, const string& fileName);
 void fileGenTest(int size, const string& fileName);

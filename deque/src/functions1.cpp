@@ -237,21 +237,6 @@ void groupStudents1(deque<Student>& students, deque<Student>& kietiakai, deque<S
     }
 }
 
-void groupStudents2(deque<Student>& students, deque<Student>& kietiakai, deque<Student>& vargsiukai, char groupType) {
-    for (auto it = students.begin(); it != students.end();) {
-        double finalMark = (groupType == 1) ? it->avgFinal : it->medianFinal;
-
-        if (finalMark < 5) {
-            vargsiukai.push_back(*it);
-            it = students.erase(it);  
-        } else {
-            ++it;  
-        }
-    }
-    kietiakai.insert(kietiakai.end(), students.begin(), students.end());
-    students.clear(); 
-}
-
 void printToConsole(deque<Student>& kietiakai, deque<Student>& vargsiukai) {
     cout << left << setw(17) << "Vardas"
          << setw(17) << "Pavarde"
