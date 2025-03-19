@@ -1,0 +1,158 @@
+Konteineris: deque
+Failas: studentai1000.txt
+---> Duomenų nuskaitymas iš failo took: 0.0069349 s
+---> Studentų rikiavimas didėjimo tvarka took: 0.0043576 s
+---> Studentų rūšiavimas į dvi grupes took: 0.0016605 s
+
+Konteineris: deque
+Failas: studentai1000.txt
+---> Duomenų nuskaitymas iš failo took: 0.0065038 s
+---> Studentų rikiavimas didėjimo tvarka took: 0.004215 s
+---> Studentų rūšiavimas į dvi grupes took: 0.0015911 s
+
+Konteineris: deque
+Failas: studentai1000.txt
+---> Duomenų nuskaitymas iš failo took: 0.0065533 s
+---> Studentų rikiavimas didėjimo tvarka took: 0.0045455 s
+---> Studentų rūšiavimas į dvi grupes took: 0.0015905 s
+
+Konteineris: deque
+Failas: studentai1000.txt
+---> Duomenų nuskaitymas iš failo took: 0.0069608 s
+---> Studentų rikiavimas didėjimo tvarka took: 0.004209 s
+---> Studentų rūšiavimas į dvi grupes took: 0.0017723 s
+
+Konteineris: deque
+Failas: studentai1000.txt
+---> Duomenų nuskaitymas iš failo took: 0.0066282 s
+---> Studentų rikiavimas didėjimo tvarka took: 0.0041844 s
+---> Studentų rūšiavimas į dvi grupes took: 0.0015347 s
+
+--------------------------------------------------------------------------
+
+Konteineris: deque
+Failas: studentai10000.txt
+---> Duomenų nuskaitymas iš failo took: 0.0586125 s
+---> Studentų rikiavimas didėjimo tvarka took: 0.0494762 s
+---> Studentų rūšiavimas į dvi grupes took: 0.0149111 s
+
+Konteineris: deque
+Failas: studentai10000.txt
+---> Duomenų nuskaitymas iš failo took: 0.0583029 s
+---> Studentų rikiavimas didėjimo tvarka took: 0.0486077 s
+---> Studentų rūšiavimas į dvi grupes took: 0.0148517 s
+
+Konteineris: deque
+Failas: studentai10000.txt
+---> Duomenų nuskaitymas iš failo took: 0.0593489 s
+---> Studentų rikiavimas didėjimo tvarka took: 0.050243 s
+---> Studentų rūšiavimas į dvi grupes took: 0.0165103 s
+
+Konteineris: deque
+Failas: studentai10000.txt
+---> Duomenų nuskaitymas iš failo took: 0.0587802 s
+---> Studentų rikiavimas didėjimo tvarka took: 0.0480643 s
+---> Studentų rūšiavimas į dvi grupes took: 0.0146994 s
+
+Konteineris: deque
+Failas: studentai10000.txt
+---> Duomenų nuskaitymas iš failo took: 0.0787144 s
+---> Studentų rikiavimas didėjimo tvarka took: 0.056201 s
+---> Studentų rūšiavimas į dvi grupes took: 0.0183083 s
+
+--------------------------------------------------------------------------
+
+Konteineris: deque
+Failas: studentai100000.txt
+---> Duomenų nuskaitymas iš failo took: 0.574244 s
+---> Studentų rikiavimas didėjimo tvarka took: 0.404624 s
+---> Studentų rūšiavimas į dvi grupes took: 0.102377 s
+
+Konteineris: deque
+Failas: studentai100000.txt
+---> Duomenų nuskaitymas iš failo took: 0.589908 s
+---> Studentų rikiavimas didėjimo tvarka took: 0.581477 s
+---> Studentų rūšiavimas į dvi grupes took: 0.096247 s
+
+Konteineris: deque
+Failas: studentai100000.txt
+---> Duomenų nuskaitymas iš failo took: 0.62401 s
+---> Studentų rikiavimas didėjimo tvarka took: 0.487871 s
+---> Studentų rūšiavimas į dvi grupes took: 0.0885972 s
+
+Konteineris: deque
+Failas: studentai100000.txt
+---> Duomenų nuskaitymas iš failo took: 0.592643 s
+---> Studentų rikiavimas didėjimo tvarka took: 0.380716 s
+---> Studentų rūšiavimas į dvi grupes took: 0.0867097 s
+
+Konteineris: deque
+Failas: studentai100000.txt
+---> Duomenų nuskaitymas iš failo took: 0.637361 s
+---> Studentų rikiavimas didėjimo tvarka took: 0.412794 s
+---> Studentų rūšiavimas į dvi grupes took: 0.0858049 s
+
+--------------------------------------------------------------------------
+
+Konteineris: deque
+Failas: studentai1000000.txt
+---> Duomenų nuskaitymas iš failo took: 3.04613 s
+---> Studentų rikiavimas didėjimo tvarka took: 3.24772 s
+---> Studentų rūšiavimas į dvi grupes took: 0.695346 s
+
+Konteineris: deque
+Failas: studentai1000000.txt
+---> Duomenų nuskaitymas iš failo took: 2.6417 s
+---> Studentų rikiavimas didėjimo tvarka took: 3.24185 s
+---> Studentų rūšiavimas į dvi grupes took: 0.703616 s
+
+Konteineris: deque
+Failas: studentai1000000.txt
+---> Duomenų nuskaitymas iš failo took: 3.54404 s
+---> Studentų rikiavimas didėjimo tvarka took: 3.39126 s
+---> Studentų rūšiavimas į dvi grupes took: 0.735311 s
+
+Konteineris: deque
+Failas: studentai1000000.txt3
+---> Duomenų nuskaitymas iš failo took: 3.16157 s
+---> Studentų rikiavimas didėjimo tvarka took: 3.32542 s
+---> Studentų rūšiavimas į dvi grupes took: 0.757039 s
+
+Konteineris: deque
+Failas: studentai1000000.txt
+---> Duomenų nuskaitymas iš failo took: 2.72502 s
+---> Studentų rikiavimas didėjimo tvarka took: 3.28113 s
+---> Studentų rūšiavimas į dvi grupes took: 0.718719 s
+
+--------------------------------------------------------------------------
+
+Konteineris: deque
+Failas: studentai10000000.txt
+---> Duomenų nuskaitymas iš failo took: 37.885 s
+---> Studentų rikiavimas didėjimo tvarka took: 52.3903 s
+---> Studentų rūšiavimas į dvi grupes took: 14.1402 s
+
+Konteineris: deque
+Failas: studentai10000000.txt
+---> Duomenų nuskaitymas iš failo took: 39.8863 s
+---> Studentų rikiavimas didėjimo tvarka took: 56.07 s
+---> Studentų rūšiavimas į dvi grupes took: 20.6608 s
+
+Konteineris: deque
+Failas: studentai10000000.txt
+---> Duomenų nuskaitymas iš failo took: 42.4795 s
+---> Studentų rikiavimas didėjimo tvarka took: 57.0664 s
+---> Studentų rūšiavimas į dvi grupes took: 22.3872 s
+
+Konteineris: deque
+Failas: studentai10000000.txt
+---> Duomenų nuskaitymas iš failo took: 42.132 s
+---> Studentų rikiavimas didėjimo tvarka took: 56.067 s
+---> Studentų rūšiavimas į dvi grupes took: 23.6367 s
+
+Konteineris: deque
+Failas: studentai10000000.txt
+---> Duomenų nuskaitymas iš failo took: 37.6011 s
+---> Studentų rikiavimas didėjimo tvarka took: 51.2175 s
+---> Studentų rūšiavimas į dvi grupes took: 13.5655 s
+
