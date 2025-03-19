@@ -1,5 +1,5 @@
-#include "utils.h"
-#include "constants.h"
+#include "utils2.h"
+#include "constants2.h"
 
 std::random_device rd;
 std::mt19937 mt(rd());
@@ -73,7 +73,7 @@ int getTestMenuChoice() {
         cin >> input;
         try {
             choice = stoi(input);
-            if (choice >= 0 && choice <= 3) break;
+            if (choice >= 0 && choice <= 5) break;
         } catch (const std::invalid_argument&) {
         }
         cout << INVALID_CHOICE;
@@ -157,8 +157,8 @@ int getExamMark(char menuChoice) {
     return examMark;
 }
 
-vector<int> getHomeworkMarks(char menuChoice) {
-    vector<int> marks;
+list<int> getHomeworkMarks(char menuChoice) {
+    list<int> marks;
     if (menuChoice == '1') {
         string tempMark;
         while (true) {
@@ -182,8 +182,9 @@ vector<int> getHomeworkMarks(char menuChoice) {
         }
     } else {
         for (int i = 0; i < 5; i++) {
-            marks.push_back(getRandomMark());
-            cout << "Pazymys " << i + 1 << ": " << marks[i] << endl;
+            int randomMark = getRandomMark();
+            marks.push_back(randomMark);
+            cout << "Pažymys " << i + 1 << ": " << randomMark << endl;
         }
     }
     return marks;

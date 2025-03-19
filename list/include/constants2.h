@@ -1,7 +1,7 @@
-#ifndef CONSTANTS_H
-#define CONSTANTS_H
+#ifndef CONSTANTS2_H
+#define CONSTANTS2_H
 
-#include "mylib.h"
+#include "mylib2.h"
 
 // user prompts
 const string ENTER_FIRST_NAME = "Įveskite vardą: ";
@@ -24,9 +24,9 @@ constexpr char MENU_TEXT[] =
 
 constexpr char TEST_MENU_TEXT[] =
     "\nPasirinkite tyrimą:\n"
-    "1 - veikimo laikas su vector konteineriu\n"
-    "2 - pirma strategija\n"
-    "3 - antra strategija\n"
+    "1 - failu generavimas\n"
+    "2 - programos veikimo laikas\n"
+    "3 - veikimo laikas su list konteineriu\n"
     "0 - Užbaigti programa\n";
 
 constexpr char PROGRAM_MENU_TEXT[] = 

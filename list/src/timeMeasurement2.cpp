@@ -1,4 +1,4 @@
-#include "TimeMeasurement.h"
+#include "timeMeasurement2.h"
 #include <fstream>  
 
 using namespace std::chrono;

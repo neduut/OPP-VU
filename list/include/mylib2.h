@@ -1,10 +1,10 @@
-#ifndef MYLIB_H
-#define MYLIB_H
+#ifndef MYLIB2_H
+#define MYLIB2_H
 
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <vector>
+#include <list>
 #include <limits>
 #include <iomanip>
 #include <cmath>
@@ -18,12 +18,14 @@
 #include <chrono>
 #include <random>
 #include <sstream>
+#include <iterator>
+#include <stdexcept>
 
 using std::cin;
 using std::cout;
 using std::endl;
 using std::string;
-using std::vector;
+using std::list;
 using std::setw;
 using std::left;
 using std::right;
@@ -40,5 +42,7 @@ using std::ifstream;
 using std::ofstream;
 using std::cerr;
 using std::to_string;
+using std::advance;
+
 
 #endif
