@@ -66,6 +66,10 @@ void handleTestMenu() {
             int fileSize = getFileSize();
             listTest(fileSize, "listTest.txt");
         }
+        else if (testMenuChoice == 4 || testMenuChoice == 5) {
+            int fileSize = getFileSize();
+            strategies(fileSize, "strategiesTest.txt", testMenuChoice);
+        }
     }
 }
 
@@ -421,6 +425,44 @@ void listTest(int size, const std::string& fileName) {
         groupingTime.stop(runTimeResults); 
 
         students.clear(); 
+
+        runTimeResults << "\n";
+
+        runTimeResults.close(); 
+    } else {
+        std::cerr << FILE_OPEN_ERROR << std::endl;
+    }
+    system("cls");
+    cout << "Laiko tyrimo rezultatai įrašyti į failą: " << fileName << "\n";
+}
+
+void strategies(int size, const std::string& fileName, int strategy) {
+    std::ofstream runTimeResults("../assets/" + fileName, std::ios::app); 
+
+    //int groupType = getGroupType(); 
+    if (runTimeResults.is_open()) {
+        runTimeResults << "Konteineris: list\n";
+        runTimeResults << "Failas: studentai" << size << ".txt\n";
+        TimeMeasurement groupingTime("Studentų rūšiavimas į dvi grupes (strategija 1)");
+
+        list<Student> students;
+        list<Student> kietiakai;
+        list<Student> vargsiukai;
+
+        if (strategy == 4) {
+            groupingTime.start();
+            groupStudents1(students, kietiakai, vargsiukai, 1);
+            groupingTime.stop(runTimeResults); 
+        } else if (strategy == 5) {
+            groupingTime.start();
+            groupStudents2(students, kietiakai, vargsiukai, 1);
+            groupingTime.stop(runTimeResults); 
+        } 
+
+        students.clear(); 
+
+        printToFile(kietiakai, "kietiakai.txt");
+        printToFile(vargsiukai, "vargsiukai.txt");
 
         runTimeResults << "\n";
 

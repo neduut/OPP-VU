@@ -68,6 +68,10 @@ void handleTestMenu() {
             int fileSize = getFileSize();
             vectorTest(fileSize, "vectorTest.txt");
         }
+        else if (testMenuChoice == 4 || testMenuChoice == 5 || testMenuChoice == 6) {
+            int fileSize = getFileSize();
+            strategies(fileSize, "strategiesTest.txt", testMenuChoice);
+        }
     }
 }
 
@@ -433,6 +437,47 @@ void vectorTest(int size, const std::string& fileName) {
 
         printToFile(kietiakai, "kietiakai.txt");
         printToFile(vargsiukai, "vargsiukai.txt");
+
+        runTimeResults << "\n";
+
+        runTimeResults.close(); 
+    } else {
+        std::cerr << FILE_OPEN_ERROR << std::endl;
+    }
+    system("cls");
+    cout << "Laiko tyrimo rezultatai įrašyti į failą: " << fileName << "\n";
+}
+
+void strategies(int size, const std::string& fileName, int strategy) {
+    std::ofstream runTimeResults("../assets/" + fileName, std::ios::app); 
+
+    //int groupType = getGroupType(); 
+    if (runTimeResults.is_open()) {
+        runTimeResults << "Konteineris: vector\n";
+        runTimeResults << "Failas: studentai" << size << ".txt\n";
+        TimeMeasurement groupingTime("Studentų rūšiavimas į dvi grupes (strategija 1)");
+
+        vector<Student> students;
+        vector<Student> kietiakai;
+        vector<Student> vargsiukai;
+
+        if (strategy == 4) {
+            groupingTime.start();
+            groupStudents1(students, kietiakai, vargsiukai, 1);
+            groupingTime.stop(runTimeResults); 
+        } else if (strategy == 5) {
+            groupingTime.start();
+            groupStudents2(students, kietiakai, vargsiukai, 1);
+            groupingTime.stop(runTimeResults); 
+        } /*else {
+            groupingTime.start();
+            groupStudents3(students, kietiakai, vargsiukai, 1);
+            groupingTime.stop(runTimeResults); 
+        }*/
+
+        students.clear(); 
+        kietiakai.shrink_to_fit();
+        vargsiukai.shrink_to_fit();
 
         runTimeResults << "\n";
 
