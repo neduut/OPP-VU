@@ -54,6 +54,7 @@ void handleTestMenu() {
         int testMenuChoice = getTestMenuChoice();
 
         if (testMenuChoice == 0) {
+            system("cls");
             break;
         }
         else if (testMenuChoice == 1) {
@@ -68,9 +69,15 @@ void handleTestMenu() {
             int fileSize = getFileSize();
             vectorTest(fileSize, "vectorTest.txt");
         }
-        else if (testMenuChoice == 4 || testMenuChoice == 5 || testMenuChoice == 6) {
+        else if (testMenuChoice == 4 || testMenuChoice == 5) {
             int fileSize = getFileSize();
-            strategies(fileSize, "strategiesTest.txt", testMenuChoice);
+            
+            int num;
+            if(testMenuChoice == 4) num = 1;
+            else if(testMenuChoice == 5) num = 2;
+            else num = 3;
+        
+            strategies(fileSize, "strategy " + to_string(num) + " Vector.txt", testMenuChoice);
         }
     }
 }
@@ -327,6 +334,7 @@ void printToFile(vector<Student>& students, const string& fileName) {
         }
 
         file.close();
+        system("cls");
         cout << "Rezultatai issaugoti faile: " << fileName << "\n";
 
     } catch (const std::exception& e) {

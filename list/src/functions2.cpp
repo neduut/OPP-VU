@@ -68,7 +68,12 @@ void handleTestMenu() {
         }
         else if (testMenuChoice == 4 || testMenuChoice == 5) {
             int fileSize = getFileSize();
-            strategies(fileSize, "strategiesTest.txt", testMenuChoice);
+            
+            int num;
+            if(testMenuChoice == 4) num = 1;
+            else num = 2;
+        
+            strategies(fileSize, "strategy " + to_string(num) + " List.txt", testMenuChoice);
         }
     }
 }
@@ -322,6 +327,7 @@ void printToFile(list<Student>& students, const string& fileName) {
         }
 
         file.close();
+        system("cls");
         cout << "Rezultatai issaugoti faile: " << fileName << "\n";
 
     } catch (const std::exception& e) {
