@@ -1,6 +1,6 @@
 # Programos spartos tyrimas 
 
-Buvo atlikti programos spartos tyrimas su trimis skirtingais konteineriais: `vector`, `deque` ir `list`.
+Buvo atliktas programos spartos tyrimas su trimis skirtingais konteineriais: `vector`, `deque` ir `list`.
 
 Testavimo sistemos parametrai:
 - CPU - AMD Ryzen AI 9 HX 370 (12 fizinių ir 24 loginiai branduoliai)
@@ -26,7 +26,7 @@ Testai buvo atliekami po 5 kartus. Buvo tikrinamos šios operacijos:
 
 Visiems testams buvo naudojami tie patys failai, užtikrinant tyrimų patikimumą.
 
-Tyrimo rezultatus galima rasti `assets` kataloge.
+Visų testų rezultatus galima rasti `assets` kataloge.
 
 ## Testų rezultatų vidurkiai
 
