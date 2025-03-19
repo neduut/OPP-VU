@@ -183,7 +183,7 @@ vector<int> getHomeworkMarks(char menuChoice) {
     } else {
         for (int i = 0; i < 5; i++) {
             marks.push_back(getRandomMark());
-            cout << "Pazymys " << i + 1 << ": " << marks[i] << endl;
+            cout << "Pažymys " << i + 1 << ": " << marks[i] << endl;
         }
     }
     return marks;

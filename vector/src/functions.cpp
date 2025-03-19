@@ -58,19 +58,15 @@ void handleTestMenu() {
         }
         else if (testMenuChoice == 1) {
             int fileSize = getFileSize();
-            fileGenTest(fileSize, to_string(fileSize) + ".txt");
+            fileGenTest(fileSize, "genTest.txt");
         }
         else if (testMenuChoice == 2) {
             int fileSize = getFileSize();
-            programTest(fileSize, "runTimeResults.txt");
+            programTest(fileSize, "progTest.txt");
         }
         else if (testMenuChoice == 3) {
             int fileSize = getFileSize();
-            vectorTest(fileSize, "runTimeResults.txt");
-        }
-        else if (testMenuChoice == 4 || testMenuChoice == 5 || testMenuChoice == 6) {
-            int fileSize = getFileSize();
-            strategies(fileSize, "runTimeResults.txt", testMenuChoice);
+            vectorTest(fileSize, "vectorTest.txt");
         }
     }
 }
@@ -306,17 +302,19 @@ void printToFile(vector<Student>& students, const string& fileName) {
         lines.reserve(students.size() + 2);
 
         ostringstream header;
-        header << left << setw(15) << "Vardas"
-               << setw(20) << "Pavarde"
-               << setw(17) << "Galutinis (Vid.)" << '\n'
-               << string(60, '-') << '\n';
+        header << left << setw(17) << "Vardas"
+               << setw(16) << "Pavarde"
+               << setw(20) << "Galutinis (Vid.)" 
+               << setw(20) << "Galutinis (Med.)" << '\n'
+               << string(69, '-') << '\n';
         lines.push_back(header.str());
 
         for (const auto& student : students) {
             ostringstream ss;
-            ss << setw(15) << left << student.firstName
+            ss << setw(17) << left << student.firstName
                << setw(20) << student.lastName
-               << setw(17) << fixed << setprecision(2) << student.avgFinal << '\n';
+               << setw(20) << fixed << setprecision(2) << student.avgFinal
+               << setw(20) << fixed << setprecision(2) << student.medianFinal << '\n';
             lines.push_back(ss.str());
         }
 
@@ -336,7 +334,7 @@ void fileGenTest(int size, const std::string& fileName) {
     std::ofstream runTimeResults("../assets/" + fileName, std::ios::app); // open file in append mode
 
     if (runTimeResults.is_open()) {
-        runTimeResults << "Vector\n";
+        runTimeResults << "Konteineris: vector\n";
         runTimeResults << "Failas: studentai" << size << ".txt\n";
 
         TimeMeasurement genTime("Failo generavimas");
@@ -359,7 +357,7 @@ void programTest(int size, const std::string& fileName) {
     std::ofstream runTimeResults("../assets/" + fileName, std::ios::app); // open file in append mode
 
     if (runTimeResults.is_open()) {
-        runTimeResults << "Vector\n";
+        runTimeResults << "Konteineris: vector\n";
         runTimeResults << "Failas: studentai" << size << ".txt\n";
         TimeMeasurement programTime("Programos vykdymo laikas");
         programTime.start();
@@ -404,7 +402,7 @@ void vectorTest(int size, const std::string& fileName) {
     std::ofstream runTimeResults("../assets/" + fileName, std::ios::app); // open file in append mode
 
     if (runTimeResults.is_open()) {
-        runTimeResults << "Vector\n";
+        runTimeResults << "Konteineris: vector\n";
         runTimeResults << "Failas: studentai" << size << ".txt\n";
 
         vector<Student> students;
@@ -435,47 +433,6 @@ void vectorTest(int size, const std::string& fileName) {
 
         printToFile(kietiakai, "kietiakai.txt");
         printToFile(vargsiukai, "vargsiukai.txt");
-
-        runTimeResults << "\n";
-
-        runTimeResults.close(); 
-    } else {
-        std::cerr << FILE_OPEN_ERROR << std::endl;
-    }
-    system("cls");
-    cout << "Laiko tyrimo rezultatai įrašyti į failą: " << fileName << "\n";
-}
-
-void strategies(int size, const std::string& fileName, int strategy) {
-    std::ofstream runTimeResults("../assets/" + fileName, std::ios::app); 
-
-    //int groupType = getGroupType(); 
-    if (runTimeResults.is_open()) {
-        runTimeResults << "Vector\n";
-        runTimeResults << "Failas: studentai" << size << ".txt\n";
-        TimeMeasurement groupingTime("Studentų rūšiavimas į dvi grupes (strategija 1)");
-
-        vector<Student> students;
-        vector<Student> kietiakai;
-        vector<Student> vargsiukai;
-
-        if (strategy == 4) {
-            groupingTime.start();
-            groupStudents1(students, kietiakai, vargsiukai, 1);
-            groupingTime.stop(runTimeResults); 
-        } else if (strategy == 5) {
-            groupingTime.start();
-            groupStudents2(students, kietiakai, vargsiukai, 1);
-            groupingTime.stop(runTimeResults); 
-        } /*else {
-            groupingTime.start();
-            groupStudents3(students, kietiakai, vargsiukai, 1);
-            groupingTime.stop(runTimeResults); 
-        }*/
-
-        students.clear(); 
-        kietiakai.shrink_to_fit();
-        vargsiukai.shrink_to_fit();
 
         runTimeResults << "\n";
 
