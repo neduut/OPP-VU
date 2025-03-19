@@ -411,7 +411,7 @@ void programTest(int size, const std::string& fileName) {
 }
 
 void vectorTest(int size, const std::string& fileName) {
-    std::ofstream runTimeResults("../assets/containersTest/" + fileName, std::ios::app); // open file in append mode
+    std::ofstream runTimeResults("../assets/containerTest/" + fileName, std::ios::app); // open file in append mode
 
     if (runTimeResults.is_open()) {
         runTimeResults << "Failas: studentai" << size << ".txt\n";
