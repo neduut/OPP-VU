@@ -1,7 +1,7 @@
-#ifndef CONSTANTS_H
-#define CONSTANTS_H
+#ifndef CONSTANTS1_H
+#define CONSTANTS1_H
 
-#include "mylib.h"
+#include "mylib1.h"
 
 // user prompts
 const string ENTER_FIRST_NAME = "Įveskite vardą: ";

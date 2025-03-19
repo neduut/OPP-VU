@@ -1,6 +1,6 @@
-#include "mylib.h"
-#include "utils.h"
-#include "functions.h"
+#include "mylib1.h"
+#include "utils1.h"
+#include "functions1.h"
 #include <windows.h>
 
 int main() {
@@ -8,7 +8,7 @@ int main() {
     // enable lithuanian characters in console
     SetConsoleOutputCP(65001);
 
-    vector<Student> students;
+    deque<Student> students;
 
     // ar testavimas ar programa
     int choice = getMenuChoice();

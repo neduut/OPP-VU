@@ -1,5 +1,5 @@
-#include "utils.h"
-#include "constants.h"
+#include "utils1.h"
+#include "constants1.h"
 
 std::random_device rd;
 std::mt19937 mt(rd());
@@ -157,8 +157,8 @@ int getExamMark(char menuChoice) {
     return examMark;
 }
 
-vector<int> getHomeworkMarks(char menuChoice) {
-    vector<int> marks;
+deque<int> getHomeworkMarks(char menuChoice) {
+    deque<int> marks;
     if (menuChoice == '1') {
         string tempMark;
         while (true) {

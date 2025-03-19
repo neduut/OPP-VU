@@ -1,5 +1,5 @@
-#ifndef MYLIB_H
-#define MYLIB_H
+#ifndef MYLIB1_H
+#define MYLIB1_H
 
 #include <iostream>
 #include <fstream>
@@ -23,7 +23,7 @@ using std::cin;
 using std::cout;
 using std::endl;
 using std::string;
-using std::vector;
+using std::deque;
 using std::setw;
 using std::left;
 using std::right;

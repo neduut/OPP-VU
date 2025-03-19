@@ -1,9 +1,9 @@
-#include "functions.h"
-#include "utils.h"
-#include "constants.h"
-#include "timeMeasurement.h"
+#include "functions1.h"
+#include "utils1.h"
+#include "constants1.h"
+#include "timeMeasurement1.h"
 
-void handleProgramMenu(vector<Student>& students) {
+void handleProgramMenu(deque<Student>& students) {
     while (true) {
         int menuChoice = getProgramMenuChoice();
 
@@ -15,15 +15,13 @@ void handleProgramMenu(vector<Student>& students) {
                 int sortType = getSortType();    // by first name, last name or final mark?
                 int outputType = getPrintType(); // to console or to file?
 
-                vector<Student> kietiakai;
-                vector<Student> vargsiukai;
+                deque<Student> kietiakai;
+                deque<Student> vargsiukai;
 
                 // separate students into 2 groups
                 groupStudents1(students, kietiakai, vargsiukai, groupType);
 
-                students.clear(); // clear students vector
-                kietiakai.shrink_to_fit();
-                vargsiukai.shrink_to_fit();
+                students.clear(); // clear students deque
 
                 // sort students
                 sortStudents(kietiakai, sortType);
@@ -66,7 +64,7 @@ void handleTestMenu() {
         }
         else if (testMenuChoice == 3) {
             int fileSize = getFileSize();
-            vectorTest(fileSize, "runTimeResults.txt");
+            dequeTest(fileSize, "runTimeResults.txt");
         }
         else if (testMenuChoice == 4 || testMenuChoice == 5 || testMenuChoice == 6) {
             int fileSize = getFileSize();
@@ -83,8 +81,7 @@ void generateFile(int size) {
             throw std::runtime_error(FILE_OPEN_ERROR);
         }
 
-        vector<string> lines;
-        lines.reserve(size + 1); // Reserve space for size + 1 (header)
+        deque<string> lines;
 
         // Add header
         ostringstream header;
@@ -121,8 +118,7 @@ void generateFile(int size) {
     }
 }
 
-void readInput(vector<Student>& students, char menuChoice) {
-    students.reserve(10000);
+void readInput(deque<Student>& students, char menuChoice) {
 
     string choice;
     do {
@@ -131,7 +127,7 @@ void readInput(vector<Student>& students, char menuChoice) {
         string lastName = getLastName(menuChoice);
 
         // homework marks
-        vector<int> marks = getHomeworkMarks(menuChoice);
+        deque<int> marks = getHomeworkMarks(menuChoice);
 
         // exam mark
         int examMark = getExamMark(menuChoice);     
@@ -140,20 +136,16 @@ void readInput(vector<Student>& students, char menuChoice) {
         double avgFinal = averageFinalMark(marks, examMark);
         double medianFinal = medianFinalMark(marks, examMark);
 
-        students.push_back({firstName, lastName, marks, examMark, avgFinal, medianFinal});
+        students.emplace_back(Student{std::move(firstName), std::move(lastName), std::move(marks), examMark, avgFinal, medianFinal});
 
         cout << ADD_ANOTHER_STUDENT << endl;
         choice = getYesNo();
 
     } while (choice == "taip"); 
-
-    students.shrink_to_fit();
 }
 
-void readFromFile(vector<Student>& students, int fileSize) {
-    try {
-        students.reserve(fileSize); 
-        
+void readFromFile(deque<Student>& students, int fileSize) {
+    try {        
         ifstream file("../assets/studentai" + to_string(fileSize) + ".txt");
         if (!file) {
             throw std::runtime_error(FILE_OPEN_ERROR);
@@ -166,9 +158,8 @@ void readFromFile(vector<Student>& students, int fileSize) {
             istringstream stream(line);
             stream >> firstName >> lastName;
             
-            vector<int> marks;
-            marks.reserve(6); 
-            
+            deque<int> marks;
+
             int mark;
             while (stream >> mark) {
                 marks.push_back(mark);
@@ -186,7 +177,6 @@ void readFromFile(vector<Student>& students, int fileSize) {
         }
 
         file.close();
-        students.shrink_to_fit();
         cout << FILE_READ_SUCCESS << endl;
 
     } catch (const std::exception& e) {
@@ -194,7 +184,7 @@ void readFromFile(vector<Student>& students, int fileSize) {
     }
 }
 
-double averageFinalMark(const vector<int>& marks, int examMark){
+double averageFinalMark(const deque<int>& marks, int examMark){
     double sum = 0;
     for (int mark : marks) {
         sum += mark;
@@ -203,8 +193,8 @@ double averageFinalMark(const vector<int>& marks, int examMark){
     return 0.4 * average + 0.6 * examMark;
 }
 
-double medianFinalMark(const vector<int>& marks, int examMark){
-    vector<int> sortedMarks = marks;
+double medianFinalMark(const deque<int>& marks, int examMark){
+    deque<int> sortedMarks = marks;
     sort(sortedMarks.begin(), sortedMarks.end());
     double median;
     if (sortedMarks.size() % 2 == 0) {
@@ -215,7 +205,7 @@ double medianFinalMark(const vector<int>& marks, int examMark){
     return 0.4 * median + 0.6 * examMark;
 }
 
-void sortStudents(vector<Student>& students, char sortType) {
+void sortStudents(deque<Student>& students, char sortType) {
     // if sortType is 1, sort by first name
     if (sortType == 1) {
         stable_sort(students.begin(), students.end(), [](const Student& a, const Student& b) {
@@ -239,7 +229,7 @@ void sortStudents(vector<Student>& students, char sortType) {
     }
 }
 
-void groupStudents1(vector<Student>& students, vector<Student>& kietiakai, vector<Student>& vargsiukai, char groupType) {
+void groupStudents1(deque<Student>& students, deque<Student>& kietiakai, deque<Student>& vargsiukai, char groupType) {
     for (const auto& student : students) {
         double finalMark = (groupType == 1) ? student.avgFinal : student.medianFinal;
         
@@ -251,7 +241,7 @@ void groupStudents1(vector<Student>& students, vector<Student>& kietiakai, vecto
     }
 }
 
-void groupStudents2(vector<Student>& students, vector<Student>& kietiakai, vector<Student>& vargsiukai, char groupType) {
+void groupStudents2(deque<Student>& students, deque<Student>& kietiakai, deque<Student>& vargsiukai, char groupType) {
     for (auto it = students.begin(); it != students.end();) {
         double finalMark = (groupType == 1) ? it->avgFinal : it->medianFinal;
 
@@ -266,7 +256,7 @@ void groupStudents2(vector<Student>& students, vector<Student>& kietiakai, vecto
     students.clear(); 
 }
 
-void printToConsole(vector<Student>& kietiakai, vector<Student>& vargsiukai) {
+void printToConsole(deque<Student>& kietiakai, deque<Student>& vargsiukai) {
     cout << left << setw(17) << "Vardas"
          << setw(17) << "Pavarde"
          << setw(23) << "Galutinis (Vid.)"
@@ -295,15 +285,14 @@ void printToConsole(vector<Student>& kietiakai, vector<Student>& vargsiukai) {
     }
 }
 
-void printToFile(vector<Student>& students, const string& fileName) {
+void printToFile(deque<Student>& students, const string& fileName) {
     try {
         ofstream file("../assets/" + fileName);
         if (!file) {
             throw std::runtime_error(FILE_OPEN_ERROR);
         }
 
-        vector<string> lines;
-        lines.reserve(students.size() + 2);
+        deque<string> lines;
 
         ostringstream header;
         header << left << setw(15) << "Vardas"
@@ -336,6 +325,7 @@ void fileGenTest(int size, const std::string& fileName) {
     std::ofstream runTimeResults("../assets/" + fileName, std::ios::app); // open file in append mode
 
     if (runTimeResults.is_open()) {
+        runTimeResults << "Deque\n";
         runTimeResults << "Failas: studentai" << size << ".txt\n";
 
         TimeMeasurement genTime("Failo generavimas");
@@ -358,19 +348,20 @@ void programTest(int size, const std::string& fileName) {
     std::ofstream runTimeResults("../assets/" + fileName, std::ios::app); // open file in append mode
 
     if (runTimeResults.is_open()) {
+        runTimeResults << "Deque\n";
         runTimeResults << "Failas: studentai" << size << ".txt\n";
         TimeMeasurement programTime("Programos vykdymo laikas");
         programTime.start();
 
-        vector<Student> students;
+        deque<Student> students;
 
         TimeMeasurement readTime("Duomenų nuskaitymas iš failo");
         readTime.start();
         readFromFile(students, size);
         readTime.stop(runTimeResults); 
 
-        vector<Student> kietiakai;
-        vector<Student> vargsiukai;
+        deque<Student> kietiakai;
+        deque<Student> vargsiukai;
 
         TimeMeasurement groupingTime("Studentų rūšiavimas į dvi grupes");
         groupingTime.start();
@@ -378,8 +369,6 @@ void programTest(int size, const std::string& fileName) {
         groupingTime.stop(runTimeResults); 
 
         students.clear(); 
-        kietiakai.shrink_to_fit();
-        vargsiukai.shrink_to_fit();
 
         TimeMeasurement printTime("Išvedimas į du naujus failus");
         printTime.start();
@@ -398,14 +387,14 @@ void programTest(int size, const std::string& fileName) {
     cout << "Laiko tyrimo rezultatai įrašyti į failą: " << fileName << "\n";
 }
 
-void vectorTest(int size, const std::string& fileName) {
+void dequeTest(int size, const std::string& fileName) {
     std::ofstream runTimeResults("../assets/" + fileName, std::ios::app); // open file in append mode
 
     if (runTimeResults.is_open()) {
-        runTimeResults << "Vektorius\n";
+        runTimeResults << "Deque\n";
         runTimeResults << "Failas: studentai" << size << ".txt\n";
 
-        vector<Student> students;
+        deque<Student> students;
 
         TimeMeasurement readTime("Duomenų nuskaitymas iš failo");
         readTime.start();
@@ -415,11 +404,11 @@ void vectorTest(int size, const std::string& fileName) {
         //int sortType = getSortType(); 
         TimeMeasurement printTime("Studentų rikiavimas didėjimo tvarka");
         printTime.start();
-        sortStudents(students, 1);
+        sortStudents(students, 3); // sort by average final mark
         printTime.stop(runTimeResults);  
 
-        vector<Student> kietiakai;
-        vector<Student> vargsiukai;
+        deque<Student> kietiakai;
+        deque<Student> vargsiukai;
 
         //int sortGroup = getGroupType();
         TimeMeasurement groupingTime("Studentų rūšiavimas į dvi grupes");
@@ -428,8 +417,9 @@ void vectorTest(int size, const std::string& fileName) {
         groupingTime.stop(runTimeResults); 
 
         students.clear(); 
-        kietiakai.shrink_to_fit();
-        vargsiukai.shrink_to_fit();
+
+        printToFile(kietiakai, "kietiakai.txt");
+        printToFile(vargsiukai, "vargsiukai.txt");
 
         runTimeResults << "\n";
 
@@ -446,13 +436,13 @@ void strategies(int size, const std::string& fileName, int strategy) {
 
     //int groupType = getGroupType(); 
     if (runTimeResults.is_open()) {
-        runTimeResults << "Vektorius\n";
+        runTimeResults << "Deque\n";
         runTimeResults << "Failas: studentai" << size << ".txt\n";
         TimeMeasurement groupingTime("Studentų rūšiavimas į dvi grupes (strategija 1)");
 
-        vector<Student> students;
-        vector<Student> kietiakai;
-        vector<Student> vargsiukai;
+        deque<Student> students;
+        deque<Student> kietiakai;
+        deque<Student> vargsiukai;
 
         if (strategy == 4) {
             groupingTime.start();
@@ -462,15 +452,7 @@ void strategies(int size, const std::string& fileName, int strategy) {
             groupingTime.start();
             groupStudents2(students, kietiakai, vargsiukai, 1);
             groupingTime.stop(runTimeResults); 
-        } /*else {
-            groupingTime.start();
-            groupStudents3(students, kietiakai, vargsiukai, 1);
-            groupingTime.stop(runTimeResults); 
-        }*/
-
-        students.clear(); 
-        kietiakai.shrink_to_fit();
-        vargsiukai.shrink_to_fit();
+        } 
 
         runTimeResults << "\n";
 

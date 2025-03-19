@@ -1,7 +1,7 @@
-#ifndef UTILS_H
-#define UTILS_H
+#ifndef UTILS1_H
+#define UTILS1_H
 
-#include "mylib.h"
+#include "mylib1.h"
 
 // requests
 string getYesNo();
@@ -14,7 +14,7 @@ int getTestMenuChoice();
 string getFirstName(char menuChoice);
 string getLastName(char menuChoice);
 int getExamMark(char menuChoice);
-vector<int> getHomeworkMarks(char menuChoice);
+deque<int> getHomeworkMarks(char menuChoice);
 int getFileSize();
 
 // validations
