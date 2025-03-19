@@ -19,7 +19,7 @@ void TimeMeasurement::stop(std::ofstream& runTimeResults) {
 
     // Log the time directly to the file
     if (runTimeResults.is_open()) {
-        runTimeResults << "---> " << actionName << " took: " << getTimeDifference() << " s\n";
+        runTimeResults << "---> " << actionName << " užtruko: " << getTimeDifference() << " s\n";
     } else {
         std::cerr << "Failed to open file" << std::endl;
     }  
