@@ -1,23 +1,23 @@
 CXX = g++
 CXXFLAGS = -std=c++11 -Wall -Wextra -Iinclude -Ivector
-COMMON_OBJ = main.o functions.o utils.o timeMeasurement.o 
+COMMON_OBJ = main.o functions1.o utils1.o timeMeasurement1.o 
 
 all: main
 
 main: $(COMMON_OBJ)
 	$(CXX) $(COMMON_OBJ) -o main
 
-main.o: src/main.cpp include/mylib.h include/functions.h include/utils.h include/timeMeasurement.h
+main.o: src/main.cpp include/mylib1.h include/functions1.h include/utils1.h include/timeMeasurement1.h
 	$(CXX) $(CXXFLAGS) -c src/main.cpp -o main.o
 
-functions.o: src/functions.cpp include/mylib.h include/functions.h include/timeMeasurement.h
-	$(CXX) $(CXXFLAGS) -c src/functions.cpp -o functions.o
+functions1.o: src/functions1.cpp include/mylib1.h include/functions1.h include/timeMeasurement1.h
+	$(CXX) $(CXXFLAGS) -c src/functions1.cpp -o functions1.o
 
-utils.o: src/utils.cpp include/mylib.h include/utils.h include/constants.h
-	$(CXX) $(CXXFLAGS) -c src/utils.cpp -o utils.o
+utils1.o: src/utils1.cpp include/mylib1.h include/utils1.h include/constants1.h
+	$(CXX) $(CXXFLAGS) -c src/utils1.cpp -o utils1.o
 
-timeMeasurement.o: src/timeMeasurement.cpp include/mylib.h include/timeMeasurement.h
-	$(CXX) $(CXXFLAGS) -c src/timeMeasurement.cpp -o timeMeasurement.o
+timeMeasurement1.o: src/timeMeasurement1.cpp include/mylib1.h include/timeMeasurement1.h
+	$(CXX) $(CXXFLAGS) -c src/timeMeasurement1.cpp -o timeMeasurement1.o
 
 assets: 
 	cp -r ../assets/* ./output/

@@ -73,7 +73,7 @@ int getTestMenuChoice() {
         cin >> input;
         try {
             choice = stoi(input);
-            if (choice >= 0 && choice <= 3) break;
+            if (choice >= 0 && choice <= 5) break;
         } catch (const std::invalid_argument&) {
         }
         cout << INVALID_CHOICE;
@@ -183,7 +183,7 @@ deque<int> getHomeworkMarks(char menuChoice) {
     } else {
         for (int i = 0; i < 5; i++) {
             marks.push_back(getRandomMark());
-            cout << "Pazymys " << i + 1 << ": " << marks[i] << endl;
+            cout << "Pažymys " << i + 1 << ": " << marks[i] << endl;
         }
     }
     return marks;
