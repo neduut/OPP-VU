@@ -32,12 +32,7 @@ Visų testų rezultatus galima rasti `assets` kataloge.
 
 Žemiau pateikiami atliktų testų rezultatų vidurkiai (sekundėmis):
 
-![image](https://github.com/user-attachments/assets/999f84f5-b265-45d7-a6b7-9a7908242d95)
-
-![image](https://github.com/user-attachments/assets/3e18511e-df82-44c9-aedb-c29c754cf042)
-
-![image](https://github.com/user-attachments/assets/625c0d73-8c7b-416e-9234-20732307369f)
-
+![image](https://github.com/user-attachments/assets/2485c3f4-bee4-47f8-b481-e34660de263f)
 
 ## Išvados
 
