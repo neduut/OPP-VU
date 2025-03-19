@@ -1,0 +1,133 @@
+Failas: studentai1000.txt
+---> Duomenų nuskaitymas iš failo užtruko: 0.0044248 s
+---> Studentų rikiavimas didėjimo tvarka užtruko: 0.0023849 s
+---> Studentų rūšiavimas į dvi grupes užtruko: 0.0008054 s
+
+Failas: studentai1000.txt
+---> Duomenų nuskaitymas iš failo užtruko: 0.0041559 s
+---> Studentų rikiavimas didėjimo tvarka užtruko: 0.0022419 s
+---> Studentų rūšiavimas į dvi grupes užtruko: 0.0006118 s
+
+Failas: studentai1000.txt
+---> Duomenų nuskaitymas iš failo užtruko: 0.0038599 s
+---> Studentų rikiavimas didėjimo tvarka užtruko: 0.0028081 s
+---> Studentų rūšiavimas į dvi grupes užtruko: 0.0007165 s
+
+Failas: studentai1000.txt
+---> Duomenų nuskaitymas iš failo užtruko: 0.0037016 s
+---> Studentų rikiavimas didėjimo tvarka užtruko: 0.0023297 s
+---> Studentų rūšiavimas į dvi grupes užtruko: 0.0006675 s
+
+Failas: studentai1000.txt
+---> Duomenų nuskaitymas iš failo užtruko: 0.0035884 s
+---> Studentų rikiavimas didėjimo tvarka užtruko: 0.0023453 s
+---> Studentų rūšiavimas į dvi grupes užtruko: 0.0007248 s
+
+--------------------------------------------------------------------------
+
+Failas: studentai10000.txt
+---> Duomenų nuskaitymas iš failo užtruko: 0.0313632 s
+---> Studentų rikiavimas didėjimo tvarka užtruko: 0.0265114 s
+---> Studentų rūšiavimas į dvi grupes užtruko: 0.0064093 s
+
+Failas: studentai10000.txt
+---> Duomenų nuskaitymas iš failo užtruko: 0.0332115 s
+---> Studentų rikiavimas didėjimo tvarka užtruko: 0.0261911 s
+---> Studentų rūšiavimas į dvi grupes užtruko: 0.0079395 s
+
+Failas: studentai10000.txt
+---> Duomenų nuskaitymas iš failo užtruko: 0.0314087 s
+---> Studentų rikiavimas didėjimo tvarka užtruko: 0.0262269 s
+---> Studentų rūšiavimas į dvi grupes užtruko: 0.0078872 s
+
+Failas: studentai10000.txt
+---> Duomenų nuskaitymas iš failo užtruko: 0.0316732 s
+---> Studentų rikiavimas didėjimo tvarka užtruko: 0.0255687 s
+---> Studentų rūšiavimas į dvi grupes užtruko: 0.0093097 s
+
+Failas: studentai10000.txt
+---> Duomenų nuskaitymas iš failo užtruko: 0.0332501 s
+---> Studentų rikiavimas didėjimo tvarka užtruko: 0.027799 s
+---> Studentų rūšiavimas į dvi grupes užtruko: 0.0095716 s
+
+--------------------------------------------------------------------------
+
+Failas: studentai100000.txt
+---> Duomenų nuskaitymas iš failo užtruko: 0.305493 s
+---> Studentų rikiavimas didėjimo tvarka užtruko: 0.205673 s
+---> Studentų rūšiavimas į dvi grupes užtruko: 0.0439046 s
+
+Failas: studentai100000.txt
+---> Duomenų nuskaitymas iš failo užtruko: 0.248486 s
+---> Studentų rikiavimas didėjimo tvarka užtruko: 0.206792 s
+---> Studentų rūšiavimas į dvi grupes užtruko: 0.043935 s
+
+Failas: studentai100000.txt
+---> Duomenų nuskaitymas iš failo užtruko: 0.308085 s
+---> Studentų rikiavimas didėjimo tvarka užtruko: 0.215867 s
+---> Studentų rūšiavimas į dvi grupes užtruko: 0.043451 s
+
+Failas: studentai100000.txt
+---> Duomenų nuskaitymas iš failo užtruko: 0.289778 s
+---> Studentų rikiavimas didėjimo tvarka užtruko: 0.22433 s
+---> Studentų rūšiavimas į dvi grupes užtruko: 0.0437691 s
+
+Failas: studentai100000.txt
+---> Duomenų nuskaitymas iš failo užtruko: 0.309326 s
+---> Studentų rikiavimas didėjimo tvarka užtruko: 0.254979 s
+---> Studentų rūšiavimas į dvi grupes užtruko: 0.043788 s
+
+--------------------------------------------------------------------------
+
+Failas: studentai1000000.txt
+---> Duomenų nuskaitymas iš failo užtruko: 1.72392 s
+---> Studentų rikiavimas didėjimo tvarka užtruko: 1.73736 s
+---> Studentų rūšiavimas į dvi grupes užtruko: 0.346043 s
+
+Failas: studentai1000000.txt
+---> Duomenų nuskaitymas iš failo užtruko: 1.67746 s
+---> Studentų rikiavimas didėjimo tvarka užtruko: 1.75326 s
+---> Studentų rūšiavimas į dvi grupes užtruko: 0.354899 s
+
+Failas: studentai1000000.txt
+---> Duomenų nuskaitymas iš failo užtruko: 2.00017 s
+---> Studentų rikiavimas didėjimo tvarka užtruko: 1.77304 s
+---> Studentų rūšiavimas į dvi grupes užtruko: 0.354587 s
+
+Failas: studentai1000000.txt
+---> Duomenų nuskaitymas iš failo užtruko: 1.76924 s
+---> Studentų rikiavimas didėjimo tvarka užtruko: 1.80876 s
+---> Studentų rūšiavimas į dvi grupes užtruko: 0.377186 s
+
+Failas: studentai1000000.txt
+---> Duomenų nuskaitymas iš failo užtruko: 1.52863 s
+---> Studentų rikiavimas didėjimo tvarka užtruko: 1.72037 s
+---> Studentų rūšiavimas į dvi grupes užtruko: 0.357133 s
+
+--------------------------------------------------------------------------
+
+Failas: studentai10000000.txt
+---> Duomenų nuskaitymas iš failo užtruko: 13.2699 s
+---> Studentų rikiavimas didėjimo tvarka užtruko: 17.5543 s
+---> Studentų rūšiavimas į dvi grupes užtruko: 4.82311 s
+
+Failas: studentai10000000.txt
+---> Duomenų nuskaitymas iš failo užtruko: 13.6994 s
+---> Studentų rikiavimas didėjimo tvarka užtruko: 18.0438 s
+---> Studentų rūšiavimas į dvi grupes užtruko: 4.76002 s
+
+Failas: studentai10000000.txt
+---> Duomenų nuskaitymas iš failo užtruko: 13.4243 s
+---> Studentų rikiavimas didėjimo tvarka užtruko: 17.8621 s
+---> Studentų rūšiavimas į dvi grupes užtruko: 4.83149 s
+
+Failas: studentai10000000.txt
+---> Duomenų nuskaitymas iš failo užtruko: 13.3674 s
+---> Studentų rikiavimas didėjimo tvarka užtruko: 17.7762 s
+---> Studentų rūšiavimas į dvi grupes užtruko: 4.807 s
+
+Failas: studentai10000000.txt
+---> Duomenų nuskaitymas iš failo užtruko: 14.188 s
+---> Studentų rikiavimas didėjimo tvarka užtruko: 18.7452 s
+---> Studentų rūšiavimas į dvi grupes užtruko: 7.23569 s
+

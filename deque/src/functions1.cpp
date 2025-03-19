@@ -68,12 +68,12 @@ void handleTestMenu() {
         }
         else if (testMenuChoice == 4 || testMenuChoice == 5) {
             int fileSize = getFileSize();
-            
+
             int num;
             if(testMenuChoice == 4) num = 1;
             else num = 2;
         
-            strategies(fileSize, "strategy " + to_string(num) + " Deque.txt", testMenuChoice);
+            strategies(fileSize, "strategy" + to_string(num) + "Deque.txt", testMenuChoice);
         }
     }
 }
@@ -81,7 +81,7 @@ void handleTestMenu() {
 void generateFile(int size) {
     try {
         string fileName = "studentai" + to_string(size) + ".txt";
-        ofstream file("../assets/" + fileName);
+        ofstream file("../assets/files/" + fileName);
         if (!file) {
             throw std::runtime_error(FILE_OPEN_ERROR);
         }
@@ -151,7 +151,7 @@ void readInput(deque<Student>& students, char menuChoice) {
 
 void readFromFile(deque<Student>& students, int fileSize) {
     try {        
-        ifstream file("../assets/studentai" + to_string(fileSize) + ".txt");
+        ifstream file("../assets/files/studentai" + to_string(fileSize) + ".txt");
         if (!file) {
             throw std::runtime_error(FILE_OPEN_ERROR);
         }
@@ -396,10 +396,9 @@ void programTest(int size, const std::string& fileName) {
 }
 
 void dequeTest(int size, const std::string& fileName) {
-    std::ofstream runTimeResults("../assets/" + fileName, std::ios::app); // open file in append mode
+    std::ofstream runTimeResults("../assets/containersTest/" + fileName, std::ios::app); // open file in append mode
 
     if (runTimeResults.is_open()) {
-        runTimeResults << "Konteineris: deque\n";
         runTimeResults << "Failas: studentai" << size << ".txt\n";
 
         deque<Student> students;
@@ -440,11 +439,10 @@ void dequeTest(int size, const std::string& fileName) {
 }
 
 void strategies(int size, const std::string& fileName, int strategy) {
-    std::ofstream runTimeResults("../assets/" + fileName, std::ios::app); 
+    std::ofstream runTimeResults("../assets/strategies/" + fileName, std::ios::app); 
 
     //int groupType = getGroupType(); 
     if (runTimeResults.is_open()) {
-        runTimeResults << "Konteineris: deque\n";
         runTimeResults << "Failas: studentai" << size << ".txt\n";
         TimeMeasurement groupingTime("Studentų rūšiavimas į dvi grupes (strategija 1)");
 
