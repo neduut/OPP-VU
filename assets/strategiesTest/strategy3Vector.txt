@@ -7,3 +7,9 @@ Failas: studentai10000000.txt
 Failas: studentai10000000.txt
 ---> Studentų rūšiavimas į dvi grupes užtruko: 2.30816 s
 
+Failas: studentai10000000.txt
+---> Studentų rūšiavimas į dvi grupes užtruko: 4.13283 s
+
+Failas: studentai10000000.txt
+---> Studentų rūšiavimas į dvi grupes užtruko: 4.10716 s
+
