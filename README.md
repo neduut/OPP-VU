@@ -42,7 +42,7 @@ Tyrimas parodė, kad naudojant didesnius failus, `vector` buvo efektyviausias, o
 Atminties naudojimas su 10 000 000 įrašų failu
 
 vector - 1 strategija 
-![deque1](https://github.com/user-attachments/assets/21e158c9-502c-432c-a8a4-8ee638c5e9dd)
+![vector1](https://github.com/user-attachments/assets/0e005944-50f1-41af-9498-9060ea8198f6)
 
 vector - 3 strategija
 ![vector3](https://github.com/user-attachments/assets/540e93fa-07ae-43f4-bd1f-ac91d8a43b51)
@@ -51,5 +51,6 @@ deque - 1 strategija
 ![deque1](https://github.com/user-attachments/assets/9985949c-1c03-44d4-a1fc-7aba5dadfd8d)
 
 list - 1 strategija 
-![list1](https://github.com/user-attachments/assets/c95da0d6-a7fb-4a1f-a29c-b81103ec114a)
+![list1](https://github.com/user-attachments/assets/fd4726ee-3d4a-4a5d-a755-8bb14e98a23b)
+
 
