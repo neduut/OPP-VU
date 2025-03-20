@@ -10,6 +10,12 @@
 .vs/
 .vscode/
 
+CMakeFiles/
+CMakeCache.txt
+Makefile
+cmake_install.cmake
+*.log
+
 ToDo.txt
 studentai1000.txt
 studentai10000.txt

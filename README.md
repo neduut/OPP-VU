@@ -2,6 +2,10 @@
 
 ....................parasyt 
 
+**Reikalavimai**
+Windows 10 x64bit ar naujesnė versija
+Įdiegtas CMake
+
 # Spartos tyrimai
 
 Buvo atlikti du programos spartos tyrimai su su trimis skirtingais konteineriais: `vector`, `deque` ir `list`.
