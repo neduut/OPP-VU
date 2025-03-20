@@ -55,7 +55,7 @@ Visų testų rezultatus galima rasti `assets` -> `containerTests` kataloge.
 
 Tyrimas parodė, kad naudojant didesnius failus, `vector` buvo efektyviausias, o `deque` buvo mažiausiai efektyvus.
 
-Atminties naudojimas su 10 000 000 įrašų failu
+Žemiau pateikiamas atminties naudojimas su 10 000 000 įrašų failu:
 
 **Vector** 
 ![vector1](https://github.com/user-attachments/assets/86ef0846-6e8e-43e2-a077-047dd9406407)
