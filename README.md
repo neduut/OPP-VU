@@ -48,7 +48,7 @@ vector - 3 strategija
 ![vector3](https://github.com/user-attachments/assets/540e93fa-07ae-43f4-bd1f-ac91d8a43b51)
 
 deque - 1 strategija 
-![deque1](https://github.com/user-attachments/assets/845ec0e4-0501-4fc6-9b24-b93ba16761a5)
+![deque1](https://github.com/user-attachments/assets/9985949c-1c03-44d4-a1fc-7aba5dadfd8d)
 
 list - 1 strategija 
 ![list1](https://github.com/user-attachments/assets/22a4581f-e9da-4495-a493-3485aeb6fffa)
