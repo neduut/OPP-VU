@@ -41,8 +41,5 @@ Tyrimas parodė, kad naudojant didesnius failus, `vector` buvo efektyviausias, o
 
 atminties naudojimas
 
-strategija 1, vector, 10 000 000 stud
-![vector1](https://github.com/user-attachments/assets/9d95c054-c330-4eb4-af5b-57cee43a5af7)
-
 strategija 1, deque, 10 000 000 stud
 ![deque1](https://github.com/user-attachments/assets/5645f382-3494-499a-a26c-9f06a9a6c3b0)
