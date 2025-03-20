@@ -1,6 +1,10 @@
-# Programos spartos tyrimas 
+# Naudojimo instrukcijos
 
-Buvo atliktas programos spartos tyrimas su trimis skirtingais konteineriais: `vector`, `deque` ir `list`.
+....................
+
+# Spartos tyrimai
+
+Buvo atlikti du programos spartos tyrimai su su trimis skirtingais konteineriais: `vector`, `deque` ir `list`.
 
 Testavimo sistemos parametrai:
 - CPU - AMD Ryzen AI 9 HX 370 (12 fizinių ir 24 loginiai branduoliai)
@@ -8,9 +12,9 @@ Testavimo sistemos parametrai:
 - RAM - 32.0 GB LPDDR5x 
 - SSD - 2 TB
 - Kompiliatorius: GCC
-- IDE: Visual Studio Code 
-
-## Testavimo metodika
+- IDE: Visual Studio Code
+  
+# 1. Konteinerių tyrimas
 
 Kiekvienas konteineris buvo testuojamas su penkiais skirtingo dydžio failais, kurių įrašų skaičius buvo: 
 - 1 000
@@ -38,6 +42,13 @@ Visų testų rezultatus galima rasti `assets` kataloge.
 
 Tyrimas parodė, kad naudojant didesnius failus, `vector` buvo efektyviausias, o `deque` buvo mažiausiai efektyvus.
 
+
+# 2. Strategijų tyrimas
+
+Buvo atliktas....
+
+
+## 1 strategija
 
 Atminties naudojimas su 10 000 000 įrašų failu
 
