@@ -32,13 +32,9 @@ Testai buvo atliekami po 5 kartus. Buvo tikrinamos šios operacijos:
 
 Visų testų rezultatus galima rasti `assets` -> `containerTests` kataloge.
 
-## Testų rezultatų vidurkiai
-
 Žemiau pateikiami atliktų testų rezultatų vidurkiai (sekundėmis):
 
 ![image](https://github.com/user-attachments/assets/fa382c08-1a78-452a-9b3b-4cde7215b61b)
-
-## Išvados
 
 Tyrimas parodė, kad naudojant didesnius failus, `vector` buvo efektyviausias, o `deque` buvo mažiausiai efektyvus.
 
@@ -50,6 +46,8 @@ Buvo tiriama studentų rūšiavimo į grupes operacija pagal tris skirtingas str
 Visų testų rezultatus galima rasti `assets` -> `containerTests` kataloge.
 
 ## 1 strategija
+
+..................
 
 Žemiau pateikiami atliktų testų rezultatų vidurkiai (sekundėmis):
 
@@ -71,11 +69,15 @@ List
 
 ## 2 strategija
 
+..................
+
 Žemiau pateikiami atliktų testų rezultatų vidurkiai (sekundėmis):
 
 ![image](https://github.com/user-attachments/assets/28f541b9-9cd7-4a5d-9446-7bdb4aa6df06)
 
 ## 3 strategija
+
+..................
 
 Žemiau pateikiami atliktų testų rezultatų vidurkiai (sekundėmis):
 
