@@ -274,62 +274,23 @@ void groupStudents2(vector<Student>& students, vector<Student>& kietiakai, vecto
     students.clear(); 
 }
 
-/*void groupStudents3(vector<Student>& students, vector<Student>& kietiakai, vector<Student>& vargsiukai, int groupType) {
-
-    auto partitionPoint = std::partition(students.begin(), students.end(), [groupType](const Student& student) {
-        double finalMark = (groupType == 1) ? student.avgFinal : student.medianFinal;
-        return finalMark >= 5.0;
-    });
-
-    std::move(students.begin(), partitionPoint, std::back_inserter(kietiakai));
-    std::move(partitionPoint, students.end(), std::back_inserter(vargsiukai));
-    
-    students.clear();
-}*/
-
-/*void groupStudents3(vector<Student>& students, vector<Student>& kietiakai, vector<Student>& vargsiukai, int groupType) {
-    kietiakai.reserve(students.size());  // Iš anksto rezervuojame atmintį
-    vargsiukai.reserve(students.size());
-
-    // Naudojame std::partition, kad suskirstytume studentus į dvi grupes pagal pažymį
-    auto separator = std::partition(students.begin(), students.end(), [groupType](const Student& student) {
-        double finalMark = (groupType == 1) ? student.avgFinal : student.medianFinal;
-        return finalMark >= 5.0;
-    });
-
-    // Perkeliame studentus, kurių pažymiai >= 5.0, į kietiakus
-    std::move(students.begin(), separator, std::back_inserter(kietiakai));
-
-    // Perkeliame likusius studentus į vargsiukus
-    std::move(separator, students.end(), std::back_inserter(vargsiukai));
-
-    students.clear();  // Išvalome originalų vektorių
-}*/
-
 void groupStudents3(vector<Student>& students, vector<Student>& kietiakai, vector<Student>& vargsiukai, int groupType) {
-    // Rezervuojame vietos grupėms
     kietiakai.reserve(students.size());
     vargsiukai.reserve(students.size());
 
-    // Naudojame std::partition, kad suskirstytume studentus į dvi grupes pagal pažymį
     auto separator = std::partition(students.begin(), students.end(), [groupType](const Student& student) {
         double finalMark = (groupType == 1) ? student.avgFinal : student.medianFinal;
         return finalMark >= 5.0;
     });
 
-    // Tiesiogiai perkeliame į grupes
     for (auto it = students.begin(); it != separator; ++it) {
         kietiakai.emplace_back(std::move(*it));
     }
     for (auto it = separator; it != students.end(); ++it) {
         vargsiukai.emplace_back(std::move(*it));
     }
-
-    // Pašaliname studentus iš originalaus vektoriaus
     students.clear();
 }
-
-
 
 void printToConsole(vector<Student>& kietiakai, vector<Student>& vargsiukai) {
     cout << left << setw(17) << "Vardas"
