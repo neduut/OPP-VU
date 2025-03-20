@@ -1,0 +1,27 @@
+cmake_minimum_required(VERSION 3.25)
+
+project(VectorVersion)
+
+set(CMAKE_CXX_STANDARD 11)
+
+include_directories(
+    include
+    vector
+)
+
+set(SOURCES
+    src/main.cpp
+    src/functions.cpp
+    src/utils.cpp
+    src/timeMeasurement.cpp
+)
+
+add_executable(main ${SOURCES})
+
+add_custom_target(assets
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+    ${CMAKE_SOURCE_DIR}/../assets
+    ${CMAKE_BINARY_DIR}/output
+)
+
+set_target_properties(main PROPERTIES CLEAN_COMMAND "rm -f main")
