@@ -26,7 +26,7 @@ Testai buvo atliekami po 5 kartus. Buvo tikrinamos šios operacijos:
 
 Visiems testams buvo naudojami tie patys failai, užtikrinant tyrimų patikimumą.
 
-Visų testų rezultatus galima rasti `assets` -> `containerTest` kataloge.
+Visų testų rezultatus galima rasti `assets` kataloge.
 
 ## Testų rezultatų vidurkiai
 
@@ -37,3 +37,12 @@ Visų testų rezultatus galima rasti `assets` -> `containerTest` kataloge.
 ## Išvados
 
 Tyrimas parodė, kad naudojant didesnius failus, `vector` buvo efektyviausias, o `deque` buvo mažiausiai efektyvus.
+
+
+
+strategija 1, deque, 10 000 000 stud
+![424720485-ffd5c9b4-86f4-4332-a506-9e83e77f2afd](https://github.com/user-attachments/assets/971c6d0f-89d7-440a-8231-65504129d1a4)
+![424720567-9d0ea2f4-c08d-416f-83e6-123f222592db](https://github.com/user-attachments/assets/7038f135-5f86-4201-891d-107921caf8be)
+
+strategija 2, list, 10 000 000 stud
+![Untitled](https://github.com/user-attachments/assets/3c6b9ae8-ac16-4808-9e5c-61ee2a0b7048)
