@@ -36,9 +36,6 @@ Failas: studentai100000.txt
 ---> Studentų rūšiavimas į dvi grupes užtruko: 75.0108 s
 
 Failas: studentai100000.txt
----> Studentų rūšiavimas į dvi grupes užtruko: 80.9956 s
-
-Failas: studentai100000.txt
 ---> Studentų rūšiavimas į dvi grupes užtruko: 75.2894 s
 
 Failas: studentai100000.txt
@@ -46,3 +43,7 @@ Failas: studentai100000.txt
 
 Failas: studentai100000.txt
 ---> Studentų rūšiavimas į dvi grupes užtruko: 77.6103 s
+
+Failas: studentai100000.txt
+---> Studentų rūšiavimas į dvi grupes užtruko: 74.1695 s
+
