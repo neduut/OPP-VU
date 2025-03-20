@@ -114,4 +114,4 @@ Buvo optimizuotas `vector` tipo konteineris, optimizuota 1 strategija.
 
 ![image](https://github.com/user-attachments/assets/8b77907f-78ab-4319-b2d5-59cae73c90ef)
 
-Tyrimas parodė, kad pritaikius tam tikrus metodus, failo su 10 000 000 įrašų atžvilgiu, `vector` tapo efektyvesnis ~0.5 sek. Taip pat sumažėjo ir atminties sąnaudos, kurias galima rasti pirmos strategijos apraše.
+Tyrimas parodė, kad pritaikius tam `std::partition` metodą, failo su 10 000 000 įrašų atžvilgiu, `vector` tapo efektyvesnis ~0.5 sek. Taip pat sumažėjo ir atminties sąnaudos, kurias galima rasti pirmos strategijos apraše.
