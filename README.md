@@ -35,6 +35,11 @@ Visiems testams buvo naudojami tie patys failai, užtikrinant tyrimų patikimum�
   
 # 1. Konteinerių tyrimas
 
+Buvo tiriamos šios operacijos:
+1. Duomenų nuskaitymas iš failų 
+2. Studentų rūšiavimas didėjimo tvarka konteineryje 
+3. Studentų skirstymas į dvi grupes 
+
 Kiekvienas konteineris (`vector`, `deque` ir `list`) buvo testuojamas su penkiais skirtingo dydžio failais, kurių įrašų skaičius buvo: 
 - 1 000
 - 10 000
@@ -42,12 +47,7 @@ Kiekvienas konteineris (`vector`, `deque` ir `list`) buvo testuojamas su penkiai
 - 1 000 000
 - 10 000 000
 
-Testai buvo atliekami po 5 kartus su kiekvienu failu. Buvo tikrinamos šios operacijos:
-1. Duomenų nuskaitymas iš failų
-2. Studentų rūšiavimas didėjimo tvarka konteineryje
-3. Studentų skirstymas į dvi grupes
-
-Visų testų rezultatus galima rasti `assets` -> `containerTests` kataloge.
+Sukiekvienu failu buvo atlikta po 5 testus. Visų testų rezultatus galima rasti `assets` -> `containerTests` kataloge.
 
 Žemiau pateikiami atliktų testų rezultatų vidurkiai (sekundėmis):
 
@@ -58,6 +58,8 @@ Tyrimas parodė, kad naudojant didesnius failus, `vector` buvo efektyviausias, o
 
 # 2. Strategijų tyrimas
 
+Buvo tiriama studentų rūšiavimo į grupes operacija pagal tris skirtingas strategijas.
+
 Kiekvienas konteineris (`vector`, `deque` ir `list`) buvo testuojamas su penkiais skirtingo dydžio failais, kurių įrašų skaičius buvo: 
 - 1 000
 - 10 000
@@ -65,9 +67,7 @@ Kiekvienas konteineris (`vector`, `deque` ir `list`) buvo testuojamas su penkiai
 - 1 000 000
 - 10 000 000
 
-Kiekvienos strategijos testai su kiekvienu failu buvo atliekami po 5 kartus. Buvo tiriama studentų rūšiavimo į grupes operacija (`groupStudents`) pagal tris skirtingas strategijas.
-
-Visų testų rezultatus galima rasti `assets` -> `strategies` kataloge.
+Sukiekvienu failu buvo atlikta po 5 testus. Visų testų rezultatus galima rasti `assets` -> `strategies` kataloge.
 
 ## 1 strategija
 
