@@ -16,7 +16,7 @@ Yra 3 skirtingos programos versijos: vector, deque ir list, jas galima rasti ati
 **Reikalavimai**
 
 - Windows 10 x64bit ar naujesnė versija
-- įdiegtas CMake (rekomenduojama naudoti CMake versiją 3.25 ar naujesnę)
+- Įdiegtas CMake (rekomenduojama naudoti CMake versiją 3.25 ar naujesnę)
 - Kompiliatorius: g++ (g++ turi būti įdiegtas jūsų sistemoje, kad veiktų komanda make)
 
 # Spartos tyrimai
