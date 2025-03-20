@@ -39,7 +39,19 @@ Visų testų rezultatus galima rasti `assets` kataloge.
 Tyrimas parodė, kad naudojant didesnius failus, `vector` buvo efektyviausias, o `deque` buvo mažiausiai efektyvus.
 
 
-atminties naudojimas
+Atminties naudojimas su 10 000 000 įrašų failu
 
-strategija 1, deque, 10 000 000 stud
-![deque1](https://github.com/user-attachments/assets/5645f382-3494-499a-a26c-9f06a9a6c3b0)
+vector - 1 strategija 
+![vector1](https://github.com/user-attachments/assets/e45811c9-5dfd-4609-bdb4-9e33bd9d399f)
+
+vector - 3 strategija
+![vector3](https://github.com/user-attachments/assets/540e93fa-07ae-43f4-bd1f-ac91d8a43b51)
+
+deque - 1 strategija 
+![deque1](https://github.com/user-attachments/assets/845ec0e4-0501-4fc6-9b24-b93ba16761a5)
+
+list - 1 strategija 
+![list1](https://github.com/user-attachments/assets/22a4581f-e9da-4495-a493-3485aeb6fffa)
+
+
+
