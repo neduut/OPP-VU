@@ -51,7 +51,5 @@ deque - 1 strategija
 ![deque1](https://github.com/user-attachments/assets/9985949c-1c03-44d4-a1fc-7aba5dadfd8d)
 
 list - 1 strategija 
-![list1](https://github.com/user-attachments/assets/22a4581f-e9da-4495-a493-3485aeb6fffa)
-
-
+![list1](https://github.com/user-attachments/assets/c95da0d6-a7fb-4a1f-a29c-b81103ec114a)
 
