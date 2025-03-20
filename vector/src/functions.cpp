@@ -21,7 +21,6 @@ void handleProgramMenu(vector<Student>& students) {
                 // separate students into 2 groups
                 groupStudents1(students, kietiakai, vargsiukai, groupType);
 
-                students.clear(); // clear students vector
                 kietiakai.shrink_to_fit();
                 vargsiukai.shrink_to_fit();
 
@@ -69,7 +68,7 @@ void handleTestMenu() {
             int fileSize = getFileSize();
             vectorTest(fileSize, "vectorTest.txt");
         }
-        else if (testMenuChoice == 4 || testMenuChoice == 5) {
+        else if (testMenuChoice == 4 || testMenuChoice == 5 || testMenuChoice == 6) {
             int fileSize = getFileSize();
 
             int num;
@@ -246,19 +245,21 @@ void sortStudents(vector<Student>& students, char sortType) {
     }
 }
 
-void groupStudents1(vector<Student>& students, vector<Student>& kietiakai, vector<Student>& vargsiukai, char groupType) {
-    for (const auto& student : students) {
+void groupStudents1(vector<Student>& students, vector<Student>& kietiakai, vector<Student>& vargsiukai, int groupType) {
+    for (auto& student : students) {
         double finalMark = (groupType == 1) ? student.avgFinal : student.medianFinal;
-        
-        if (finalMark >= 5) {
-            kietiakai.push_back(student);
+
+        if (finalMark >= 5.0) {
+            kietiakai.push_back(std::move(student));  
         } else {
-            vargsiukai.push_back(student);
+            vargsiukai.push_back(std::move(student));  
         }
     }
+
+    students.clear();
 }
 
-void groupStudents2(vector<Student>& students, vector<Student>& kietiakai, vector<Student>& vargsiukai, char groupType) {
+void groupStudents2(vector<Student>& students, vector<Student>& kietiakai, vector<Student>& vargsiukai, int groupType) {    
     for (auto it = students.begin(); it != students.end();) {
         double finalMark = (groupType == 1) ? it->avgFinal : it->medianFinal;
 
@@ -271,6 +272,19 @@ void groupStudents2(vector<Student>& students, vector<Student>& kietiakai, vecto
     }
     kietiakai.insert(kietiakai.end(), students.begin(), students.end());
     students.clear(); 
+}
+
+void groupStudents3(vector<Student>& students, vector<Student>& kietiakai, vector<Student>& vargsiukai, int groupType) {
+
+    auto partitionPoint = std::partition(students.begin(), students.end(), [groupType](const Student& student) {
+        double finalMark = (groupType == 1) ? student.avgFinal : student.medianFinal;
+        return finalMark >= 5.0;
+    });
+
+    std::move(students.begin(), partitionPoint, std::back_inserter(kietiakai));
+    std::move(partitionPoint, students.end(), std::back_inserter(vargsiukai));
+    
+    students.clear();
 }
 
 void printToConsole(vector<Student>& kietiakai, vector<Student>& vargsiukai) {
@@ -357,7 +371,6 @@ void fileGenTest(int size, const std::string& fileName) {
 
         runTimeResults.close();  
         runTimeResults << "\n";
-
     } else {
         std::cerr << FILE_OPEN_ERROR << std::endl;
     }
@@ -446,8 +459,8 @@ void vectorTest(int size, const std::string& fileName) {
         printToFile(vargsiukai, "vargsiukai.txt");
 
         runTimeResults << "\n";
-
         runTimeResults.close(); 
+
     } else {
         std::cerr << FILE_OPEN_ERROR << std::endl;
     }
@@ -477,13 +490,12 @@ void strategies(int size, const std::string& fileName, int strategy) {
             groupingTime.start();
             groupStudents2(students, kietiakai, vargsiukai, 1);
             groupingTime.stop(runTimeResults); 
-        } /*else {
+        } else {
             groupingTime.start();
             groupStudents3(students, kietiakai, vargsiukai, 1);
             groupingTime.stop(runTimeResults); 
-        }*/
+        }
 
-        students.clear(); 
         kietiakai.shrink_to_fit();
         vargsiukai.shrink_to_fit();
 
