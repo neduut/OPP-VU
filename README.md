@@ -1,6 +1,6 @@
 # Naudojimo instrukcijos
 
-....................
+....................parasyt 
 
 # Spartos tyrimai
 
@@ -34,7 +34,7 @@ Visų testų rezultatus galima rasti `assets` -> `containerTests` kataloge.
 
 Žemiau pateikiami atliktų testų rezultatų vidurkiai (sekundėmis):
 
-![image](https://github.com/user-attachments/assets/fa382c08-1a78-452a-9b3b-4cde7215b61b)
+![image](https://github.com/user-attachments/assets/890f5e41-175d-47b7-ad7b-85c45ee8cdbf)
 
 Tyrimas parodė, kad naudojant didesnius failus, `vector` buvo efektyviausias, o `deque` buvo mažiausiai efektyvus.
 
@@ -53,6 +53,8 @@ Visų testų rezultatus galima rasti `assets` -> `containerTests` kataloge.
 
 ![image](https://github.com/user-attachments/assets/c5e08e6b-d23d-48e5-8005-e3a04ed8b657)
 
+..................
+
 Atminties naudojimas su 10 000 000 įrašų failu
 
 Vector 
@@ -67,6 +69,8 @@ Deque
 List 
 ![list1](https://github.com/user-attachments/assets/fd4726ee-3d4a-4a5d-a755-8bb14e98a23b)
 
+..................
+
 ## 2 strategija
 
 ..................
@@ -75,6 +79,8 @@ List
 
 ![image](https://github.com/user-attachments/assets/28f541b9-9cd7-4a5d-9446-7bdb4aa6df06)
 
+..................
+
 ## 3 strategija
 
 ..................
@@ -82,4 +88,6 @@ List
 Žemiau pateikiami atliktų testų rezultatų vidurkiai (sekundėmis):
 
 ![image](https://github.com/user-attachments/assets/ac77af2c-29f2-483e-9e71-dedd40be5c87)
+
+..................
 
