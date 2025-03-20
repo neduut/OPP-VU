@@ -1,10 +1,23 @@
 # Naudojimo instrukcijos
 
-....................parasyt 
+Yra 3 skirtingos programos versijos: vector, deque ir list, jas galima rasti atitinkamuose aplankuose. Kiekviena versija naudoja atskirą šaltinio failų rinkinį ir CMake konfigūraciją.
+
+**Kad paleisti programą, turite atlikti šiuos veiksmus:**
+
+1. Įeikite į norimos versijos katalogą
+2. Paleiskite `run.bat` failą
+
+  `run.bat` failas atliks šiuos veiksmus:
+   - Sukurs build katalogą (jei jo dar nėra)
+   - Paleis CMake, kad sugeneruotų `Makefile`
+   - Sukompiliuos projektą naudodamas make komandą
+   - Paleis sukompiliuotą programą terminale
 
 **Reikalavimai**
-Windows 10 x64bit ar naujesnė versija
-Įdiegtas CMake
+
+- Windows 10 x64bit ar naujesnė versija
+- įdiegtas CMake (rekomenduojama naudoti CMake versiją 3.25 ar naujesnę)
+- Kompiliatorius: g++ (g++ turi būti įdiegtas jūsų sistemoje, kad veiktų komanda make)
 
 # Spartos tyrimai
 
