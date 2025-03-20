@@ -34,7 +34,7 @@ Visų testų rezultatus galima rasti `assets` -> `containerTests` kataloge.
 
 Žemiau pateikiami atliktų testų rezultatų vidurkiai (sekundėmis):
 
-![image](https://github.com/user-attachments/assets/92bbf9f4-8de0-4af2-a358-2c49a70b7703)
+![image](https://github.com/user-attachments/assets/209393ed-6b71-455f-b411-85acf06023bf)
 
 Tyrimas parodė, kad naudojant didesnius failus, `vector` buvo efektyviausias, o `deque` buvo mažiausiai efektyvus.
 
@@ -51,7 +51,7 @@ Visų testų rezultatus galima rasti `assets` -> `containerTests` kataloge.
 
 Žemiau pateikiami atliktų testų rezultatų vidurkiai (sekundėmis):
 
-![image](https://github.com/user-attachments/assets/7a38dd7d-092c-4f5b-9c5c-da0dc9928bcf)
+![image](https://github.com/user-attachments/assets/10b7ad8e-6318-4132-b525-47c0d6fcd5fe)
 
 Tyrimas parodė, kad naudojant didesnius failus, `vector` buvo efektyviausias, o `deque` buvo mažiausiai efektyvus.
 
@@ -77,7 +77,7 @@ Tyrimas parodė, kad `deque` naudoja daugiausiai atminties, `vector` pasiekia ge
 
 Žemiau pateikiami atliktų testų rezultatų vidurkiai (sekundėmis):
 
-![image](https://github.com/user-attachments/assets/ff01718c-fbca-4ac1-974d-1ff87bf4b812)
+![image](https://github.com/user-attachments/assets/6f7ba9e1-e022-4bcd-af74-bf926f029893)
 
 Tyrimas parodė, kad naudojant didesnius failus, `list` buvo efektyviausias, o `vector` bei `deque` buvo žymiai mažiau efektyvūs.
 
@@ -88,6 +88,6 @@ Buvo optimizuotas `vector` tipo konteineris, optimizuota 1 strategija.
 
 Žemiau pateikiami atliktų testų rezultatų vidurkiai (sekundėmis):
 
-![image](https://github.com/user-attachments/assets/6502b221-abfe-4e5e-a595-388fe918b94b)
+![image](https://github.com/user-attachments/assets/8b77907f-78ab-4319-b2d5-59cae73c90ef)
 
 Tyrimas parodė, kad pritaikius tam tikrus metodus, failo su 10 000 000 įrašų atžvilgiu, `vector` tapo efektyvesnis ~0.5 sek. Taip pat sumažėjo ir atminties sąnaudos, kurias galima rasti pirmos strategijos apraše.
