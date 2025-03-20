@@ -13,6 +13,8 @@ Testavimo sistemos parametrai:
 - SSD - 2 TB
 - Kompiliatorius: GCC
 - IDE: Visual Studio Code
+
+Visiems testams buvo naudojami tie patys failai, užtikrinant tyrimų patikimumą.
   
 # 1. Konteinerių tyrimas
 
@@ -28,15 +30,13 @@ Testai buvo atliekami po 5 kartus. Buvo tikrinamos šios operacijos:
 2. Studentų rūšiavimas didėjimo tvarka konteineryje
 3. Studentų skirstymas į dvi grupes
 
-Visiems testams buvo naudojami tie patys failai, užtikrinant tyrimų patikimumą.
-
-Visų testų rezultatus galima rasti `assets` kataloge.
+Visų testų rezultatus galima rasti `assets` -> `containerTests` kataloge.
 
 ## Testų rezultatų vidurkiai
 
 Žemiau pateikiami atliktų testų rezultatų vidurkiai (sekundėmis):
 
-![image](https://github.com/user-attachments/assets/2062d63c-b3e5-4ac3-b404-0020841d29f1)
+![image](https://github.com/user-attachments/assets/fa382c08-1a78-452a-9b3b-4cde7215b61b)
 
 ## Išvados
 
@@ -45,23 +45,39 @@ Tyrimas parodė, kad naudojant didesnius failus, `vector` buvo efektyviausias, o
 
 # 2. Strategijų tyrimas
 
-Buvo atliktas....
+Buvo tiriama studentų rūšiavimo į grupes operacija pagal tris skirtingas strategijas.
 
+Visų testų rezultatus galima rasti `assets` -> `containerTests` kataloge.
 
 ## 1 strategija
 
+Žemiau pateikiami atliktų testų rezultatų vidurkiai (sekundėmis):
+
+![image](https://github.com/user-attachments/assets/c5e08e6b-d23d-48e5-8005-e3a04ed8b657)
+
 Atminties naudojimas su 10 000 000 įrašų failu
 
-vector - 1 strategija 
+Vector 
 ![vector1](https://github.com/user-attachments/assets/86ef0846-6e8e-43e2-a077-047dd9406407)
 
-vector - 3 strategija
+(Palyginimui) Vector - 3 strategija
 ![vector3](https://github.com/user-attachments/assets/8a2cd813-2709-46ad-86c0-c9ed2632f1f4)
 
-deque - 1 strategija 
+Deque 
 ![deque1](https://github.com/user-attachments/assets/9985949c-1c03-44d4-a1fc-7aba5dadfd8d)
 
-list - 1 strategija 
+List 
 ![list1](https://github.com/user-attachments/assets/fd4726ee-3d4a-4a5d-a755-8bb14e98a23b)
 
+## 2 strategija
+
+Žemiau pateikiami atliktų testų rezultatų vidurkiai (sekundėmis):
+
+![image](https://github.com/user-attachments/assets/28f541b9-9cd7-4a5d-9446-7bdb4aa6df06)
+
+## 3 strategija
+
+Žemiau pateikiami atliktų testų rezultatų vidurkiai (sekundėmis):
+
+![image](https://github.com/user-attachments/assets/ac77af2c-29f2-483e-9e71-dedd40be5c87)
 
