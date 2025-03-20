@@ -46,7 +46,3 @@ strategija 1, vector, 10 000 000 stud
 
 strategija 1, deque, 10 000 000 stud
 ![deque1](https://github.com/user-attachments/assets/5645f382-3494-499a-a26c-9f06a9a6c3b0)
-
-strategija 2, list, 10 000 000 stud
-![list2](https://github.com/user-attachments/assets/a30e6158-e6e6-4c48-8ba8-59ec6ac81981)
-
