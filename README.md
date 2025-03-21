@@ -107,8 +107,8 @@ Tyrimas parodė, kad naudojant didesnius failus, `list` buvo efektyviausias, o `
 
 ## 3 strategija
 
-Šioje strategijoje naudojamas bendro studentų konteinerio skaidymas (rūšiavimas) panaudojant greičiausiai veikianti iš 1 arba 2 strategijos, įtraukiant į jį "efektyvius" darbo su konteineriais metodus. 
-Buvo optimizuotas `vector` tipo konteineris, optimizuota 1 strategija.
+Šioje strategijoje naudojamas bendro studentų konteinerio skaidymas (rūšiavimas) panaudojant greičiausiai veikianti iš pirmos arba antros strategijos, įtraukiant "efektyvius" darbo su konteineriais metodus. 
+Buvo optimizuotas `vector` tipo konteineris su pirma strategija.
 
 Žemiau pateikiami atliktų testų rezultatų vidurkiai (sekundėmis):
 
