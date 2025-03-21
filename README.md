@@ -8,7 +8,7 @@ Yra 3 skirtingos programos versijos: vector, deque ir list, jas galima rasti ati
 2. Paleiskite `run.bat` failą
 
   `run.bat` failas atliks šiuos veiksmus:
-   - Sukurs build katalogą (jei jo dar nėra)
+   - Sukurs build katalogą 
    - Paleis CMake, kad sugeneruotų `Makefile`
    - Sukompiliuos projektą naudodamas make komandą
    - Paleis sukompiliuotą programą terminale
