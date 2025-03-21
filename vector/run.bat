@@ -1,19 +1,6 @@
-@echo off
-REM 
-if not exist "build" mkdir build
-
-REM 
-cd build
-
-REM 
-cmake ..
-
-REM 
-make
-
-REM 
-./main.exe
-
-REM 
-cd ..
+cmake CMakeLists.txt
+cmake --install .
+cmake --build .
+cd Debug\
+Deque.exe
 pause
