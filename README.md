@@ -84,9 +84,6 @@ Tyrimas parodė, kad naudojant didesnius failus, `vector` buvo efektyviausias, o
 **Vector** 
 ![vector1](https://github.com/user-attachments/assets/86ef0846-6e8e-43e2-a077-047dd9406407)
 
-**Vector - 3 strategija** (palyginimui) 
-![vector3](https://github.com/user-attachments/assets/8a2cd813-2709-46ad-86c0-c9ed2632f1f4)
-
 **Deque** 
 ![deque1](https://github.com/user-attachments/assets/9985949c-1c03-44d4-a1fc-7aba5dadfd8d)
 
@@ -101,9 +98,22 @@ Tyrimas parodė, kad `deque` naudoja daugiausiai atminties, `list` naudoja žymi
 
 Žemiau pateikiami atliktų testų rezultatų vidurkiai (sekundėmis):
 
-![image](https://github.com/user-attachments/assets/6f7ba9e1-e022-4bcd-af74-bf926f029893)
+![image](https://github.com/user-attachments/assets/f59092d6-65fe-497b-9d0c-c650b29e8946)
 
-Tyrimas parodė, kad naudojant didesnius failus, `list` buvo efektyviausias, o `vector` bei `deque` buvo žymiai mažiau efektyvūs.
+Tyrimas parodė, kad naudojant didesnius failus, `vector` buvo efektyviausias, o `deque` buvo mažiausiai efektyvus.
+
+Žemiau pateikiamas atminties naudojimas su 10 000 000 įrašų failu:
+
+**Vector** 
+![vector2](https://github.com/user-attachments/assets/984edb45-7353-4805-adfa-c54352518c8b)
+
+**Deque**
+![deque2](https://github.com/user-attachments/assets/453e9517-9efa-4a38-a1e1-35f84358e80c)
+
+**List**
+![list2](https://github.com/user-attachments/assets/993f7511-a7a3-48cc-aa78-354b3dcf736f)
+
+Tyrimas parodė, kad `deque` naudoja daugiausiai atminties, `list` naudoja žymiai mažiau atminties nei `deque`, bet `vector` vistiek yra efektyviausias atminties požiūriu.
 
 ## 3 strategija
 
@@ -114,7 +124,11 @@ Buvo optimizuotas `vector` tipo konteineris su pirma strategija.
 
 ![image](https://github.com/user-attachments/assets/8b77907f-78ab-4319-b2d5-59cae73c90ef)
 
-Tyrimas parodė, kad pritaikius tam `std::partition` metodą, failo su 10 000 000 įrašų atžvilgiu, `vector` tapo efektyvesnis ~0.5 sek. Taip pat sumažėjo ir atminties sąnaudos, kurias galima rasti pirmos strategijos apraše.
+Žemiau pateikiamas atminties naudojimas su 10 000 000 įrašų failu:
+
+![vector3](https://github.com/user-attachments/assets/8a2cd813-2709-46ad-86c0-c9ed2632f1f4)
+
+Tyrimas parodė, kad optimizuotas `deque` yra tiek efektyvesnis, tiek naudoja mažiau atminties nei pirmoje strategijoje.Tyrimas parodė, kad pritaikius tam `std::partition` metodą, failo su 10 000 000 įrašų atžvilgiu, `vector` tapo efektyvesnis ~0.5 sek. Taip pat sumažėjo ir atminties sąnaudos lyginant su pirma strategija.
 
 # Programos versijos
 
