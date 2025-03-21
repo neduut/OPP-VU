@@ -130,4 +130,3 @@ Failas: studentai10000000.txt
 ---> Duomenų nuskaitymas iš failo užtruko: 35.8425 s
 ---> Studentų rikiavimas didėjimo tvarka užtruko: 17.6865 s
 ---> Studentų rūšiavimas į dvi grupes užtruko: 18.8917 s
-

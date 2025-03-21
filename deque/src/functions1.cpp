@@ -321,7 +321,6 @@ void printToFile(deque<Student>& students, const string& fileName) {
         }
 
         file.close();
-        system("cls");
         cout << "Rezultatai išsaugoti faile: " << fileName << "\n";
 
     } catch (const std::exception& e) {
@@ -345,11 +344,10 @@ void fileGenTest(int size, const std::string& fileName) {
         runTimeResults.close();  
         runTimeResults << "\n";
 
+        cout << "\nLaiko tyrimo rezultatai įrašyti į failą: " << fileName << "\n";
     } else {
         std::cerr << FILE_OPEN_ERROR << std::endl;
     }
-    system("cls");
-    cout << "\nLaiko tyrimo rezultatai įrašyti į failą: " << fileName << "\n";
 }
 
 void programTest(int size, const std::string& fileName) {
@@ -385,18 +383,18 @@ void programTest(int size, const std::string& fileName) {
         printTime.stop(runTimeResults);  
 
         programTime.stop(runTimeResults); 
-        runTimeResults << "\n";
 
+        runTimeResults << "\n";
         runTimeResults.close(); 
+
+        cout << "\nLaiko tyrimo rezultatai įrašyti į failą: " << fileName << "\n";
     } else {
         std::cerr << FILE_OPEN_ERROR << std::endl;
     }
-    system("cls");
-    cout << "Laiko tyrimo rezultatai įrašyti į failą: " << fileName << "\n";
 }
 
 void dequeTest(int size, const std::string& fileName) {
-    std::ofstream runTimeResults("../assets/containerTest/" + fileName, std::ios::app); // open file in append mode
+    std::ofstream runTimeResults("../assets/containerTests/" + fileName, std::ios::app); // open file in append mode
 
     if (runTimeResults.is_open()) {
         runTimeResults << "Failas: studentai" << size << ".txt\n";
@@ -429,17 +427,16 @@ void dequeTest(int size, const std::string& fileName) {
         printToFile(vargsiukai, "vargsiukai.txt");
 
         runTimeResults << "\n";
-
         runTimeResults.close(); 
+
+        cout << "\nLaiko tyrimo rezultatai įrašyti į failą: " << fileName << "\n";
     } else {
         std::cerr << FILE_OPEN_ERROR << std::endl;
     }
-    system("cls");
-    cout << "Laiko tyrimo rezultatai įrašyti į failą: " << fileName << "\n";
 }
 
 void strategies(int size, const std::string& fileName, int strategy) {
-    std::ofstream runTimeResults("../assets/strategiesTest/" + fileName, std::ios::app); 
+    std::ofstream runTimeResults("../assets/strategies/" + fileName, std::ios::app); 
 
     //int groupType = getGroupType(); 
     if (runTimeResults.is_open()) {
@@ -469,10 +466,10 @@ void strategies(int size, const std::string& fileName, int strategy) {
 
         runTimeResults << "\n";
         runTimeResults.close(); 
+
+        cout << "\nLaiko tyrimo rezultatai įrašyti į failą: " << fileName << "\n";
     } else {
         std::cerr << FILE_OPEN_ERROR << std::endl;
     }
-    system("cls");
-    cout << "Laiko tyrimo rezultatai įrašyti į failą: " << fileName << "\n";
 }
 
