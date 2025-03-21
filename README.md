@@ -77,8 +77,6 @@ Sukiekvienu failu buvo atlikta po 5 testus. Visų testų rezultatus galima rasti
 
 ![image](https://github.com/user-attachments/assets/10b7ad8e-6318-4132-b525-47c0d6fcd5fe)
 
-Tyrimas parodė, kad naudojant didesnius failus, `vector` buvo efektyviausias, o `deque` buvo mažiausiai efektyvus.
-
 Žemiau pateikiamas atminties naudojimas su 10 000 000 įrašų failu:
 
 **Vector** 
@@ -90,7 +88,7 @@ Tyrimas parodė, kad naudojant didesnius failus, `vector` buvo efektyviausias, o
 **List**
 ![list1](https://github.com/user-attachments/assets/fd4726ee-3d4a-4a5d-a755-8bb14e98a23b)
 
-Tyrimas parodė, kad `deque` naudoja daugiausiai atminties, `list` naudoja žymiai mažiau atminties nei `deque`, bet `vector` vistiek yra efektyviausias atminties požiūriu.
+Tyrimas parodė, kad naudojant didesnius failus, `vector` buvo efektyviausias, o `deque` buvo mažiausiai efektyvus, nes naudojo daugiausiai atminties, `list` naudojo žymiai mažiau atminties nei `deque`, bet `vector` vistiek išliko efektyviausias atminties požiūriu.
 
 ## 2 strategija
 
@@ -99,8 +97,6 @@ Tyrimas parodė, kad `deque` naudoja daugiausiai atminties, `list` naudoja žymi
 Žemiau pateikiami atliktų testų rezultatų vidurkiai (sekundėmis):
 
 ![image](https://github.com/user-attachments/assets/f59092d6-65fe-497b-9d0c-c650b29e8946)
-
-Tyrimas parodė, kad naudojant didesnius failus, `vector` buvo efektyviausias, o `deque` buvo mažiausiai efektyvus.
 
 Žemiau pateikiamas atminties naudojimas su 10 000 000 įrašų failu:
 
@@ -113,7 +109,7 @@ Tyrimas parodė, kad naudojant didesnius failus, `vector` buvo efektyviausias, o
 **List**
 ![list2](https://github.com/user-attachments/assets/993f7511-a7a3-48cc-aa78-354b3dcf736f)
 
-Tyrimas parodė, kad `deque` naudoja daugiausiai atminties, `list` naudoja žymiai mažiau atminties nei `deque`, bet `vector` vistiek yra efektyviausias atminties požiūriu.
+Tyrimas parodė, kad antrojoje strategijoje `vector` išliko efektyviausias, kaip ir pirmoje strategijoje, `deque` buvo mažiau efektyvus ir naudoja daugiau atminties lyginant su pirma strategija, o `list` vis tiek buvo mažiausiai efektyvus tiek laiko, tiek atminties atžvilgiu, kaip ir pirmoje strategijoje.
 
 ## 3 strategija
 
