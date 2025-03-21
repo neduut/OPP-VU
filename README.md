@@ -93,7 +93,7 @@ Tyrimas parodė, kad naudojant didesnius failus, `vector` buvo efektyviausias, o
 **List**
 ![list1](https://github.com/user-attachments/assets/fd4726ee-3d4a-4a5d-a755-8bb14e98a23b)
 
-Tyrimas parodė, kad `deque` naudoja daugiausiai atminties, `vector` pasiekia gerą atminties naudojimo ir vidutinį našumą, o `list` yra efektyviausias atminties požiūriu, tačiau pasiekia lėtesnį našumą.
+Tyrimas parodė, kad `deque` naudoja daugiausiai atminties, `list` naudoja žymiai mažiau atminties nei `deque`, bet `vector` vistiek yra efektyviausias atminties požiūriu.
 
 ## 2 strategija
 
