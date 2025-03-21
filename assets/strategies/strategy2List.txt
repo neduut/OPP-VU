@@ -1,1 +1,66 @@
+Failas: studentai1000.txt
+---> Studentų rūšiavimas į dvi grupes užtruko: 0.0014752 s
+
+Failas: studentai1000.txt
+---> Studentų rūšiavimas į dvi grupes užtruko: 0.0016501 s
+
+Failas: studentai1000.txt
+---> Studentų rūšiavimas į dvi grupes užtruko: 0.0012294 s
+
+Failas: studentai1000.txt
+---> Studentų rūšiavimas į dvi grupes užtruko: 0.0017458 s
+
+Failas: studentai1000.txt
+---> Studentų rūšiavimas į dvi grupes užtruko: 0.001527 s
+
 --------------------------------------------------------------------------
+
+Failas: studentai10000.txt
+---> Studentų rūšiavimas į dvi grupes užtruko: 0.0123652 s
+
+Failas: studentai10000.txt
+---> Studentų rūšiavimas į dvi grupes užtruko: 0.0114715 s
+
+Failas: studentai10000.txt
+---> Studentų rūšiavimas į dvi grupes užtruko: 0.0130012 s
+
+Failas: studentai10000.txt
+---> Studentų rūšiavimas į dvi grupes užtruko: 0.0102758 s
+
+Failas: studentai10000.txt
+---> Studentų rūšiavimas į dvi grupes užtruko: 0.013581 s
+
+--------------------------------------------------------------------------
+
+Failas: studentai100000.txt
+---> Studentų rūšiavimas į dvi grupes užtruko: 0.203263 s
+
+Failas: studentai100000.txt
+---> Studentų rūšiavimas į dvi grupes užtruko: 0.206273 s
+
+Failas: studentai100000.txt
+---> Studentų rūšiavimas į dvi grupes užtruko: 0.201316 s
+
+Failas: studentai100000.txt
+---> Studentų rūšiavimas į dvi grupes užtruko: 0.193895 s
+
+Failas: studentai100000.txt
+---> Studentų rūšiavimas į dvi grupes užtruko: 0.222454 s
+
+--------------------------------------------------------------------------
+
+Failas: studentai10000000.txt
+---> Studentų rūšiavimas į dvi grupes užtruko: 32.0632 s
+
+Failas: studentai10000000.txt
+---> Studentų rūšiavimas į dvi grupes užtruko: 32.6421 s
+
+Failas: studentai10000000.txt
+---> Studentų rūšiavimas į dvi grupes užtruko: 33.2317 s
+
+Failas: studentai10000000.txt
+---> Studentų rūšiavimas į dvi grupes užtruko: 33.1692 s
+
+Failas: studentai10000000.txt
+---> Studentų rūšiavimas į dvi grupes užtruko: 34.9527 s
+

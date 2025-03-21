@@ -353,7 +353,7 @@ void fileGenTest(int size, const std::string& fileName) {
         runTimeResults << "\n";
         runTimeResults.close();  
 
-        cout << "\nLaiko tyrimo rezultatai įrašyti į failą: " << fileName << "\n";
+        cout << TEST_SECCESS << fileName << "\n";
 
     } else {
         std::cerr << FILE_OPEN_ERROR << std::endl;
@@ -397,7 +397,7 @@ void programTest(int size, const std::string& fileName) {
 
         runTimeResults.close(); 
 
-        cout << "\nLaiko tyrimo rezultatai įrašyti į failą: " << fileName << "\n";
+        cout << TEST_SECCESS << fileName << "\n";
     } else {
         std::cerr << FILE_OPEN_ERROR << std::endl;
     }
@@ -439,7 +439,7 @@ void listTest(int size, const std::string& fileName) {
         runTimeResults << "\n";
         runTimeResults.close(); 
 
-        cout << "\nLaiko tyrimo rezultatai įrašyti į failą: " << fileName << "\n";
+        cout << TEST_SECCESS << fileName << "\n";
     } else {
         std::cerr << FILE_OPEN_ERROR << std::endl;
     }
@@ -477,7 +477,7 @@ void strategies(int size, const std::string& fileName, int strategy) {
         runTimeResults << "\n";
         runTimeResults.close(); 
 
-        cout << "\nLaiko tyrimo rezultatai įrašyti į failą: " << fileName << "\n";
+        cout << TEST_SECCESS << fileName << "\n";
     } else {
         std::cerr << FILE_OPEN_ERROR << std::endl;
     }

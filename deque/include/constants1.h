@@ -64,9 +64,8 @@ const string INVALID_GROUP_TYPE = "\nKlaida: netinkamas grupavimo tipas! ";
 const string INVALID_FILE_SIZE = "\nKlaida: netinkamas failo dydis! ";
 
 // success 
-const string FILE_READ_SUCCESS = "Duomenys nuskaityti sėkmingai! ";
-const string FILE_WRITE_SUCCESS = "Duomenys įrašyti sėkmingai! ";
-
-
+const string FILE_READ_SUCCESS = "\nDuomenys nuskaityti sėkmingai! ";
+const string FILE_WRITE_SUCCESS = "\nDuomenys įrašyti sėkmingai! ";
+const string TEST_SECCESS = "\nLaiko tyrimo rezultatai įrašyti į failą: ";
 
 #endif
