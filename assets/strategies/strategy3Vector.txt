@@ -1,3 +1,4 @@
+
 Failas: studentai1000.txt
 ---> Studentų rūšiavimas į dvi grupes užtruko: 0.0001687 s
 

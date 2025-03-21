@@ -247,17 +247,20 @@ void groupStudents1(deque<Student>& students, deque<Student>& kietiakai, deque<S
 }
 
 void groupStudents2(deque<Student>& students, deque<Student>& kietiakai, deque<Student>& vargsiukai, char groupType) {
-    for (auto it = students.begin(); it != students.end();) {
-        double finalMark = (groupType == 1) ? it->avgFinal : it->medianFinal;
-
-        if (finalMark < 5) {
-            vargsiukai.push_back(*it);
-            it = students.erase(it);  
-        } else {
-            ++it;  
+    if(groupType == 1){
+        sortStudents(students, 3);
+        while(students.back().avgFinal > 5){
+            kietiakai.push_back(students.back());
+            students.pop_back();
+        } 
+    } else {
+        sortStudents(students, 4);
+        while(students.back().medianFinal > 5){
+            kietiakai.push_back(students.back());
+            students.pop_back();
         }
     }
-    kietiakai.insert(kietiakai.end(), students.begin(), students.end());
+    vargsiukai.insert(vargsiukai.end(), students.begin(), students.end());
     students.clear(); 
 }
 
