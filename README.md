@@ -17,7 +17,7 @@ Yra 3 skirtingos programos versijos: vector, deque ir list, jas galima rasti ati
 
 - Windows 10 x64bit ar naujesnė versija
 - Įdiegtas CMake (rekomenduojama naudoti CMake versiją 3.25 ar naujesnę)
-- Kompiliatorius: g++ (g++ turi būti įdiegtas jūsų sistemoje, kad veiktų komanda make)
+- Kompiliatorius: g++ 
 
 # Spartos tyrimai
 
@@ -28,8 +28,8 @@ Testavimo sistemos parametrai:
 - GPU - AMD Radeon 890M (16 GB)
 - RAM - 32.0 GB LPDDR5x 
 - SSD - 2 TB
-- Kompiliatorius: GCC
-- IDE: Visual Studio Code
+- Kompiliatorius - GCC
+- IDE - Visual Studio Code
 
 Visiems testams buvo naudojami tie patys failai, užtikrinant tyrimų patikimumą.
   
