@@ -124,7 +124,7 @@ Buvo optimizuotas `vector` tipo konteineris su pirma strategija.
 
 ![vector3](https://github.com/user-attachments/assets/8a2cd813-2709-46ad-86c0-c9ed2632f1f4)
 
-Tyrimas parodė, kad optimizuotas `deque` yra tiek efektyvesnis, tiek naudoja mažiau atminties nei pirmoje strategijoje.Tyrimas parodė, kad pritaikius tam `std::partition` metodą, failo su 10 000 000 įrašų atžvilgiu, `vector` tapo efektyvesnis ~0.5 sek. Taip pat sumažėjo ir atminties sąnaudos lyginant su pirma strategija.
+Tyrimas parodė, kad optimizuotas `deque` yra tiek efektyvesnis, tiek naudoja mažiau atminties nei pirmoje strategijoje. Pritaikius `std::partition` metodą, failo su 10 000 000 įrašų atžvilgiu, `vector` tapo efektyvesnis ~0.5 sek. 
 
 # Programos versijos
 
